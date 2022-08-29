@@ -19,68 +19,86 @@
 </ol>
 <p>2.输入指令回车查看版本号(新版的Node.js已自带npm，安装Node.js时会一起安装)</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
-<p><img src="/images/01.png"></p>
+<p><img src = "/images/01.png"></p>
 <p>出现版本号，说明你的电脑上已经有nodejs，npm安装成功</p>
 <h4 id="准备hexo"><a href="#准备hexo" class="headerlink" title="准备hexo"></a>准备hexo</h4><p>在命令框里输入</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line"></span><br><span class="line">////////////////</span><br><span class="line"></span><br><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
-<p><img src="/images/02.png"></p>
+<p><img src = "/images/02.png"></p>
 <p>出现版本号即为安装成功！</p>
 <h3 id="登录github"><a href="#登录github" class="headerlink" title="登录github"></a>登录github</h3><p><code>我们要做的就是利用Github的仓库作为我们hexo的一个服务器，将hexo的内容都装进这个仓库里面,让所有的人都可以访问。</code></p>
 <h4 id="建仓"><a href="#建仓" class="headerlink" title="建仓"></a>建仓</h4><p>打开github，点击new新建仓库</p>
-<p><img src="/images/03.png"></p>
-<p><img src="/images/04.png"></p>
+<p><img src = "/images/03.png"></p>
+<p><img src = "/images/04.png"></p>
 <p><code>注意：仓库的名字是有规定的，为自己的名字+.github.io,从上图也可看出。</code></p>
-<p><img src="/images/05.png"></p>
+<p><img src = "/images/05.png"></p>
 <p> <code>跟着我的点，最后创建</code></p>
-<p><img src="/images/06.png"></p>
+<p><img src = "/images/06.png"></p>
 <p>此时就已经建成功了。</p>
 <h3 id="将github与本地进行绑定"><a href="#将github与本地进行绑定" class="headerlink" title="将github与本地进行绑定"></a>将github与本地进行绑定</h3><h4 id="设置密钥"><a href="#设置密钥" class="headerlink" title="设置密钥"></a>设置密钥</h4><p>​    随意进入一个文件中，在空白区域右键，点出Git bash here,输入如下指令</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;邮件地址&quot;  //注意在git里面想要粘贴时，右键Paste,此时输入的邮件地址为绑定的github账号的邮件地址</span><br></pre></td></tr></table></figure>
-<p><img src="/images/07.png"></p>
+<p><img src = "/images/07.png"></p>
 <p><code>此时输入命令后四次回车如图即可，如果出现overwrite时输入 y</code></p>
-<p><img src="/images/08.png"></p>
+<p><img src = "/images/08.png"></p>
 <p>在电脑的这个位置找见.ssh里面以.pub为结尾的文件，以笔记本打开。打开后ctrl  + a  /c</p>
 <p>打开github</p>
-<p><img src="/images/09.png"></p>
+<p><img src = "/images/09.png"></p>
 <p>打开Setting</p>
-<p><img src="/images/10.png"></p>
+<p><img src = "/images/10.png"></p>
 <p>打开SSH and GPG keys ，在点绿色的New SSH key</p>
-<p><img src="/images/11.png"></p>
+<p><img src = "/images/11.png"></p>
 <p>可以随便起一个名字，然后将复制的钥匙粘贴进下面的大框。</p>
 <p>最后在原来的git命令行输入一下代码，确定是否绑定成功。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-<p> <img src="/images/12.png"></p>
+<p> <img src = "/images/12.png"></p>
 <p>过程中有一次问答输入 yes ，最后出现 successfully即可。</p>
 <h2 id="建立blog并且发布到Github"><a href="#建立blog并且发布到Github" class="headerlink" title="建立blog并且发布到Github"></a>建立blog并且发布到Github</h2><p>git在国外不稳定所以命令有时候还会有网络问题，多试两次或者选择换国内镜像源也可以。</p>
 <p>创建一个自己的blog的空文件夹，进入后右键出git bush here；</p>
 <p>输入一下命令</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo init       //初始化hexo  如果成功会发现自己的blog下面会多出很多的内容</span><br><span class="line"></span><br><span class="line">hexo s         //静态生成hexo本地的博客页面</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><img src="/images/13.png"></p>
+<p><img src = "/images/13.png"></p>
 <p>ctrl加点击<a href="http://localhost:4000">http://localhost:4000</a> 即可进入本地的hexo服务器</p>
 <p>ctrl + c 即可停止服务器</p>
 <p>进入你的blog文件找见下面的 _config.yml文件。打开后进入代码的最下面，将代码改为</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: &#x27;git&#x27;</span><br><span class="line">  repository: </span><br><span class="line">  branch: main</span><br><span class="line">//注意冒号后面还有空格</span><br></pre></td></tr></table></figure>
-<p><img src="/images/14.png"></p>
-<p><img src="/images/15.png"></p>
+<p><img src = "/images/14.png"></p>
+<p><img src = "/images/15.png"></p>
 <p>进入githun中的这个code，点击复制，然后粘贴在上面的 repository后 。</p>
 <p>在你的博客文件夹下面点开git命令，输入以下命令。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save  </span><br><span class="line"></span><br><span class="line">hexo g   //生成页面</span><br><span class="line"></span><br><span class="line">hexo d    //上传文件至仓库，需要输入账号密码，在此处可能会出现网络不稳定问题，多试几次</span><br></pre></td></tr></table></figure>
-<p><img src="/images/16.png"></p>
+<p><img src = "/images/16.png"></p>
 <p>这个为github的用户名，输入之后会在让输密码。。。。。。。注意此时不能在输密码，进入上面提到过的github里的setting ,找到左侧的Developer settings,点击开发者设置。</p>
-<p><img src="/images/17.png"></p>
+<p><img src = "/images/17.png"></p>
 <p>点击 Generate new token 创建一个新的令牌。</p>
-<p><img src="/images/18.png"></p>
-<p>随意取一个名字，并将所有选项选上，点击生成令牌。<img src="/images/19.png"></p>
+<p><img src = "/images/18.png"></p>
+<p>随意取一个名字，并将所有选项选上，点击生成令牌。<img src = "/images/19.png"></p>
 <p>复制此处的序列号令牌到弹出的提示输入密码框内。</p>
-<p><img src="/images/20.png"></p>
-<p>即为上传成功！<img src="/images/20.png"></p>
+<p><img src = "/images/20.png"></p>
+<p>即为上传成功！<img src = "/images/20.png"></p>
 <p>此时仓库的内容就发生了变化。此时通过 <a href="https://你的git名字.github.io/">https://你的git名字.github.io/</a>      即可从网址访问。</p>
-<p><img src="/images/21.png"></p>
+<p><img src = "/images/21.png"></p>
 <p>此时博客的搭建已经差不多了，剩下的时博客的页面主题的更换和域名的绑定</p>
 ]]></content>
       <tags>
         <tag>hexo</tag>
         <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>白都的一封信</title>
+    <url>/2022/08/26/%E4%BF%A1/</url>
+    <content><![CDATA[<p>已至凌晨却无论如何都睡不着了，心里藏着很多事情。</p>
+<hr>
+<p>​    可对于已经发生过的事情，我们无能为力，能做好的只有接下来的事情。</p>
+<p>​    <code>小时候的我经常仰望着星空，渴望着自己成为逆转时空的飞人</code></p>
+<p>​    </p>
+<hr>
+<p>​    <code>黑还是白并不重要</code></p>
+<hr>
+<p>​    在痛苦开心的过程中会慢慢的触摸到了我心中真正的所想所愿。那是一种奇妙的感觉，很像是悟道一样的感觉。</p>
+<p>​    <code>每天每天每月每月，实现那个梦</code></p>
+]]></content>
+      <tags>
+        <tag>念想</tag>
       </tags>
   </entry>
   <entry>
@@ -93,8 +111,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
 <p>执行完毕之后 Next 主题的源码就会出现在项目的 themes/next 文件夹下。<br>然后需要修改下博客所用的主题名称，修改项目根目录下的 _config.yml 文件，找到 theme 字段，修改为 next 即可，修改如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
-<p>然后本地重新开启服务，访问刷新下页面，就可以看到 next 主题就切换成功了，预览效果如下：</p>
-<p><img src="https://s1.plumeta.com/i/2022/08/29/f90fe9de0c5785aa4a9a3026cbda471.png"></p>
+<p>然后本地重新开启服务，访问刷新下页面，就可以看到 next 主题就切换成功了</p>
 <p>Next 主题内部也提供了一个配置文件，Next 主题里面所有的功能都可以通过这个配置文件来控制，下文所述的内容都是修改的 themes/next/_config.yml 文件。</p>
 <h3 id="3-1-样式"><a href="#3-1-样式" class="headerlink" title="3.1 样式"></a>3.1 样式</h3><p>Next 主题还提供了多种样式，风格都是类似黑白的搭配，但整个布局位置不太一样，通过修改配置文件的 scheme 字段即可，我选了 Pisces 样式，修改 _config.yml （注意是 themes/next/_config.yml 文件）如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scheme: Pisces</span><br></pre></td></tr></table></figure>
@@ -153,24 +170,6 @@
         <tag>hexo</tag>
         <tag>域名</tag>
         <tag>图片的免费上传</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>白都的一封信</title>
-    <url>/2022/08/26/%E4%BF%A1/</url>
-    <content><![CDATA[<p>已至凌晨却无论如何都睡不着了，心里藏着很多事情。</p>
-<hr>
-<p>​    可对于已经发生过的事情，我们无能为力，能做好的只有接下来的事情。</p>
-<p>​    <code>小时候的我经常仰望着星空，渴望着自己成为逆转时空的飞人</code></p>
-<p>​    </p>
-<hr>
-<p>​    <code>黑还是白并不重要</code></p>
-<hr>
-<p>​    在痛苦开心的过程中会慢慢的触摸到了我心中真正的所想所愿。那是一种奇妙的感觉，很像是悟道一样的感觉。</p>
-<p>​    <code>每天每天每月每月，实现那个梦</code></p>
-]]></content>
-      <tags>
-        <tag>念想</tag>
       </tags>
   </entry>
   <entry>
