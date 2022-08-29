@@ -251,7 +251,7 @@
 <p>执行完毕之后 Next 主题的源码就会出现在项目的 themes/next 文件夹下。<br>然后需要修改下博客所用的主题名称，修改项目根目录下的 _config.yml 文件，找到 theme 字段，修改为 next 即可，修改如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
 <p>然后本地重新开启服务，访问刷新下页面，就可以看到 next 主题就切换成功了，预览效果如下：</p>
-<p><img src="https://s1.plumeta.com/i/2022/08/29/ngg5ek.png" /></p>
+<p><img src="https://s1.plumeta.com/i/2022/08/29/ngg5ek.png"></p>
 <h2 id="三、主题配置"><a href="#三、主题配置" class="headerlink" title="三、主题配置"></a>三、主题配置</h2><p>Next 主题内部也提供了一个配置文件，Next 主题里面所有的功能都可以通过这个配置文件来控制，下文所述的内容都是修改的 themes/next/_config.yml 文件。</p>
 <h3 id="3-1-样式"><a href="#3-1-样式" class="headerlink" title="3.1 样式"></a>3.1 样式</h3><p>Next 主题还提供了多种样式，风格都是类似黑白的搭配，但整个布局位置不太一样，通过修改配置文件的 scheme 字段即可，我选了 Pisces 样式，修改 _config.yml （注意是 themes/next/_config.yml 文件）如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scheme: Pisces</span><br></pre></td></tr></table></figure>
@@ -279,7 +279,7 @@
 <h2 id="四、发布文章"><a href="#四、发布文章" class="headerlink" title="四、发布文章"></a>四、发布文章</h2><h3 id="4-1、增加文章"><a href="#4-1、增加文章" class="headerlink" title="4.1、增加文章"></a>4.1、增加文章</h3><p>需要调用 Hexo 提供的命令即可，比如我们要新建一篇「HelloWorld」的文章，命令如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new hello-world</span><br></pre></td></tr></table></figure>
 <h3 id="4-2、个性化设置"><a href="#4-2、个性化设置" class="headerlink" title="4.2、个性化设置"></a>4.2、个性化设置</h3><h4 id="4-2-1-标签页"><a href="#4-2-1-标签页" class="headerlink" title="4.2.1 标签页"></a>4.2.1 标签页</h4><p>按上路径创建 <strong>index.md</strong> </p>
-<p><img src="https://s1.plumeta.com/i/2022/08/29/p5vqdl.jpg" alt=""></p>
+<p><img src="https://s1.plumeta.com/i/2022/08/29/p5vqdl.jpg" alt></p>
 <p>里面输入内容</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">title: tags</span><br><span class="line">type: &quot;tags&quot;</span><br></pre></td></tr></table></figure>
 <p>然后再在主题的 _config.yml 文件将这个页面的链接添加到主菜单里面，修改 menu 字段如下：</p>
@@ -299,11 +299,11 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean	</span><br><span class="line">hexo generate	</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
 <h3 id="5-2-自定义域名"><a href="#5-2-自定义域名" class="headerlink" title="5.2 自定义域名"></a>5.2 自定义域名</h3><p>我本人是在<a target="_blank" rel="noopener" href="https://auth.huaweicloud.com/authui/login.html?service=https%3A%2F%2Fconsole.huaweicloud.com%2Fdns%2F%3FagencyId%3D1fb2d46c8a3e48dbbc4d41fb5b2cf34c%26region%3Dcn-east-3%26locale%3Dzh-cn%26cloud_route_state%3D%2Fdns%2Frecordset%2Fpublic%2Flist%3Fzoneid%3D8aace3b98282c2260182d8bd74236172%26zonename%3Dbaidu2001.top.%26zoneStatus%3DACTIVE#/login">华为云</a>下面买的域名</p>
 <p>在 GitHub 的 Repository 里面设置域名，找到 Settings，拉到下面，可以看到有个 GitHub Pages 的配置项，如图所示</p>
-<p><img src="https://s1.plumeta.com/i/2022/08/29/pekwp2.png" alt=""></p>
+<p><img src="https://s1.plumeta.com/i/2022/08/29/pekwp2.png" alt></p>
 <p>下面有个 custom domain 的选项，输入想自定义的域名地址，然后添加 CNAME 解析就好了。</p>
 <p>另外下面还有一个 Enforce HTTPS 的选项，GitHub Pages 会在我们配置自定义域名之后自动帮我们配置 HTTPS 服务。刚配置完自定义域名的时候可能这个选项是不可用的，一段时间后等到其可以勾选了，直接勾选即可，这样整个博客就会变成 HTTPS 的协议的了。</p>
 <p>另外有一个值得注意的地方，如果配置了自定义域名，在目前的情况下，每次部署的时候这个自定义域名的设置是会被自动清除的。所以为了避免这个情况，我们需要在项目目录下面新建一个 CNAME 文件，路径为 source/CNAME，内容就是自定义域名。<br>我就在 source 目录下新建了一个 CNAME 文件，内容为自己的域名</p>
-<p><img src="https://sukiui.com/i/2022/08/29/pfvw4h.png" alt=""></p>
+<p><img src="https://sukiui.com/i/2022/08/29/pfvw4h.png" alt></p>
 <p>可以避免了每次部署的时候自定义域名被清除的情况了。</p>
 
     </div>
@@ -328,7 +328,10 @@
     <a href="/2022/08/26/hexo-github%E5%81%9A%E5%87%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/" rel="prev" title="hexo+github做出一个属于自己的博客!">
       <i class="fa fa-chevron-left"></i> hexo+github做出一个属于自己的博客!
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/29/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" rel="next" title="个人博客网站问题解决">
+      个人博客网站问题解决 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -407,7 +410,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
