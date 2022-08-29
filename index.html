@@ -213,7 +213,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-08-29 15:45:49 / 修改时间：17:33:46" itemprop="dateCreated datePublished" datetime="2022-08-29T15:45:49+08:00">2022-08-29</time>
+              <time title="创建时间：2022-08-29 15:45:49 / 修改时间：19:27:07" itemprop="dateCreated datePublished" datetime="2022-08-29T15:45:49+08:00">2022-08-29</time>
             </span>
 
           
@@ -228,33 +228,14 @@
 
       
           <h2 id="一、Hexo-Next-实现全局播放背景音乐"><a href="#一、Hexo-Next-实现全局播放背景音乐" class="headerlink" title="一、Hexo + Next 实现全局播放背景音乐"></a>一、Hexo + Next 实现全局播放背景音乐</h2><p>进入网页版的网易云，进入你想选的歌单，按F12键进入开发人员工具，在元素里面 按ctrl + F 进行搜索生成外链，</p>
-<p><img src="https://sukiui.com/i/2022/08/29/91530d248551d8218975408194383d2.png"></p>
-<p>记住前面的那一行数字，新开一个网页输入</p>
-<p><code>https://music.163.com/#/outchain/0/</code>733122887         并将那行数字加载在 / 的后面。</p>
-<p><img src="https://sukiui.com/i/2022/08/29/532bbac637cb30308c53e3064bccadb.png"></p>
-<p>打开我们主题文件：<code>themes\next\layout\_macro\sidebar.swig</code>找到<code>sidebar-inner</code>，复制下面代码粘贴到此<code>&lt;div&gt;</code>标签后即可。</p>
-<ul>
-<li>打开<code>themes\next\layout</code>文件夹找到<code>_layout.swig</code></li>
-<li>在<code>&lt;\head&gt;</code>标签前添加下面代码，并保存。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;   //粘贴到这里</span><br><span class="line">    </span><br><span class="line">  &lt;!--pjax：防止跳转页面音乐暂停--&gt;</span><br><span class="line">  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js&quot;&gt;&lt;/script&gt; </span><br><span class="line">&lt;/head&gt; </span><br></pre></td></tr></table></figure>
-<ul>
-<li>在主题的配置文件中找到<code>pajx</code>，将它设置为<code>true</code>，并保存。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Easily enable fast Ajax navigation on your website.</span><br><span class="line"># Dependencies: https://github.com/theme-next/theme-next-pjax</span><br><span class="line">pjax: true</span><br></pre></td></tr></table></figure>
-<h2 id="二、部署hexo时遇到报错ERROR-Deployer-not-found-git"><a href="#二、部署hexo时遇到报错ERROR-Deployer-not-found-git" class="headerlink" title="二、部署hexo时遇到报错ERROR Deployer not found: git"></a>二、部署hexo时遇到报错ERROR Deployer not found: git</h2><p>这是因为没有安装<code>hexo-deployer-git</code>插件,在<strong>站点目录</strong>下输入下面的命令安装插件就好了。执行下面这行命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<h2 id="三、使用命令npm-install-g-hexo-cli-安装Hexo报错bash-hexo-command-not-found问题解决"><a href="#三、使用命令npm-install-g-hexo-cli-安装Hexo报错bash-hexo-command-not-found问题解决" class="headerlink" title="三、使用命令npm install -g hexo-cli 安装Hexo报错bash: hexo: command not found问题解决"></a>三、使用命令npm install -g hexo-cli 安装Hexo报错bash: hexo: command not found问题解决</h2><p>选择一个磁盘，简历一个文件夹，取名为blog</p>
-<p>然后按照下面的指令一步步输入</p>
-<p><strong>在命令的前面加上npx。</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npx hexo init blog</span><br><span class="line">cd blog</span><br><span class="line">npm install</span><br><span class="line">npx hexo server</span><br></pre></td></tr></table></figure>
-<p>最后解释一下，为啥要在前面加上npx。</p>
-<p>在大牛<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2019/02/npx.html">阮一峰的网络日志</a>中，他是这么描述的：“<strong>npx 想要解决的主要问题，就是调用项目内部安装的模块</strong>”，所以可以理解为在命令行下调用，可以让项目内部安装的模块用起来更方便，npx运行的时候，会到<code>node_modules/.bin</code>路径和环境变量<code>$PATH</code>里面，检查命令是否存在。</p>
-<p>如果还是不可以就手动加载路径</p>
-<p>注意你的博客目录下应该有两个 <code>node_modules</code> 文件夹，要添加到 Path 里面的是与 _config.yml 在同一个目录的 node_modules 文件夹！<img src="https://sukiui.com/i/2022/08/29/585f9f59617fa9e8fefed0b8c7cfd03.png"></p>
-<p><img src="https://sukiui.com/i/2022/08/29/42b2360ff9b9c3245eb40b2ecc09d71.png"></p>
-<p>环境变量添加好了之后重新打开 git 即可运行 hexo 命令，如果此时仍然无法执行 hexo 命令，那就只能拿出终极绝招了，运行命令 <code>npm install hexo-cli -g</code> 重新安装 hexo 即可！</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/08/29/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -304,7 +285,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-29 18:02:25" itemprop="dateModified" datetime="2022-08-29T18:02:25+08:00">2022-08-29</time>
+                <time title="修改时间：2022-08-29 19:23:51" itemprop="dateModified" datetime="2022-08-29T19:23:51+08:00">2022-08-29</time>
               </span>
 
           
@@ -319,67 +300,14 @@
 
       
           <h2 id="一、选择主题"><a href="#一、选择主题" class="headerlink" title="一、选择主题"></a>一、选择主题</h2><p>目前 Hexo 里面应用最多的主题基本就是 Next 主题了，我用的就是Next，另外它支持的插件和功能也极为丰富。</p>
-<h2 id="二、下载主题"><a href="#二、下载主题" class="headerlink" title="二、下载主题"></a>二、下载主题</h2><p>我们可以直接到 Next 主题的 <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=GitHub&amp;spm=1001.2101.3001.7020">GitHub</a> Repository 上把这个主题下载下来。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/theme-next/hexo-theme-next</span><br></pre></td></tr></table></figure>
-<p>命令行进入到blog项目的根目录，执行如下命令即可：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-<p>执行完毕之后 Next 主题的源码就会出现在项目的 themes/next 文件夹下。<br>然后需要修改下博客所用的主题名称，修改项目根目录下的 _config.yml 文件，找到 theme 字段，修改为 next 即可，修改如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
-<p>然后本地重新开启服务，访问刷新下页面，就可以看到 next 主题就切换成功了</p>
-<p>Next 主题内部也提供了一个配置文件，Next 主题里面所有的功能都可以通过这个配置文件来控制，下文所述的内容都是修改的 themes/next/_config.yml 文件。</p>
-<h3 id="3-1-样式"><a href="#3-1-样式" class="headerlink" title="3.1 样式"></a>3.1 样式</h3><p>Next 主题还提供了多种样式，风格都是类似黑白的搭配，但整个布局位置不太一样，通过修改配置文件的 scheme 字段即可，我选了 Pisces 样式，修改 _config.yml （注意是 themes/next/_config.yml 文件）如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scheme: Pisces</span><br></pre></td></tr></table></figure>
-<h3 id="3-2-favicon"><a href="#3-2-favicon" class="headerlink" title="3.2 favicon"></a>3.2 favicon</h3><p><code>https://realfavicongenerator.net/</code></p>
-<p>avicon 就是站点标签栏的小图标，默认是用的 Hexo 的小图标，如果我们有站点 Logo 的图片的话，我们可以自己定制小图标。到这里上传一张图，便可以直接打包下载各种尺寸和适配不同设备的小图标。</p>
-<p>图标下载下来之后把它放在 themes/next/source/images 目录下面。<br>然后在配置文件里面找到 favicon 配置项，把一些相关路径配置进去即可，示例如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">favicon:</span><br><span class="line">  small: /images/favicon-16x16.png</span><br><span class="line">  medium: /images/favicon-32x32.png</span><br><span class="line">  apple_touch_icon: /images/apple-touch-icon.png</span><br><span class="line">  safari_pinned_tab: /images/safari-pinned-tab.svg</span><br></pre></td></tr></table></figure>
-<p>也可以将图标上传至网上通过链接获得</p>
-<h4 id="3-2-1-将图片上传至网络"><a href="#3-2-1-将图片上传至网络" class="headerlink" title="3.2.1  将图片上传至网络"></a>3.2.1  将图片上传至网络</h4><p><code>[薄荷图床 首页 -图床外链生成器-亚马逊图片上传-无限流量-全球加速-无限数量-图片转链接-跨境电商图片空间-图片托管 (riyugo.com)](https://riyugo.com/)</code></p>
-<p>上传后将路径改为地址即可</p>
-<h3 id="3-3-avatar"><a href="#3-3-avatar" class="headerlink" title="3.3 avatar"></a>3.3 avatar</h3><p>将1.png 图片放置到 themes/next/source/images/1.png 路径，然后在主题 _config.yml 文件下编辑 avatar 的配置，修改为正确的路径即可。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># Sidebar Avatar</span><br><span class="line">avatar:</span><br><span class="line">  # In theme directory (source/images): /images/avatar.gif</span><br><span class="line">  # In site directory (source/uploads): /uploads/avatar.gif</span><br><span class="line">  # You can also use other linking images.</span><br><span class="line">  url: /images/avatar.png</span><br><span class="line">  # If true, the avatar would be dispalyed in circle.</span><br><span class="line">  rounded: true</span><br><span class="line">  # If true, the avatar would be rotated with the cursor.</span><br><span class="line">  rotated: true</span><br></pre></td></tr></table></figure>
-<h3 id="3-4-top"><a href="#3-4-top" class="headerlink" title="3.4 top"></a>3.4 top</h3><p>在浏览网页的时候，想快速返回到网站的上端，一般都是有一个按钮来辅助的，这里也支持它的配置，修改 _config.yml 的 back2top 字段即可，我的设置如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">back2top:	</span><br><span class="line">  enable: true	</span><br><span class="line">  # Back to top in sidebar.	</span><br><span class="line">  sidebar: false	</span><br><span class="line">  # Scroll percent label in b2t button.	</span><br><span class="line">  scrollpercent: true</span><br></pre></td></tr></table></figure>
-<h3 id="3-5-reading-process"><a href="#3-5-reading-process" class="headerlink" title="3.5 reading_process"></a>3.5 reading_process</h3><p>reading_process，阅读进度。大家可能注意到有些站点的最上侧会出现一个细细的进度条，代表页面加载进度和阅读进度 ，修改_config.yml 如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">reading_progress:	</span><br><span class="line">  enable: true	</span><br><span class="line">  # Available values: top | bottom	</span><br><span class="line">  position: top	</span><br><span class="line">  color: &quot;#222&quot;	</span><br><span class="line">  height: 2px</span><br></pre></td></tr></table></figure>
-<h3 id="3-6-pangu"><a href="#3-6-pangu" class="headerlink" title="3.6 pangu"></a>3.6 pangu</h3><p>希望写中文和英文的时候中间必须要留有间距，一个简单直接的方法就是中间加个空格。</p>
-<p>pangu 就是来解决这个问题的，我们只需要在主题里面开启这个选项，在编译生成页面的时候，中英文之间就会自动添加空格，看起来更加美观。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pangu: true</span><br></pre></td></tr></table></figure>
-<h3 id="3-7-pjax"><a href="#3-7-pjax" class="headerlink" title="3.7 pjax"></a>3.7 pjax</h3><p>pjax 这个技术实际上就是，利用 Ajax 技术实现了局部页面刷新，既可以实现 URL 的更换，有可以做到无刷新加载。</p>
-<p>要开启这个功能需要先将 pjax 功能开启，然后安装对应的 pjax 依赖库，首先修改 _config.yml 修改如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pjax: true</span><br></pre></td></tr></table></figure>
-<p>然后安装依赖库，切换到 next 主题下，然后安装依赖库：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/theme-next/theme-next-pjax source/lib/pjax</span><br></pre></td></tr></table></figure>
-<h2 id="四、发布文章"><a href="#四、发布文章" class="headerlink" title="四、发布文章"></a>四、发布文章</h2><h3 id="4-1、增加文章"><a href="#4-1、增加文章" class="headerlink" title="4.1、增加文章"></a>4.1、增加文章</h3><p>需要调用 Hexo 提供的命令即可，比如我们要新建一篇「HelloWorld」的文章，命令如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new hello-world</span><br></pre></td></tr></table></figure>
-<h3 id="4-2、个性化设置"><a href="#4-2、个性化设置" class="headerlink" title="4.2、个性化设置"></a>4.2、个性化设置</h3><h4 id="4-2-1-标签页"><a href="#4-2-1-标签页" class="headerlink" title="4.2.1 标签页"></a>4.2.1 标签页</h4><p>按上路径创建 <strong>index.md</strong> </p>
-<p><img src="https://s1.plumeta.com/i/2022/08/29/p5vqdl.jpg" alt></p>
-<p>里面输入内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">title: tags</span><br><span class="line">type: &quot;tags&quot;</span><br></pre></td></tr></table></figure>
-<p>然后再在主题的 _config.yml 文件将这个页面的链接添加到主菜单里面，修改 menu 字段如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">menu:	</span><br><span class="line">  home: / || home	</span><br><span class="line">  #about: /about/ || user	</span><br><span class="line">  tags: /tags/ || tags	</span><br><span class="line">  #categories: /categories/ || th	</span><br><span class="line">  archives: /archives/ || archive	</span><br><span class="line">  #schedule: /schedule/ || calendar	</span><br><span class="line">  #sitemap: /sitemap.xml || sitemap	</span><br><span class="line">  #commonweal: /404/ || heartbeat</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>分类页和标签页是一样的。</p>
-<h4 id="4-2-2-搜索页"><a href="#4-2-2-搜索页" class="headerlink" title="4.2.2 搜索页"></a>4.2.2 搜索页</h4><p>我们需要搜索全站的内容，所以一个搜索功能的支持也是很有必要的。</p>
-<p>如果要添加搜索的支持，需要先安装一个插件，叫做 hexo-generator-searchdb，命令如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
-<p>然后在项目的 _config.yml 里面添加搜索设置如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">search:	</span><br><span class="line">  path: search.xml	</span><br><span class="line">  field: post	</span><br><span class="line">  format: html	</span><br><span class="line">  limit: 10000</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>在主题的 _config.yml 里面修改如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># Local search	</span><br><span class="line"># Dependencies: https://github.com/wzpan/hexo-generator-search	</span><br><span class="line">local_search:	</span><br><span class="line">  enable: true	</span><br><span class="line">  # If auto, trigger search by changing input.	</span><br><span class="line">  # If manual, trigger search by pressing enter key or search button.	</span><br><span class="line">  trigger: auto	</span><br><span class="line">  # Show top n results per article, show all results by setting to -1	</span><br><span class="line">  top_n_per_article: 5	</span><br><span class="line">  # Unescape html strings to the readable one.	</span><br><span class="line">  unescape: false	</span><br><span class="line">  # Preload the search data when the page loads.	</span><br><span class="line">  preload: false</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="4-2-3-404页面"><a href="#4-2-3-404页面" class="headerlink" title="4.2.3 404页面"></a>4.2.3 404页面</h4><p>另外还需要添加一个 404 页面，直接在根目录 source 文件夹新建一个 404.md 文件即可，内容可以仿照如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">---	</span><br><span class="line">title: 404 Not Found	</span><br><span class="line">date: 2019-09-22 10:41:27	</span><br><span class="line">---	</span><br><span class="line"> </span><br><span class="line">	</span><br><span class="line">&lt;center&gt;	</span><br><span class="line">对不起，您所访问的页面不存在或者已删除。	</span><br><span class="line">您可以&lt;a href=&quot;   &quot;&gt;点击此处&lt;/a&gt;返回首页。	</span><br><span class="line">&lt;/center&gt;	</span><br><span class="line"> </span><br><span class="line">	</span><br><span class="line">&lt;blockquote class=&quot;blockquote-center&quot;&gt;	</span><br><span class="line">    NightTeam	</span><br><span class="line">&lt;/blockquote&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>这里面的一些相关信息和链接可以替换成自己的。</p>
-<h2 id="五、更新部署-amp-域名配置"><a href="#五、更新部署-amp-域名配置" class="headerlink" title="五、更新部署&amp;域名配置"></a>五、更新部署&amp;域名配置</h2><h3 id="5-1-Hexo更新"><a href="#5-1-Hexo更新" class="headerlink" title="5.1 Hexo更新"></a>5.1 Hexo更新</h3><p>通过博客上面的地址输入框进入  cmd</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean	</span><br><span class="line">hexo generate	</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
-<h3 id="5-2-自定义域名"><a href="#5-2-自定义域名" class="headerlink" title="5.2 自定义域名"></a>5.2 自定义域名</h3><p>我本人是在<a target="_blank" rel="noopener" href="https://auth.huaweicloud.com/authui/login.html?service=https%3A%2F%2Fconsole.huaweicloud.com%2Fdns%2F%3FagencyId%3D1fb2d46c8a3e48dbbc4d41fb5b2cf34c%26region%3Dcn-east-3%26locale%3Dzh-cn%26cloud_route_state%3D%2Fdns%2Frecordset%2Fpublic%2Flist%3Fzoneid%3D8aace3b98282c2260182d8bd74236172%26zonename%3Dbaidu2001.top.%26zoneStatus%3DACTIVE#/login">华为云</a>下面买的域名</p>
-<p>在 GitHub 的 Repository 里面设置域名，找到 Settings，拉到下面，可以看到有个 GitHub Pages 的配置项，如图所示</p>
-<p><img src="https://sukiui.com/i/2022/08/29/395f216e428e78c04bbaeff2ac19f99.png"></p>
-<p>下面有个 custom domain 的选项，输入想自定义的域名地址，然后添加 CNAME 解析就好了。</p>
-<p>另外下面还有一个 Enforce HTTPS 的选项，GitHub Pages 会在我们配置自定义域名之后自动帮我们配置 HTTPS 服务。刚配置完自定义域名的时候可能这个选项是不可用的，一段时间后等到其可以勾选了，直接勾选即可，这样整个博客就会变成 HTTPS 的协议的了。</p>
-<p>另外有一个值得注意的地方，如果配置了自定义域名，在目前的情况下，每次部署的时候这个自定义域名的设置是会被自动清除的。所以为了避免这个情况，我们需要在项目目录下面新建一个 CNAME 文件，路径为 source/CNAME，内容就是自定义域名。<br>我就在 source 目录下新建了一个 CNAME 文件，内容为自己的域名</p>
-<p><img src="https://sukiui.com/i/2022/08/29/pfvw4h.png" alt></p>
-<p>可以避免了每次部署的时候自定义域名被清除的情况了。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/08/28/hexo%E4%B8%BB%E9%A2%98%E7%9A%84%E6%9B%B4%E6%8D%A2%E4%B8%8E%E4%BC%98%E5%8C%96%E5%92%8C%E5%9F%9F%E5%90%8D%E7%9A%84%E9%85%8D%E7%BD%AE/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -429,7 +357,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-27 23:18:51" itemprop="dateModified" datetime="2022-08-27T23:18:51+08:00">2022-08-27</time>
+                <time title="修改时间：2022-08-29 19:25:40" itemprop="dateModified" datetime="2022-08-29T19:25:40+08:00">2022-08-29</time>
               </span>
 
           
@@ -445,79 +373,14 @@
       
           <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​    博客是按照我自己的方式通过hexo+github搭建出来的，最后的域名是从华为云购买。我会一步步的从初学者的角度向大家讲解，也会解决一些我碰到的问题 ，如果有些问题是在解决不了可以通过我的邮箱联系。</p>
 <p><code>这一篇为整体的搭建，问题的解决会在最后</code></p>
-<h3 id="准备工具"><a href="#准备工具" class="headerlink" title="准备工具"></a>准备工具</h3><ul>
-<li><p>下载<a target="_blank" rel="noopener" href="http://nodejs.cn/download/">node.js</a>，node.js是使用和安装hexo。</p>
-</li>
-<li><p>下载<a target="_blank" rel="noopener" href="https://npm.taobao.org/mirrors/git-for-windows/v2.22.0.windows.1/Git-2.22.0-64-bit.exe">Git</a>,此脚本所有测试都在都在git bash上运行。</p>
-</li>
-<li><p>并且需要一个github账号</p>
-<p>下载的步骤和环境的搭建自行百度就可以，非常简单。</p>
-</li>
-</ul>
-<h4 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h4><ol>
-<li>装完之后打开终端 win+r，然后cmd。</li>
-</ol>
-<p>2.输入指令回车查看版本号(新版的Node.js已自带npm，安装Node.js时会一起安装)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
-<p><img src="/images/01.png"></p>
-<p>出现版本号，说明你的电脑上已经有nodejs，npm安装成功</p>
-<h4 id="准备hexo"><a href="#准备hexo" class="headerlink" title="准备hexo"></a>准备hexo</h4><p>在命令框里输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line"></span><br><span class="line">////////////////</span><br><span class="line"></span><br><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
-<p><img src="/images/02.png"></p>
-<p>出现版本号即为安装成功！</p>
-<h3 id="登录github"><a href="#登录github" class="headerlink" title="登录github"></a>登录github</h3><p><code>我们要做的就是利用Github的仓库作为我们hexo的一个服务器，将hexo的内容都装进这个仓库里面,让所有的人都可以访问。</code></p>
-<h4 id="建仓"><a href="#建仓" class="headerlink" title="建仓"></a>建仓</h4><p>打开github，点击new新建仓库</p>
-<p><img src="/images/03.png"></p>
-<p><img src="/images/04.png"></p>
-<p><code>注意：仓库的名字是有规定的，为自己的名字+.github.io,从上图也可看出。</code></p>
-<p><img src="/images/05.png"></p>
-<p> <code>跟着我的点，最后创建</code></p>
-<p><img src="/images/06.png"></p>
-<p>此时就已经建成功了。</p>
-<h3 id="将github与本地进行绑定"><a href="#将github与本地进行绑定" class="headerlink" title="将github与本地进行绑定"></a>将github与本地进行绑定</h3><h4 id="设置密钥"><a href="#设置密钥" class="headerlink" title="设置密钥"></a>设置密钥</h4><p>​    随意进入一个文件中，在空白区域右键，点出Git bash here,输入如下指令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;邮件地址&quot;  //注意在git里面想要粘贴时，右键Paste,此时输入的邮件地址为绑定的github账号的邮件地址</span><br></pre></td></tr></table></figure>
-<p><img src="/images/07.png"></p>
-<p><code>此时输入命令后四次回车如图即可，如果出现overwrite时输入 y</code></p>
-<p><img src="/images/08.png"></p>
-<p>在电脑的这个位置找见.ssh里面以.pub为结尾的文件，以笔记本打开。打开后ctrl  + a  /c</p>
-<p>打开github</p>
-<p><img src="/images/09.png"></p>
-<p>打开Setting</p>
-<p><img src="/images/10.png"></p>
-<p>打开SSH and GPG keys ，在点绿色的New SSH key</p>
-<p><img src="/images/11.png"></p>
-<p>可以随便起一个名字，然后将复制的钥匙粘贴进下面的大框。</p>
-<p>最后在原来的git命令行输入一下代码，确定是否绑定成功。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-<p> <img src="/images/12.png"></p>
-<p>过程中有一次问答输入 yes ，最后出现 successfully即可。</p>
-<h2 id="建立blog并且发布到Github"><a href="#建立blog并且发布到Github" class="headerlink" title="建立blog并且发布到Github"></a>建立blog并且发布到Github</h2><p>git在国外不稳定所以命令有时候还会有网络问题，多试两次或者选择换国内镜像源也可以。</p>
-<p>创建一个自己的blog的空文件夹，进入后右键出git bush here；</p>
-<p>输入一下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo init       //初始化hexo  如果成功会发现自己的blog下面会多出很多的内容</span><br><span class="line"></span><br><span class="line">hexo s         //静态生成hexo本地的博客页面</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><img src="/images/13.png"></p>
-<p>ctrl加点击<a target="_blank" rel="noopener" href="http://localhost:4000">http://localhost:4000</a> 即可进入本地的hexo服务器</p>
-<p>ctrl + c 即可停止服务器</p>
-<p>进入你的blog文件找见下面的 _config.yml文件。打开后进入代码的最下面，将代码改为</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: &#x27;git&#x27;</span><br><span class="line">  repository: </span><br><span class="line">  branch: main</span><br><span class="line">//注意冒号后面还有空格</span><br></pre></td></tr></table></figure>
-<p><img src="/images/14.png"></p>
-<p><img src="/images/15.png"></p>
-<p>进入githun中的这个code，点击复制，然后粘贴在上面的 repository后 。</p>
-<p>在你的博客文件夹下面点开git命令，输入以下命令。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save  </span><br><span class="line"></span><br><span class="line">hexo g   //生成页面</span><br><span class="line"></span><br><span class="line">hexo d    //上传文件至仓库，需要输入账号密码，在此处可能会出现网络不稳定问题，多试几次</span><br></pre></td></tr></table></figure>
-<p><img src="/images/16.png"></p>
-<p>这个为github的用户名，输入之后会在让输密码。。。。。。。注意此时不能在输密码，进入上面提到过的github里的setting ,找到左侧的Developer settings,点击开发者设置。</p>
-<p><img src="/images/17.png"></p>
-<p>点击 Generate new token 创建一个新的令牌。</p>
-<p><img src="/images/18.png"></p>
-<p>随意取一个名字，并将所有选项选上，点击生成令牌。<img src="/images/19.png"></p>
-<p>复制此处的序列号令牌到弹出的提示输入密码框内。</p>
-<p><img src="/images/20.png"></p>
-<p>即为上传成功！<img src="/images/20.png"></p>
-<p>此时仓库的内容就发生了变化。此时通过 <a target="_blank" rel="noopener" href="https://你的git名字.github.io/">https://你的git名字.github.io/</a>      即可从网址访问。</p>
-<p><img src="/images/21.png"></p>
-<p>此时博客的搭建已经差不多了，剩下的时博客的页面主题的更换和域名的绑定</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/08/26/hexo-github%E5%81%9A%E5%87%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -567,7 +430,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-29 17:37:33" itemprop="dateModified" datetime="2022-08-29T17:37:33+08:00">2022-08-29</time>
+                <time title="修改时间：2022-08-29 19:26:39" itemprop="dateModified" datetime="2022-08-29T19:26:39+08:00">2022-08-29</time>
               </span>
 
           
@@ -582,16 +445,14 @@
 
       
           <p>已至凌晨却无论如何都睡不着了，心里藏着很多事情。</p>
-<hr>
-<p>​    可对于已经发生过的事情，我们无能为力，能做好的只有接下来的事情。</p>
-<p>​    <code>小时候的我经常仰望着星空，渴望着自己成为逆转时空的飞人</code></p>
-<p>​    </p>
-<hr>
-<p>​    <code>黑还是白并不重要</code></p>
-<hr>
-<p>​    在痛苦开心的过程中会慢慢的触摸到了我心中真正的所想所愿。那是一种奇妙的感觉，很像是悟道一样的感觉。</p>
-<p>​    <code>每天每天每月每月，实现那个梦</code></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/08/26/%E4%BF%A1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

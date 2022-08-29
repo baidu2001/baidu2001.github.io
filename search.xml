@@ -4,6 +4,7 @@
     <title>hexo主题的更换与优化和域名的配置</title>
     <url>/2022/08/28/hexo%E4%B8%BB%E9%A2%98%E7%9A%84%E6%9B%B4%E6%8D%A2%E4%B8%8E%E4%BC%98%E5%8C%96%E5%92%8C%E5%9F%9F%E5%90%8D%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h2 id="一、选择主题"><a href="#一、选择主题" class="headerlink" title="一、选择主题"></a>一、选择主题</h2><p>目前 Hexo 里面应用最多的主题基本就是 Next 主题了，我用的就是Next，另外它支持的插件和功能也极为丰富。</p>
+<span id="more"></span>
 <h2 id="二、下载主题"><a href="#二、下载主题" class="headerlink" title="二、下载主题"></a>二、下载主题</h2><p>我们可以直接到 Next 主题的 <a href="https://so.csdn.net/so/search?q=GitHub&amp;spm=1001.2101.3001.7020">GitHub</a> Repository 上把这个主题下载下来。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://github.com/theme-next/hexo-theme-next</span><br></pre></td></tr></table></figure>
 <p>命令行进入到blog项目的根目录，执行如下命令即可：</p>
@@ -76,6 +77,7 @@
     <url>/2022/08/26/hexo-github%E5%81%9A%E5%87%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​    博客是按照我自己的方式通过hexo+github搭建出来的，最后的域名是从华为云购买。我会一步步的从初学者的角度向大家讲解，也会解决一些我碰到的问题 ，如果有些问题是在解决不了可以通过我的邮箱联系。</p>
 <p><code>这一篇为整体的搭建，问题的解决会在最后</code></p>
+<span id="more"></span>
 <h3 id="准备工具"><a href="#准备工具" class="headerlink" title="准备工具"></a>准备工具</h3><ul>
 <li><p>下载<a href="http://nodejs.cn/download/">node.js</a>，node.js是使用和安装hexo。</p>
 </li>
@@ -158,6 +160,7 @@
     <title>个人博客网站问题解决</title>
     <url>/2022/08/29/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
     <content><![CDATA[<h2 id="一、Hexo-Next-实现全局播放背景音乐"><a href="#一、Hexo-Next-实现全局播放背景音乐" class="headerlink" title="一、Hexo + Next 实现全局播放背景音乐"></a>一、Hexo + Next 实现全局播放背景音乐</h2><p>进入网页版的网易云，进入你想选的歌单，按F12键进入开发人员工具，在元素里面 按ctrl + F 进行搜索生成外链，</p>
+<span id="more"></span>
 <p><img src="https://sukiui.com/i/2022/08/29/91530d248551d8218975408194383d2.png"></p>
 <p>记住前面的那一行数字，新开一个网页输入</p>
 <p><code>https://music.163.com/#/outchain/0/</code>733122887         并将那行数字加载在 / 的后面。</p>
@@ -194,14 +197,15 @@
     <title>白都的一封信</title>
     <url>/2022/08/26/%E4%BF%A1/</url>
     <content><![CDATA[<p>已至凌晨却无论如何都睡不着了，心里藏着很多事情。</p>
+<span id="more"></span>
 <hr>
 <p>​    可对于已经发生过的事情，我们无能为力，能做好的只有接下来的事情。</p>
-<p>​    <code>小时候的我经常仰望着星空，渴望着自己成为逆转时空的飞人</code></p>
+<p>​    <code>小时候经常仰望着星空，渴望着自己成为逆转时空的飞人</code></p>
 <p>​    </p>
 <hr>
 <p>​    <code>黑还是白并不重要</code></p>
 <hr>
-<p>​    在痛苦开心的过程中会慢慢的触摸到了我心中真正的所想所愿。那是一种奇妙的感觉，很像是悟道一样的感觉。</p>
+<p>​    在痛苦开心的过程中会慢慢的触摸到心中真正的所想所愿。那是一种奇妙的感觉，很像是悟道一样的感觉。</p>
 <p>​    <code>每天每天每月每月，实现那个梦</code></p>
 ]]></content>
       <tags>
