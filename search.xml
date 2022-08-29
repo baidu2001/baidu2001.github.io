@@ -94,8 +94,8 @@
 <p>执行完毕之后 Next 主题的源码就会出现在项目的 themes/next 文件夹下。<br>然后需要修改下博客所用的主题名称，修改项目根目录下的 _config.yml 文件，找到 theme 字段，修改为 next 即可，修改如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
 <p>然后本地重新开启服务，访问刷新下页面，就可以看到 next 主题就切换成功了，预览效果如下：</p>
-<p><img src="https://s1.plumeta.com/i/2022/08/29/ngg5ek.png"></p>
-<h2 id="三、主题配置"><a href="#三、主题配置" class="headerlink" title="三、主题配置"></a>三、主题配置</h2><p>Next 主题内部也提供了一个配置文件，Next 主题里面所有的功能都可以通过这个配置文件来控制，下文所述的内容都是修改的 themes/next/_config.yml 文件。</p>
+<p><img src="https://s1.plumeta.com/i/2022/08/29/f90fe9de0c5785aa4a9a3026cbda471.png"></p>
+<p>Next 主题内部也提供了一个配置文件，Next 主题里面所有的功能都可以通过这个配置文件来控制，下文所述的内容都是修改的 themes/next/_config.yml 文件。</p>
 <h3 id="3-1-样式"><a href="#3-1-样式" class="headerlink" title="3.1 样式"></a>3.1 样式</h3><p>Next 主题还提供了多种样式，风格都是类似黑白的搭配，但整个布局位置不太一样，通过修改配置文件的 scheme 字段即可，我选了 Pisces 样式，修改 _config.yml （注意是 themes/next/_config.yml 文件）如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scheme: Pisces</span><br></pre></td></tr></table></figure>
 <h3 id="3-2-favicon"><a href="#3-2-favicon" class="headerlink" title="3.2 favicon"></a>3.2 favicon</h3><p><code>https://realfavicongenerator.net/</code></p>
@@ -156,11 +156,6 @@
       </tags>
   </entry>
   <entry>
-    <title>个人博客网站问题解决</title>
-    <url>/2022/08/29/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>白都的一封信</title>
     <url>/2022/08/26/%E4%BF%A1/</url>
     <content><![CDATA[<p>已至凌晨却无论如何都睡不着了，心里藏着很多事情。</p>
@@ -177,5 +172,10 @@
       <tags>
         <tag>念想</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>个人博客网站问题解决</title>
+    <url>/2022/08/29/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
