@@ -142,7 +142,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean	</span><br><span class="line">hexo generate	</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
 <h3 id="5-2-自定义域名"><a href="#5-2-自定义域名" class="headerlink" title="5.2 自定义域名"></a>5.2 自定义域名</h3><p>我本人是在<a href="https://auth.huaweicloud.com/authui/login.html?service=https%3A%2F%2Fconsole.huaweicloud.com%2Fdns%2F%3FagencyId%3D1fb2d46c8a3e48dbbc4d41fb5b2cf34c%26region%3Dcn-east-3%26locale%3Dzh-cn%26cloud_route_state%3D%2Fdns%2Frecordset%2Fpublic%2Flist%3Fzoneid%3D8aace3b98282c2260182d8bd74236172%26zonename%3Dbaidu2001.top.%26zoneStatus%3DACTIVE#/login">华为云</a>下面买的域名</p>
 <p>在 GitHub 的 Repository 里面设置域名，找到 Settings，拉到下面，可以看到有个 GitHub Pages 的配置项，如图所示</p>
-<p><img src="https://s1.plumeta.com/i/2022/08/29/pekwp2.png" alt></p>
+<p><img src="https://sukiui.com/i/2022/08/29/395f216e428e78c04bbaeff2ac19f99.png"></p>
 <p>下面有个 custom domain 的选项，输入想自定义的域名地址，然后添加 CNAME 解析就好了。</p>
 <p>另外下面还有一个 Enforce HTTPS 的选项，GitHub Pages 会在我们配置自定义域名之后自动帮我们配置 HTTPS 服务。刚配置完自定义域名的时候可能这个选项是不可用的，一段时间后等到其可以勾选了，直接勾选即可，这样整个博客就会变成 HTTPS 的协议的了。</p>
 <p>另外有一个值得注意的地方，如果配置了自定义域名，在目前的情况下，每次部署的时候这个自定义域名的设置是会被自动清除的。所以为了避免这个情况，我们需要在项目目录下面新建一个 CNAME 文件，路径为 source/CNAME，内容就是自定义域名。<br>我就在 source 目录下新建了一个 CNAME 文件，内容为自己的域名</p>
