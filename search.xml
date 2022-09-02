@@ -59,11 +59,11 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean	</span><br><span class="line">hexo generate	</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
 <h3 id="5-2-自定义域名"><a href="#5-2-自定义域名" class="headerlink" title="5.2 自定义域名"></a>5.2 自定义域名</h3><p>我本人是在<a href="https://auth.huaweicloud.com/authui/login.html?service=https%3A%2F%2Fconsole.huaweicloud.com%2Fdns%2F%3FagencyId%3D1fb2d46c8a3e48dbbc4d41fb5b2cf34c%26region%3Dcn-east-3%26locale%3Dzh-cn%26cloud_route_state%3D%2Fdns%2Frecordset%2Fpublic%2Flist%3Fzoneid%3D8aace3b98282c2260182d8bd74236172%26zonename%3Dbaidu2001.top.%26zoneStatus%3DACTIVE#/login">华为云</a>下面买的域名</p>
 <p>在 GitHub 的 Repository 里面设置域名，找到 Settings，拉到下面，可以看到有个 GitHub Pages 的配置项，如图所示</p>
-<p><img src="https://sukiui.com/i/2022/08/29/395f216e428e78c04bbaeff2ac19f99.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/02/74zzg.png"></p>
 <p>下面有个 custom domain 的选项，输入想自定义的域名地址，然后添加 CNAME 解析就好了。</p>
 <p>另外下面还有一个 Enforce HTTPS 的选项，GitHub Pages 会在我们配置自定义域名之后自动帮我们配置 HTTPS 服务。刚配置完自定义域名的时候可能这个选项是不可用的，一段时间后等到其可以勾选了，直接勾选即可，这样整个博客就会变成 HTTPS 的协议的了。</p>
 <p>另外有一个值得注意的地方，如果配置了自定义域名，在目前的情况下，每次部署的时候这个自定义域名的设置是会被自动清除的。所以为了避免这个情况，我们需要在项目目录下面新建一个 CNAME 文件，路径为 source/CNAME，内容就是自定义域名。<br>我就在 source 目录下新建了一个 CNAME 文件，内容为自己的域名</p>
-<p><img src="https://sukiui.com/i/2022/08/29/pfvw4h.png" alt></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/02/10q7p.png"></p>
 <p>可以避免了每次部署的时候自定义域名被清除的情况了。</p>
 ]]></content>
       <tags>
@@ -161,10 +161,8 @@
     <url>/2022/08/29/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
     <content><![CDATA[<h2 id="一、Hexo-Next-实现全局播放背景音乐"><a href="#一、Hexo-Next-实现全局播放背景音乐" class="headerlink" title="一、Hexo + Next 实现全局播放背景音乐"></a>一、Hexo + Next 实现全局播放背景音乐</h2><p>进入网页版的网易云，进入你想选的歌单，按F12键进入开发人员工具，在元素里面 按ctrl + F 进行搜索生成外链，</p>
 <span id="more"></span>
-<p><img src="https://sukiui.com/i/2022/08/29/91530d248551d8218975408194383d2.png"></p>
 <p>记住前面的那一行数字，新开一个网页输入</p>
 <p><code>https://music.163.com/#/outchain/0/</code>733122887         并将那行数字加载在 / 的后面。</p>
-<p><img src="https://sukiui.com/i/2022/08/29/532bbac637cb30308c53e3064bccadb.png"></p>
 <p>打开我们主题文件：<code>themes\next\layout\_macro\sidebar.swig</code>找到<code>sidebar-inner</code>，复制下面代码粘贴到此<code>&lt;div&gt;</code>标签后即可。</p>
 <ul>
 <li>打开<code>themes\next\layout</code>文件夹找到<code>_layout.swig</code></li>
@@ -184,8 +182,7 @@
 <p>最后解释一下，为啥要在前面加上npx。</p>
 <p>在大牛<a href="http://www.ruanyifeng.com/blog/2019/02/npx.html">阮一峰的网络日志</a>中，他是这么描述的：“<strong>npx 想要解决的主要问题，就是调用项目内部安装的模块</strong>”，所以可以理解为在命令行下调用，可以让项目内部安装的模块用起来更方便，npx运行的时候，会到<code>node_modules/.bin</code>路径和环境变量<code>$PATH</code>里面，检查命令是否存在。</p>
 <p>如果还是不可以就手动加载路径</p>
-<p>注意你的博客目录下应该有两个 <code>node_modules</code> 文件夹，要添加到 Path 里面的是与 _config.yml 在同一个目录的 node_modules 文件夹！<img src="https://sukiui.com/i/2022/08/29/585f9f59617fa9e8fefed0b8c7cfd03.png"></p>
-<p><img src="https://sukiui.com/i/2022/08/29/42b2360ff9b9c3245eb40b2ecc09d71.png"></p>
+<p>注意你的博客目录下应该有两个 <code>node_modules</code> 文件夹，要添加到 Path 里面的是与 _config.yml 在同一个目录的 node_modules 文件夹！</p>
 <p>环境变量添加好了之后重新打开 git 即可运行 hexo 命令，如果此时仍然无法执行 hexo 命令，那就只能拿出终极绝招了，运行命令 <code>npm install hexo-cli -g</code> 重新安装 hexo 即可！</p>
 ]]></content>
       <tags>
@@ -218,14 +215,67 @@
   <entry>
     <title>音乐资源</title>
     <url>/2022/08/30/%E9%9F%B3%E4%B9%90%E8%B5%84%E6%BA%90/</url>
-    <content><![CDATA[<h2 id="PC魔音"><a href="#PC魔音" class="headerlink" title="PC魔音-"></a>PC魔音-</h2><h2 id="PC魔音-听歌神器"><a href="#PC魔音-听歌神器" class="headerlink" title="PC魔音-听歌神器"></a>PC魔音-听歌神器</h2><p>PC魔音 Morin 是一款非常受欢迎的听歌神器，它可以为用户提供全网的无损音乐在线试听及下载，聚合四大音乐平台搜索接口，智能解析音乐源，无论是付费歌曲还是版权音乐，都可以下载，同时支持下载歌词文件、专辑图片，支持电脑听歌识曲，播放MV，歌词页显示。</p>
+    <content><![CDATA[<h2 id="PC魔音"><a href="#PC魔音" class="headerlink" title="PC魔音-"></a>PC魔音-</h2><h2 id="PC魔音-听歌神器"><a href="#PC魔音-听歌神器" class="headerlink" title="PC魔音-听歌神器"></a>PC魔音-听歌神器</h2><p>PC魔音 Morin 是一款非常受欢迎的听歌神器，它可以为用户提供全网的无损音乐在线试听及下载，聚合四大音乐平台搜索接口</p>
+<span id="more"></span>
+<p>智能解析音乐源，无论是付费歌曲还是版权音乐，都可以下载，同时支持下载歌词文件、专辑图片，支持电脑听歌识曲，播放MV，歌词页显示。</p>
+<p>解压后，点开最后面的 .exe文件运行就可以</p>
 <p><code>如果显示搜索错误，就多搜索几次</code></p>
-<p><img src="https://sukiui.com/i/2022/08/30/12xknjp.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/02/10kak.png"></p>
 <h3 id="下载地址："><a href="#下载地址：" class="headerlink" title="下载地址："></a>下载地址：</h3><p>链接：<a href="https://pan.baidu.com/s/1MUzGdcTmafBPEc_REFAllQ">https://pan.baidu.com/s/1MUzGdcTmafBPEc_REFAllQ</a><br>提取码：gl2a<br>—来自百度网盘超级会员V2的分享</p>
 ]]></content>
       <tags>
         <tag>资源</tag>
         <tag>音乐</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java.sql.SQLSyntaxErrorException: Unknown column &#39;is_deleted&#39; in &#39;field list&#39;</title>
+    <url>/2022/09/02/java-sql-SQLSyntaxErrorException-Unknown-column-is-deleted-in-field-list/</url>
+    <content><![CDATA[<p><img src="https://i.p04e.com/baid/i/2022/09/02/58a7.png"></p>
+<p>今天做的是一个分页查询，结果无法显示，回到idea下面查找问题</p>
+<span id="more"></span>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exceptison is org.springframework.jdbc.BadSqlGrammarException: </span><br><span class="line"></span><br><span class="line">### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column &#x27;is_deleted&#x27; in &#x27;field list&#x27;</span><br><span class="line">其实最重要的是后面这句，很明显是sql的问题 ，大概意思就是不知道 is_deleted 在表格中的什么什么</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">然后我在实体类中找到了这句</span><br><span class="line">    //是否删除</span><br><span class="line">    private Integer isDeleted;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>我刚开始以为是驼峰命名法不对，结果改了后还是不对。</p>
+<p>之后再数据库中发现这个表中并没有 is_deleted这个字段，是另一个表内的，由于实体类是找的网上资源自己懒的写就弄了一个大乌龙，删除掉以后就好了。</p>
+]]></content>
+      <tags>
+        <tag>Mysql</tag>
+        <tag>错误</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>外卖管理平台新增分类代码开发</title>
+    <url>/2022/09/02/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E6%96%B0%E5%A2%9E%E5%88%86%E7%B1%BB%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h3 id="一、新增分类"><a href="#一、新增分类" class="headerlink" title="一、新增分类"></a>一、新增分类</h3><p>在开发代码之前，需要梳理一下整个程序的执行过程:</p>
+<span id="more"></span>
+<p>1、页面(backend/page/category/list.html)发送ajax请求，将新增分类窗口输入的数据以json形式提交到服务端</p>
+<p>2、服务端Controller接收页面提交的数据并调用Service将数据进行保存</p>
+<p>3、Service调用Mapper操作数据库，保存数据</p>
+<p>可以先将大概的框架写出，后面在完善</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.entity;</span><br><span class="line"></span><br><span class="line">import com.baomidou.mybatisplus.annotation.FieldFill;</span><br><span class="line">import com.baomidou.mybatisplus.annotation.IdType;</span><br><span class="line">import com.baomidou.mybatisplus.annotation.TableField;</span><br><span class="line">import com.baomidou.mybatisplus.annotation.TableId;</span><br><span class="line">import lombok.Data;</span><br><span class="line">import lombok.Getter;</span><br><span class="line">import lombok.Setter;</span><br><span class="line">import java.io.Serializable;</span><br><span class="line">import java.time.LocalDateTime;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 分类</span><br><span class="line"> */</span><br><span class="line">@Data</span><br><span class="line">public class Category implements Serializable &#123;</span><br><span class="line"></span><br><span class="line">    private static final long serialVersionUID = 1L;</span><br><span class="line"></span><br><span class="line">    private Long id;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //类型 1 菜品分类 2 套餐分类</span><br><span class="line">    private Integer type;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //分类名称</span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //顺序</span><br><span class="line">    private Integer sort;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //创建时间</span><br><span class="line">    @TableField(fill = FieldFill.INSERT)</span><br><span class="line">    private LocalDateTime createTime;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //更新时间</span><br><span class="line">    @TableField(fill = FieldFill.INSERT_UPDATE)</span><br><span class="line">    private LocalDateTime updateTime;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //创建人</span><br><span class="line">    @TableField(fill = FieldFill.INSERT)</span><br><span class="line">    private Long createUser;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //修改人</span><br><span class="line">    @TableField(fill = FieldFill.INSERT_UPDATE)</span><br><span class="line">    private Long updateUser;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.mapper;</span><br><span class="line"></span><br><span class="line">import com.baomidou.mybatisplus.core.mapper.BaseMapper;</span><br><span class="line">import com.itheima.reggie.entity.Category;</span><br><span class="line">import org.apache.ibatis.annotations.Mapper;</span><br><span class="line"></span><br><span class="line">@Mapper</span><br><span class="line">public interface CategoryMapper extends BaseMapper&lt;Category&gt; &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.service;</span><br><span class="line"></span><br><span class="line">import com.baomidou.mybatisplus.extension.service.IService;</span><br><span class="line">import com.itheima.reggie.entity.Category;</span><br><span class="line"></span><br><span class="line">public interface CategoryService extends IService&lt;Category&gt; &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.service.impl;</span><br><span class="line"></span><br><span class="line">import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;</span><br><span class="line">import com.itheima.reggie.entity.Category;</span><br><span class="line">import com.itheima.reggie.mapper.CategoryMapper;</span><br><span class="line">import com.itheima.reggie.service.CategoryService;</span><br><span class="line">import org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line">@Service</span><br><span class="line">public class CategoryServiceImpl extends ServiceImpl&lt;CategoryMapper, Category&gt; implements CategoryService &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.controller;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">import com.itheima.reggie.service.CategoryService;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/category&quot;)</span><br><span class="line">public class CategoryController &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private CategoryService categoryService;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>可以看到新增菜品分类和新增套餐分类请求的服务端地址和提交的json数据结构相同，所以服务端只需要提供一个方法统一处理即可：</p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/02/5955.png"></p>
+<h3 id="二、分类信息分页查询"><a href="#二、分类信息分页查询" class="headerlink" title="二、分类信息分页查询"></a>二、分类信息分页查询</h3><h4 id="1、需求分析"><a href="#1、需求分析" class="headerlink" title="1、需求分析"></a>1、需求分析</h4><p>系统中的分类很多的时候，如果在一个页面中全部展示出来会显得比较乱，不便于查看，所以一般的系统中都会以分页的方式来展示列表数据。</p>
+<h4 id="2、代码开发"><a href="#2、代码开发" class="headerlink" title="2、代码开发"></a>2、代码开发</h4><p>在开发代码之前，需要梳理一下整个程序的执行过程:</p>
+<p>1、页面发送ajax请求，将分页查询参数(page.pageSize)提交到服务端</p>
+<p>2、服务端Controller接收页面提交的数据并调用Service查询数据</p>
+<p>3、Service调用Mapper操作数据库，查询分页数据</p>
+<p>4、Controller将查询到的分页数据响应给页面</p>
+<p>5、页面接收到分页数据并通过Elementul的Table组件展示到页面上</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.controller;</span><br><span class="line"></span><br><span class="line">import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;</span><br><span class="line">import com.baomidou.mybatisplus.extension.plugins.pagination.Page;</span><br><span class="line">import com.itheima.reggie.common.R;</span><br><span class="line">import com.itheima.reggie.entity.Category;</span><br><span class="line">import com.itheima.reggie.service.CategoryService;</span><br><span class="line">import lombok.extern.slf4j.Slf4j;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.web.bind.annotation.*;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 分类管理</span><br><span class="line"> */</span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/category&quot;)</span><br><span class="line">@Slf4j</span><br><span class="line">public class CategoryController &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private CategoryService categoryService;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 新增分类</span><br><span class="line">     * @param category</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @PostMapping</span><br><span class="line">    public R&lt;String&gt; save(@RequestBody Category category)&#123;</span><br><span class="line">        log.info(&quot;category:&#123;&#125;&quot;,category);</span><br><span class="line">        categoryService.save(category);</span><br><span class="line">        return R.success(&quot;新增分类成功&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 分页查询</span><br><span class="line">     * @param page</span><br><span class="line">     * @param pageSize</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @GetMapping(&quot;/page&quot;)</span><br><span class="line">    public R&lt;Page&gt; page(int page,int pageSize)&#123;</span><br><span class="line">        //分页构造器</span><br><span class="line">        Page&lt;Category&gt; pageInfo = new Page&lt;&gt;(page,pageSize);</span><br><span class="line">        //条件构造器</span><br><span class="line">        LambdaQueryWrapper&lt;Category&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">        //添加排序条件，根据sort进行排序</span><br><span class="line">        queryWrapper.orderByAsc(Category::getSort);</span><br><span class="line"></span><br><span class="line">        //分页查询</span><br><span class="line">        categoryService.page(pageInfo,queryWrapper);</span><br><span class="line">        return R.success(pageInfo);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>最后就可以显示出来了。</p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/02/5cgu.png"></p>
+]]></content>
+      <tags>
+        <tag>springboot - 外卖平台</tag>
+        <tag>项目开发</tag>
+        <tag>新增分类</tag>
+        <tag>mybatis plus</tag>
       </tags>
   </entry>
 </search>
