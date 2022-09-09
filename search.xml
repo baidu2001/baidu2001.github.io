@@ -304,4 +304,50 @@
         <tag>mybatis plus</tag>
       </tags>
   </entry>
+  <entry>
+    <title>外卖管理平台文件上传下载</title>
+    <url>/2022/09/09/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD/</url>
+    <content><![CDATA[<h3 id="一、文件上传介绍"><a href="#一、文件上传介绍" class="headerlink" title="一、文件上传介绍"></a>一、文件上传介绍</h3><p>文件上传，也称为upload，是指将本地图片、视频、音频等文件上传到服务器上，可以供其他用户浏览或下载的过程。文件上传在项目中应用非常广泛，我们经常发微博、发微信朋友圈都用到了文件上传功能。</p>
+<span id="more"></span>
+<p>文件上传时，对页面的form表单有如下要求:</p>
+<ul>
+<li><p>method=”post”              采用post方式提交数据</p>
+</li>
+<li><p>enctype=”multipart/form-data”            采用multipart格式上传文件</p>
+</li>
+<li><p>type=”file”        使用input的file控件上传</p>
+</li>
+</ul>
+<p>  举例:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;form method=&quot;post&quot;action=&quot; /common/upload&quot; enctype=&quot;multipart/form-data&quot;&gt;&lt;input name=&quot;myFile&quot; type=&quot;file&quot;/&gt;</span><br><span class="line">&lt;input type=&quot;submit&quot; value=&quot;提交&quot; /&gt;&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+<p>目前一些前端组件库也提供了相应的上传组件，但是底层原理还是基于form表单的文件上传。例如ElementUI中提供的upload上传组件:</p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/09/13n.png"></p>
+<p>服务端要接收客户端页面上传的文件，通常都会使用Apache的两个组件:</p>
+<ul>
+<li>commons-fileupload</li>
+<li>commons-io</li>
+</ul>
+<p>Spring框架在spring-web包中对文件上传进行了封装，大大简化了服务端代码，我们只需要在Controller的方法中声明一个MultipartFile类型的参数即可接收上传的文件，例如:</p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/09/1oku.png"></p>
+<p>文件下载，也称为download，是指将文件从服务器传输到本地计算机的过程。</p>
+<p>通过浏览器进行文件下载，通常有两种表现形式:</p>
+<p>以附件形式下载，弹出保存对话框，将文件保存到指定磁盘目录直接在浏览器中打开</p>
+<p>通过浏览器进行文件下载，本质上就是服务端将文件以流的形式写回浏览器的过程。</p>
+<p>文件上传，页面端可以使用ElementUI提供的上传组件。</p>
+<p>可以直接使用资料中提供的上传页面，位置:资料/文件上传下载页面/upload.html</p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/09/3h39j.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.controller;</span><br><span class="line"></span><br><span class="line">import com.itheima.reggie.common.R;</span><br><span class="line">import lombok.extern.slf4j.Slf4j;</span><br><span class="line">import org.springframework.beans.factory.annotation.Value;</span><br><span class="line">import org.springframework.stereotype.Controller;</span><br><span class="line">import org.springframework.web.bind.annotation.PostMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line">import org.springframework.web.multipart.MultipartFile;</span><br><span class="line"></span><br><span class="line">import java.io.File;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.UUID;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 文件上传和下载</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/common&quot;)</span><br><span class="line">@Slf4j</span><br><span class="line">public class CommonController &#123;</span><br><span class="line"></span><br><span class="line">    @Value(&quot;$&#123;reggie.path&#125;&quot;)</span><br><span class="line">    private String basePath;</span><br><span class="line">    /**</span><br><span class="line">     * 文件上传</span><br><span class="line">     * @param file</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @PostMapping(&quot;/upload&quot;)</span><br><span class="line">    public R&lt;String&gt; upload (MultipartFile file) &#123;</span><br><span class="line">        //file是一个临时文件，需要转存到指定位置，否则本次请求完成后临时文件将被删除</span><br><span class="line">        log.info(file.toString());</span><br><span class="line"></span><br><span class="line">        //获得原始文件名</span><br><span class="line">        String originalFilename = file.getOriginalFilename();</span><br><span class="line">        String suffix = originalFilename.substring((originalFilename.lastIndexOf(&quot;.&quot;)));</span><br><span class="line"></span><br><span class="line">        //使用UUID重新生成文件名，防止文件名称重复造成文件覆盖</span><br><span class="line">        String fileName = UUID.randomUUID().toString() + suffix;</span><br><span class="line"></span><br><span class="line">        //创建一个目录对象</span><br><span class="line">        File dir = new File(basePath);</span><br><span class="line">        //判断目录是否存在</span><br><span class="line">        if (!dir.exists()) &#123;</span><br><span class="line">            //目录不存在需要创建</span><br><span class="line">            dir.mkdir();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            file.transferTo(new File(basePath + fileName));</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return R.success(fileName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="二、文件上传下载"><a href="#二、文件上传下载" class="headerlink" title="二、文件上传下载"></a>二、文件上传下载</h3><p><code>文件下载代码实现</code></p>
+<p>文件下载，页面端可以使用<img>标签展示下载的图片</p>
+<p><img v-if="imageUrl" :src="imageUr1" class="avatar"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">methods:&#123;</span><br><span class="line">handleAvatarSuccess (response，file，fileList) &#123;</span><br><span class="line">this. imageUrl =`/common/download?name=$ &#123;response.data&#125;`</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 文件下载</span><br><span class="line"> * @param name</span><br><span class="line"> * @param response</span><br><span class="line"> */</span><br><span class="line">@GetMapping(&quot;/download&quot;)</span><br><span class="line">public void downLoad(String name, HttpServletResponse response) &#123;</span><br><span class="line"></span><br><span class="line">    try &#123;</span><br><span class="line">        //输入流，通过输入流读取文件内容</span><br><span class="line"></span><br><span class="line">        FileInputStream fileInputStream = new FileInputStream(new File(basePath + name));</span><br><span class="line"></span><br><span class="line">        //通过输出流将文件写回浏览器，在浏览器展示图片</span><br><span class="line"></span><br><span class="line">        ServletOutputStream outputStream = response.getOutputStream();</span><br><span class="line"></span><br><span class="line">        response.setContentType(&quot;image/jpeg&quot;);</span><br><span class="line"></span><br><span class="line">        int len = 0;</span><br><span class="line">        byte[] bytes = new byte[1024];</span><br><span class="line">        while ( (len = fileInputStream.read(bytes)) != -1) &#123;</span><br><span class="line">            outputStream.write(bytes,0,len);</span><br><span class="line">            outputStream.flush();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //关闭资源</span><br><span class="line">        outputStream.close();</span><br><span class="line">        fileInputStream.close();</span><br><span class="line"></span><br><span class="line">    &#125; catch (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>springboot - 外卖平台</tag>
+        <tag>项目开发</tag>
+        <tag>mybatis plus</tag>
+        <tag>文件上传下载</tag>
+      </tags>
+  </entry>
 </search>
