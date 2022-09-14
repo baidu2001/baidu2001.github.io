@@ -467,4 +467,33 @@
         <tag>新增套餐</tag>
       </tags>
   </entry>
+  <entry>
+    <title>外卖管理平台删除套餐</title>
+    <url>/2022/09/14/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E5%88%A0%E9%99%A4%E5%A5%97%E9%A4%90/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>外卖管理平台套餐信息分页查询</title>
+    <url>/2022/09/14/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E5%A5%97%E9%A4%90%E4%BF%A1%E6%81%AF%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/</url>
+    <content><![CDATA[<h3 id="一、需求分析"><a href="#一、需求分析" class="headerlink" title="一、需求分析"></a>一、需求分析</h3><p>系统中的套餐数据很多的时候，如果在一个页面中全部展示出来会显得比较乱，不便于查看，所以一般的系统中都会以分页的方式来展示列表数据。</p>
+<span id="more"></span>
+<h3 id="二、代码开发-梳理交互过程"><a href="#二、代码开发-梳理交互过程" class="headerlink" title="二、代码开发-梳理交互过程"></a>二、代码开发-梳理交互过程</h3><p>在开发代码之前，需要梳理一下套餐分页查询时前端页面和服务端的交互过程:</p>
+<p>1、页面(backend/page/combo/list.html)发送ajax请求，将分页查询参数(page. pageSize、</p>
+<p>name)提交到服务端，获取分页数据</p>
+<p>2、页面发送请求，请求服务端进行图片下载，用于页面图片展示</p>
+<p>开发套餐信息分页查询功能，其实就是在服务端编写代码去处理前端页面发送的这2次请求即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.controller;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     *套餐分页查询</span><br><span class="line">     * @param page</span><br><span class="line">     * @param pageSize</span><br><span class="line">     * @param name</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @GetMapping(&quot;/page&quot;)</span><br><span class="line">    public R&lt;Page&gt; page(int page, int pageSize, String name) &#123;</span><br><span class="line">        //分页构造器对象</span><br><span class="line">        Page&lt;Setmeal&gt; pageInfo = new Page&lt;&gt;(page, pageSize);</span><br><span class="line">        Page&lt;SetmealDto&gt; dtoPage = new Page&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        LambdaQueryWrapper&lt;Setmeal&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">        //添加查询条件，根据name进行like模糊查询</span><br><span class="line">        queryWrapper.like(name != null, Setmeal::getName, name);</span><br><span class="line">        //添加排序条件，根据更新时间降序排列</span><br><span class="line">        queryWrapper.orderByDesc(Setmeal::getUpdateTime);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        setmealService.page(pageInfo,queryWrapper);</span><br><span class="line"></span><br><span class="line">        //对象拷贝</span><br><span class="line">        BeanUtils.copyProperties(pageInfo, dtoPage,&quot;records&quot;);</span><br><span class="line">        List&lt;Setmeal&gt; records = pageInfo.getRecords();</span><br><span class="line"></span><br><span class="line">        List&lt;SetmealDto&gt; list = records.stream().map((item) -&gt; &#123;</span><br><span class="line">            SetmealDto setmealDto = new SetmealDto();</span><br><span class="line">            //对象拷贝</span><br><span class="line">            BeanUtils.copyProperties(item,setmealDto);</span><br><span class="line">            //分类id</span><br><span class="line">            Long categoryId = item.getCategoryId();</span><br><span class="line">            //根据分类id查询分类对象</span><br><span class="line">            Category category = categoryService.getById(categoryId);</span><br><span class="line">            if (category != null) &#123;</span><br><span class="line">                //分类名称</span><br><span class="line">                String categoryName = category.getName();</span><br><span class="line">                setmealDto.setCategoryName(categoryName);</span><br><span class="line">            &#125;</span><br><span class="line">            return setmealDto;</span><br><span class="line">        &#125;).collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        dtoPage.setRecords(list);</span><br><span class="line">        return R.success(dtoPage);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>springboot - 外卖平台</tag>
+        <tag>项目开发</tag>
+        <tag>mybatis plus</tag>
+        <tag>套餐信息分页查询</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>外卖管理平台短信发送</title>
+    <url>/2022/09/14/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E7%9F%AD%E4%BF%A1%E5%8F%91%E9%80%81/</url>
+    <content><![CDATA[]]></content>
+  </entry>
 </search>
