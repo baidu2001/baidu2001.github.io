@@ -23,17 +23,24 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="这是我的个人知识技术总结博客，欢迎大家的到来，博客会慢慢更新。 ------------有问题请通过邮箱2653751429@qq.com联系，评论功能是不会开启的。">
+  <meta name="description" content="一、需求分析在套餐管理列表页面点击删除按钮，可以删除对应的套餐信息。也可以通过复选框选择多个套餐，点击批量删除按钮一次删除多个套餐。注意，对于状态为售卖中的套餐不能删除，需要先停售，然后才能删除。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="外卖管理平台删除套餐">
 <meta property="og:url" content="http://example.com/2022/09/14/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E5%88%A0%E9%99%A4%E5%A5%97%E9%A4%90/index.html">
 <meta property="og:site_name" content="白都">
-<meta property="og:description" content="这是我的个人知识技术总结博客，欢迎大家的到来，博客会慢慢更新。 ------------有问题请通过邮箱2653751429@qq.com联系，评论功能是不会开启的。">
+<meta property="og:description" content="一、需求分析在套餐管理列表页面点击删除按钮，可以删除对应的套餐信息。也可以通过复选框选择多个套餐，点击批量删除按钮一次删除多个套餐。注意，对于状态为售卖中的套餐不能删除，需要先停售，然后才能删除。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/15/2lii.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/15/i6q6.png">
 <meta property="article:published_time" content="2022-09-14T10:51:38.000Z">
-<meta property="article:modified_time" content="2022-09-14T10:51:38.399Z">
+<meta property="article:modified_time" content="2022-09-15T02:58:54.900Z">
 <meta property="article:author" content="白都">
+<meta property="article:tag" content="springboot - 外卖平台">
+<meta property="article:tag" content="项目开发">
+<meta property="article:tag" content="mybatis plus">
+<meta property="article:tag" content="删除套餐">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.p04e.com/baid/i/2022/09/15/2lii.png">
 
 <link rel="canonical" href="http://example.com/2022/09/14/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E5%88%A0%E9%99%A4%E5%A5%97%E9%A4%90/">
 
@@ -216,6 +223,13 @@
 
               <time title="创建时间：2022-09-14 18:51:38" itemprop="dateCreated datePublished" datetime="2022-09-14T18:51:38+08:00">2022-09-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-15 10:58:54" itemprop="dateModified" datetime="2022-09-15T10:58:54+08:00">2022-09-15</time>
+              </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -235,7 +249,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h3 id="一、需求分析"><a href="#一、需求分析" class="headerlink" title="一、需求分析"></a>一、需求分析</h3><p>在套餐管理列表页面点击删除按钮，可以删除对应的套餐信息。也可以通过复选框选择多个套餐，点击批量删除按钮一次删除多个套餐。注意，对于状态为售卖中的套餐不能删除，需要先停售，然后才能删除。</p>
+<span id="more"></span>
+<h3 id="二、代码开发-梳理交互过程"><a href="#二、代码开发-梳理交互过程" class="headerlink" title="二、代码开发-梳理交互过程"></a>二、代码开发-梳理交互过程</h3><p>在开发代码之前，需要梳理一下删除套餐时前端页面和服务端的交互过程:</p>
+<p>1、删除单个套餐时，页面发送ajax请求，根据套餐id删除对应套餐</p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/15/2lii.png"></p>
+<p>2、删除多个套餐时，页面发送ajax请求，根据提交的多个套餐id删除对应套餐</p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/15/i6q6.png"></p>
+<p>开发删除套餐功能，其实就是在服务端编写代码去处理前端页面发送的这2次请求即可。</p>
+<p>观察删除单个套餐和批量删除套餐的请求信息可以发现，两种请求的地址和请求方式都是相同的，不同的则是传递的id个数，所以在服务端可以提供一个方法来统一处理。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">package com.itheima.reggie.service;</span><br><span class="line"></span><br><span class="line">import com.baomidou.mybatisplus.extension.service.IService;</span><br><span class="line">import com.itheima.reggie.dto.SetmealDto;</span><br><span class="line">import com.itheima.reggie.entity.Setmeal;</span><br><span class="line"></span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public interface SetmealService extends IService&lt;Setmeal&gt; &#123;</span><br><span class="line">    /**</span><br><span class="line">     * 新增套餐，同时需要保存套餐和菜品的关系</span><br><span class="line">     * @param setmealDto</span><br><span class="line">     */</span><br><span class="line">    public void saveWithDish(SetmealDto setmealDto);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 删除套餐，同时需要删除套餐和菜品的关联数据</span><br><span class="line">     * @param ids</span><br><span class="line">     */</span><br><span class="line">    public void removeWithDish(List&lt;Long&gt; ids);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 删除套餐，同时需要删除套餐和菜品的关联数据</span><br><span class="line"> * @param ids</span><br><span class="line"> */</span><br><span class="line">@Transactional</span><br><span class="line">public void removeWithDish(List&lt;Long&gt; ids) &#123;</span><br><span class="line">    //select count(*) from setmeal where id in (1,2,3) and status = 1</span><br><span class="line">    //查询套餐状态，确定是否可用删除</span><br><span class="line">    LambdaQueryWrapper&lt;Setmeal&gt; queryWrapper = new LambdaQueryWrapper();</span><br><span class="line">    queryWrapper.in(Setmeal::getId,ids);</span><br><span class="line">    queryWrapper.eq(Setmeal::getStatus,1);</span><br><span class="line"></span><br><span class="line">    int count = this.count(queryWrapper);</span><br><span class="line">    if(count &gt; 0)&#123;</span><br><span class="line">        //如果不能删除，抛出一个业务异常</span><br><span class="line">        throw new CustomException(&quot;套餐正在售卖中，不能删除&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //如果可以删除，先删除套餐表中的数据---setmeal</span><br><span class="line">    this.removeByIds(ids);</span><br><span class="line"></span><br><span class="line">    //delete from setmeal_dish where setmeal_id in (1,2,3)</span><br><span class="line">    LambdaQueryWrapper&lt;SetmealDish&gt; lambdaQueryWrapper = new LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">    lambdaQueryWrapper.in(SetmealDish::getSetmealId,ids);</span><br><span class="line">    //删除关系表中的数据----setmeal_dish</span><br><span class="line">    setmealDishService.remove(lambdaQueryWrapper);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 删除套餐</span><br><span class="line"> * @param ids</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">@DeleteMapping</span><br><span class="line">public R&lt;String&gt; delete(@RequestParam List&lt;Long&gt; ids)&#123;</span><br><span class="line">    log.info(&quot;ids:&#123;&#125;&quot;,ids);</span><br><span class="line"></span><br><span class="line">    setmealService.removeWithDish(ids);</span><br><span class="line"></span><br><span class="line">    return R.success(&quot;套餐数据删除成功&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -243,6 +269,12 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/springboot-%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/" rel="tag"># springboot - 外卖平台</a>
+              <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" rel="tag"># 项目开发</a>
+              <a href="/tags/mybatis-plus/" rel="tag"># mybatis plus</a>
+              <a href="/tags/%E5%88%A0%E9%99%A4%E5%A5%97%E9%A4%90/" rel="tag"># 删除套餐</a>
+          </div>
 
         
 
@@ -318,6 +350,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">一、需求分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91-%E6%A2%B3%E7%90%86%E4%BA%A4%E4%BA%92%E8%BF%87%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">二、代码开发-梳理交互过程</span></a></li></ol></div>
       </div>
       
       <!--/noindex-->
@@ -341,7 +374,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
