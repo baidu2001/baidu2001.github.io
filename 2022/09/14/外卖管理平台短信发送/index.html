@@ -23,17 +23,28 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="这是我的个人知识技术总结博客，欢迎大家的到来，博客会慢慢更新。 ------------有问题请通过邮箱2653751429@qq.com联系，评论功能是不会开启的。">
+  <meta name="description" content="一、短信服务介绍目前市面上有很多第三方提供的短信服务，这些第三方短信服务会和各个运营商（移动、联通、电信）对接，我们只需要注册成为会员并且按照提供的开发文档进行调用就可以发送短信。需要说明的是，这些短信服务一般都是收费服务。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="外卖管理平台短信发送">
 <meta property="og:url" content="http://example.com/2022/09/14/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E7%9F%AD%E4%BF%A1%E5%8F%91%E9%80%81/index.html">
 <meta property="og:site_name" content="白都">
-<meta property="og:description" content="这是我的个人知识技术总结博客，欢迎大家的到来，博客会慢慢更新。 ------------有问题请通过邮箱2653751429@qq.com联系，评论功能是不会开启的。">
+<meta property="og:description" content="一、短信服务介绍目前市面上有很多第三方提供的短信服务，这些第三方短信服务会和各个运营商（移动、联通、电信）对接，我们只需要注册成为会员并且按照提供的开发文档进行调用就可以发送短信。需要说明的是，这些短信服务一般都是收费服务。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/18/uub.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/18/n3tp.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/18/y3t7.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/18/2r.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/18/9m94.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/18/d0i.png">
 <meta property="article:published_time" content="2022-09-14T10:52:46.000Z">
-<meta property="article:modified_time" content="2022-09-14T10:52:46.076Z">
+<meta property="article:modified_time" content="2022-09-18T07:50:09.563Z">
 <meta property="article:author" content="白都">
+<meta property="article:tag" content="springboot - 外卖平台">
+<meta property="article:tag" content="项目开发">
+<meta property="article:tag" content="mybatis plus">
+<meta property="article:tag" content="短信发送">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.p04e.com/baid/i/2022/09/18/uub.png">
 
 <link rel="canonical" href="http://example.com/2022/09/14/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E7%9F%AD%E4%BF%A1%E5%8F%91%E9%80%81/">
 
@@ -216,6 +227,13 @@
 
               <time title="创建时间：2022-09-14 18:52:46" itemprop="dateCreated datePublished" datetime="2022-09-14T18:52:46+08:00">2022-09-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-18 15:50:09" itemprop="dateModified" datetime="2022-09-18T15:50:09+08:00">2022-09-18</time>
+              </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -235,7 +253,62 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h3 id="一、短信服务介绍"><a href="#一、短信服务介绍" class="headerlink" title="一、短信服务介绍"></a>一、短信服务介绍</h3><p>目前市面上有很多第三方提供的短信服务，这些第三方短信服务会和各个运营商（移动、联通、电信）对接，我们只需要注册成为会员并且按照提供的开发文档进行调用就可以发送短信。需要说明的是，这些短信服务一般都是收费服务。</p>
+<span id="more"></span>
+<p>常用短信服务:</p>
+<ul>
+<li>阿里云</li>
+<li>华为云</li>
+<li>腾讯云</li>
+<li>京东</li>
+<li>梦网</li>
+<li>乐信</li>
+</ul>
+<h4 id="阿里云短信服务-介绍"><a href="#阿里云短信服务-介绍" class="headerlink" title="阿里云短信服务-介绍"></a>阿里云短信服务-介绍</h4><p>阿里云短信服务（Short Message Service)是广大企业客户快速触达手机用户所优选使用的通信能力。调用API或用群发助手，即可发送验证码、通知类和营销类短信;国内验证短信秒级触达，到达率最高可达99%;国际/港澳台短信覆盖200多个国家和地区，安全稳定，广受出海企业选用。</p>
+<p>应用场景:</p>
+<ul>
+<li>验证码</li>
+<li>短信通知</li>
+<li>推广短信</li>
+</ul>
+<h4 id="阿里云短信服务-注册账号"><a href="#阿里云短信服务-注册账号" class="headerlink" title="阿里云短信服务-注册账号"></a>阿里云短信服务-注册账号</h4><p>阿里云官网: https:// www.aliyun.com/</p>
+<p>点击官网首页注册按钮，跳转到如下注册页面:</p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/18/uub.png"></p>
+<h4 id="阿里云短信服务-设置短信签名"><a href="#阿里云短信服务-设置短信签名" class="headerlink" title="阿里云短信服务-设置短信签名"></a>阿里云短信服务-设置短信签名</h4><p>注册成功后，点击登录按钮进行登录。登录后进入短信服务管理页面，选择国内消息菜单:</p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/18/n3tp.png"></p>
+<p>短信签名是短信发送者的署名，表示发送方的身份。</p>
+<h4 id="阿里云短信服务-设置短信模板"><a href="#阿里云短信服务-设置短信模板" class="headerlink" title="阿里云短信服务-设置短信模板"></a>阿里云短信服务-设置短信模板</h4><p>切换到【模板管理】标签页:</p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/18/y3t7.png"></p>
+<h4 id="阿里云短信服务-设置AccessKey"><a href="#阿里云短信服务-设置AccessKey" class="headerlink" title="阿里云短信服务-设置AccessKey"></a>阿里云短信服务-设置AccessKey</h4><p>光标移动到用户头像上，在弹出的窗口中点击【AccessKey管理】∶</p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/18/2r.png"></p>
+<p>选择子用户。</p>
+<p>使用阿里云短信服务发送短信，可以参照官方提供的<a target="_blank" rel="noopener" href="https://help.aliyun.com/product/44282.html?spm=5176.25163407.help.dexternal.51a7bb6e9O0uQU">文档</a>即可。</p>
+<p>具体开发步骤:</p>
+<p>1、导入maven坐标</p>
+<p>2、调用API</p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/18/9m94.png"></p>
+<h3 id="二、需求分析"><a href="#二、需求分析" class="headerlink" title="二、需求分析"></a>二、需求分析</h3><p>为了方便用户登录，移动端通常都会提供通过手机验证码登录的功能。<br>心</p>
+<p>手机验证码登录的优点:</p>
+<ul>
+<li>方便快捷，无需注册，直接登录</li>
+<li>使用短信验证码作为登录凭证，无需记忆密码</li>
+<li>安全<br>登录流程:<br>输入手机号&gt;获取验证码&gt;输入验证码&gt;点击登录&gt;登录成功<br><code>注意:通过手机验证码登录，手机号是区分不同用户的标识。</code></li>
+</ul>
+<h4 id="三、代码开发-梳理交互过程"><a href="#三、代码开发-梳理交互过程" class="headerlink" title="三、代码开发-梳理交互过程"></a>三、代码开发-梳理交互过程</h4><p>在开发代码之前，需要梳理一下登录时前端页面和服务端的交互过程:</p>
+<p>1、在登录页面(front/page/login.html)输入手机号，点击【获取验证码】按钮，页面发送ajax请求，在服务端调用短信服务API给指定手机号发送验证码短信</p>
+<p>2、在登录页面输入验证码，点击【登录】按钮，发送ajax请求，在服务端处理登录请求</p>
+<p>开发手机验证码登录功能，其实就是在服务端编写代码去处理前端页面发送的这2次请求即可。</p>
+<h4 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h4><p>在开发业务功能前，先将需要用到的类和接口基本结构创建好:实体类User（</p>
+<p>Mapper接口UserMapper</p>
+<p>业务层接口UserService</p>
+<p>业务层实现类UserServicelmpl控制层Usercontroller</p>
+<p>工具类SMSutils、ValidateCodeutils</p>
+<h4 id="代码开发-修改LoginCheckFilter"><a href="#代码开发-修改LoginCheckFilter" class="headerlink" title="代码开发-修改LoginCheckFilter"></a>代码开发-修改LoginCheckFilter</h4><p>前面我们已经完成了LoginCheckFilter过滤器的开发，此过滤器用于检查用户的登录状态。我们在进行手机验证码登录时，发送的请求需要在此过滤器处理时直接放行。</p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/18/d0i.png"></p>
+<p>在LoginCheckFilter过滤器中扩展逻辑，判断移动端用户登录状态:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//4-1、判断登录状态，如果已登录，则直接放行</span><br><span class="line">        if(request.getSession().getAttribute(&quot;employee&quot;) != null)&#123;</span><br><span class="line">            log.info(&quot;用户已登录，用户id为：&#123;&#125;&quot;,request.getSession().getAttribute(&quot;employee&quot;));</span><br><span class="line"></span><br><span class="line">            Long empId = (Long) request.getSession().getAttribute(&quot;employee&quot;);</span><br><span class="line">            BaseContext.setCurrentId(empId);</span><br><span class="line"></span><br><span class="line">            filterChain.doFilter(request,response);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //4-2、判断登录状态，如果已登录，则直接放行</span><br><span class="line">        if(request.getSession().getAttribute(&quot;user&quot;) != null)&#123;</span><br><span class="line">            log.info(&quot;用户已登录，用户id为：&#123;&#125;&quot;,request.getSession().getAttribute(&quot;user&quot;));</span><br><span class="line"></span><br><span class="line">            Long userId = (Long) request.getSession().getAttribute(&quot;user&quot;);</span><br><span class="line">            BaseContext.setCurrentId(userId);</span><br><span class="line"></span><br><span class="line">            filterChain.doFilter(request,response);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        log.info(&quot;用户未登录&quot;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line">package com.itheima.reggie.controller;</span><br><span class="line"></span><br><span class="line">import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;</span><br><span class="line">import com.itheima.reggie.common.R;</span><br><span class="line">import com.itheima.reggie.entity.User;</span><br><span class="line">import com.itheima.reggie.service.UserService;</span><br><span class="line">import com.itheima.reggie.utils.ValidateCodeUtils;</span><br><span class="line">import lombok.extern.slf4j.Slf4j;</span><br><span class="line">import org.apache.commons.lang.StringUtils;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.web.bind.annotation.PostMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestBody;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line">import javax.servlet.http.HttpSession;</span><br><span class="line">import java.util.Map;</span><br><span class="line"></span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/user&quot;)</span><br><span class="line">@Slf4j</span><br><span class="line">public class UserController &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private UserService userService;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 发送手机短信验证码</span><br><span class="line">     * @param user</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @PostMapping(&quot;/sendMsg&quot;)</span><br><span class="line">    public R&lt;String&gt; sendMsg(@RequestBody User user, HttpSession session)&#123;</span><br><span class="line">        //获取手机号</span><br><span class="line">        String phone = user.getPhone();</span><br><span class="line"></span><br><span class="line">        if(StringUtils.isNotEmpty(phone))&#123;</span><br><span class="line">            //生成随机的4位验证码</span><br><span class="line">            String code = ValidateCodeUtils.generateValidateCode(4).toString();</span><br><span class="line">            log.info(&quot;code=&#123;&#125;&quot;,code);</span><br><span class="line"></span><br><span class="line">            //调用阿里云提供的短信服务API完成发送短信</span><br><span class="line">            //SMSUtils.sendMessage(&quot;瑞吉外卖&quot;,&quot;&quot;,phone,code);</span><br><span class="line"></span><br><span class="line">            //需要将生成的验证码保存到Session</span><br><span class="line">            session.setAttribute(phone,code);</span><br><span class="line"></span><br><span class="line">            return R.success(&quot;手机验证码短信发送成功&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return R.error(&quot;短信发送失败&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 移动端用户登录</span><br><span class="line">     * @param map</span><br><span class="line">     * @param session</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @PostMapping(&quot;/login&quot;)</span><br><span class="line">    public R&lt;User&gt; login(@RequestBody Map map, HttpSession session)&#123;</span><br><span class="line">        log.info(map.toString());</span><br><span class="line"></span><br><span class="line">        //获取手机号</span><br><span class="line">        String phone = map.get(&quot;phone&quot;).toString();</span><br><span class="line"></span><br><span class="line">        //获取验证码</span><br><span class="line">        String code = map.get(&quot;code&quot;).toString();</span><br><span class="line"></span><br><span class="line">        //从Session中获取保存的验证码</span><br><span class="line">        Object codeInSession = session.getAttribute(phone);</span><br><span class="line"></span><br><span class="line">        //进行验证码的比对（页面提交的验证码和Session中保存的验证码比对）</span><br><span class="line">        if(codeInSession != null &amp;&amp; codeInSession.equals(code))&#123;</span><br><span class="line">            //如果能够比对成功，说明登录成功</span><br><span class="line"></span><br><span class="line">            LambdaQueryWrapper&lt;User&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">            queryWrapper.eq(User::getPhone,phone);</span><br><span class="line"></span><br><span class="line">            User user = userService.getOne(queryWrapper);</span><br><span class="line">            if(user == null)&#123;</span><br><span class="line">                //判断当前手机号对应的用户是否为新用户，如果是新用户就自动完成注册</span><br><span class="line">                user = new User();</span><br><span class="line">                user.setPhone(phone);</span><br><span class="line">                user.setStatus(1);</span><br><span class="line">                userService.save(user);</span><br><span class="line">            &#125;</span><br><span class="line">            session.setAttribute(&quot;user&quot;,user.getId());</span><br><span class="line">            return R.success(user);</span><br><span class="line">        &#125;</span><br><span class="line">        return R.error(&quot;登录失败&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -243,6 +316,12 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/springboot-%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/" rel="tag"># springboot - 外卖平台</a>
+              <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" rel="tag"># 项目开发</a>
+              <a href="/tags/mybatis-plus/" rel="tag"># mybatis plus</a>
+              <a href="/tags/%E7%9F%AD%E4%BF%A1%E5%8F%91%E9%80%81/" rel="tag"># 短信发送</a>
+          </div>
 
         
 
@@ -253,7 +332,10 @@
     <a href="/2022/09/14/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E5%88%A0%E9%99%A4%E5%A5%97%E9%A4%90/" rel="prev" title="外卖管理平台删除套餐">
       <i class="fa fa-chevron-left"></i> 外卖管理平台删除套餐
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/09/19/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E8%8F%9C%E5%93%81%E5%B1%95%E7%A4%BA/" rel="next" title="外卖管理平台菜品展示">
+      外卖管理平台菜品展示 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -315,6 +397,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%9F%AD%E4%BF%A1%E6%9C%8D%E5%8A%A1%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">一、短信服务介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91%E7%9F%AD%E4%BF%A1%E6%9C%8D%E5%8A%A1-%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">阿里云短信服务-介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91%E7%9F%AD%E4%BF%A1%E6%9C%8D%E5%8A%A1-%E6%B3%A8%E5%86%8C%E8%B4%A6%E5%8F%B7"><span class="nav-number">1.2.</span> <span class="nav-text">阿里云短信服务-注册账号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91%E7%9F%AD%E4%BF%A1%E6%9C%8D%E5%8A%A1-%E8%AE%BE%E7%BD%AE%E7%9F%AD%E4%BF%A1%E7%AD%BE%E5%90%8D"><span class="nav-number">1.3.</span> <span class="nav-text">阿里云短信服务-设置短信签名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91%E7%9F%AD%E4%BF%A1%E6%9C%8D%E5%8A%A1-%E8%AE%BE%E7%BD%AE%E7%9F%AD%E4%BF%A1%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.4.</span> <span class="nav-text">阿里云短信服务-设置短信模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91%E7%9F%AD%E4%BF%A1%E6%9C%8D%E5%8A%A1-%E8%AE%BE%E7%BD%AEAccessKey"><span class="nav-number">1.5.</span> <span class="nav-text">阿里云短信服务-设置AccessKey</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">二、需求分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91-%E6%A2%B3%E7%90%86%E4%BA%A4%E4%BA%92%E8%BF%87%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">三、代码开发-梳理交互过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.2.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91-%E4%BF%AE%E6%94%B9LoginCheckFilter"><span class="nav-number">2.3.</span> <span class="nav-text">代码开发-修改LoginCheckFilter</span></a></li></ol></li></ol></div>
       </div>
       
       <!--/noindex-->
@@ -331,14 +414,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
