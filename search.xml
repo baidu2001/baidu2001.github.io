@@ -658,4 +658,70 @@
         <tag>购物车</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Linux查看ip地址出错，ens33不显示inet解决</title>
+    <url>/2022/09/20/Linux%E6%9F%A5%E7%9C%8Bip%E5%9C%B0%E5%9D%80%E5%87%BA%E9%94%99%EF%BC%8Cens33%E4%B8%8D%E6%98%BE%E7%A4%BAinet%E8%A7%A3%E5%86%B3/</url>
+    <content><![CDATA[<p>问题：在 CentOS7中输入 ip addr 时，没有显示出局域网 IP</p>
+<span id="more"></span>
+<p>一下午尝试了网上各种的修改方法，还是不可以，这里就不一一赘述了。</p>
+<h5 id="有两种解决办法"><a href="#有两种解决办法" class="headerlink" title="有两种解决办法"></a>有两种解决办法</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.暂时解决，重新启动虚拟机后ip地址还是会消失</span><br><span class="line"></span><br><span class="line">dhclient ens33  //ens33有时也是32，这里看自己具体的内容</span><br><span class="line"></span><br><span class="line">cd /etc/sysconfig/network-scripts/   </span><br><span class="line">ls</span><br><span class="line">进这个目录下可查看</span><br></pre></td></tr></table></figure>
+<p>之后重启后发现ip地址继续隐藏</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vi/etc/sysconfig/network-scripts/ifcfg-ens33</span><br><span class="line"></span><br><span class="line">改BOOTPROTO=static</span><br><span class="line">  ONBOOT=yes</span><br><span class="line">  </span><br><span class="line">  之后添加自己的网关掩码等等</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.p04e.com/baid/i/2022/09/20/7khnp.png"></p>
+<h5 id="那怎么找到自己的DNS等等呢"><a href="#那怎么找到自己的DNS等等呢" class="headerlink" title="那怎么找到自己的DNS等等呢"></a>那怎么找到自己的DNS等等呢</h5><p><img src="https://i.p04e.com/baid/i/2022/09/20/5lp3.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/20/137wp.png"></p>
+<p>以上为ip 掩码 网关</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">查看文件</span><br><span class="line">/var/lib/dhclient/dhclient.leases</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.p04e.com/baid/i/2022/09/20/sqk.png"></p>
+<p>即为DNS</p>
+<p>此时填回ifcfg-ens33，再次 ip addr</p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/20/7nc56.png"></p>
+<p>出现inet!</p>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+        <tag>inet</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>外卖项目优化之环境搭建</title>
+    <url>/2022/09/20/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>外卖项目优化之使用git管理代码</title>
+    <url>/2022/09/20/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E4%B9%8B%E4%BD%BF%E7%94%A8git%E7%AE%A1%E7%90%86%E4%BB%A3%E7%A0%81/</url>
+    <content><![CDATA[<h3 id="一、配置ssh公钥"><a href="#一、配置ssh公钥" class="headerlink" title="一、配置ssh公钥"></a>一、配置ssh公钥</h3><p>在原来项目的基础上做出优化，先将代码移至gitee好管理代码。</p>
+<span id="more"></span>
+<h4 id="先配置好ssh公钥"><a href="#先配置好ssh公钥" class="headerlink" title="先配置好ssh公钥"></a>先配置好ssh公钥</h4><ul>
+<li>在GitBash界面按照如下命令生成公匙</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;xxxxx@xxxxx.com&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>按照提示完成三次回车，即可生成 ssh key。</p>
+</li>
+<li><p>通过查看 ~/.ssh/id_rsa.pub文件内容，获取到你的 public key。</p>
+</li>
+<li><p>复制id_rsa.pub文件中中生成的sshkey</p>
+</li>
+<li><p>在 [个人用户] -&gt; [设置] -&gt; [安全设置] -&gt; [ssh公匙] 页面添加sshkey</p>
+</li>
+<li><p>将复制的sshkey添加到公匙输入框中，设置标题，确定即可添加公匙</p>
+<h4 id="验证ssh公匙"><a href="#验证ssh公匙" class="headerlink" title="验证ssh公匙"></a>验证ssh公匙</h4><p>输入<code>ssh -T git@gitee.com</code></p>
+<p>首次使用需要确认并添加主机到本机SSH可信列表。<br> 若返回 Hi XXX! You’ve successfully authenticated, but Gitee.com does not provide shell access. 内容，则证明添加成功。</p>
+</li>
+</ul>
+<h3 id="二、使用gitee管理代码"><a href="#二、使用gitee管理代码" class="headerlink" title="二、使用gitee管理代码"></a>二、使用gitee管理代码</h3><p><img src="https://i.p04e.com/baid/i/2022/09/20/l2.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/20/5kl7.png"><br><img src="https://i.p04e.com/baid/i/2022/09/20/sxj.png"><br><img src="https://i.p04e.com/baid/i/2022/09/20/t41.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">在根目录下添加.gitgnore文件，因为不是所有的文件都需要上传到gitee</span><br><span class="line">.git</span><br><span class="line">logs</span><br><span class="line">rebel.xml</span><br><span class="line">target/</span><br><span class="line">!.mvn/wrapper/maven-wrapper.jar</span><br><span class="line">log.path_IS_UNDEFINED</span><br><span class="line">.DS_Store</span><br><span class="line">offline_user.md</span><br><span class="line"></span><br><span class="line">### STS ###</span><br><span class="line">.apt_generated</span><br><span class="line">.classpath</span><br><span class="line">.factorypath</span><br><span class="line">.project</span><br><span class="line">.settings</span><br><span class="line">.springBeans</span><br><span class="line"></span><br><span class="line">### IntelliJ IDEA ###</span><br><span class="line">.idea</span><br><span class="line">*.iws</span><br><span class="line">*.iml</span><br><span class="line">*.ipr</span><br><span class="line"></span><br><span class="line">### NetBeans ###</span><br><span class="line">nbproject/private/</span><br><span class="line">build/</span><br><span class="line">nbbuild/</span><br><span class="line">dist/</span><br><span class="line">nbdist/</span><br><span class="line">.nb-gradle/</span><br><span class="line">generatorConfig.xml</span><br><span class="line"></span><br><span class="line">### nacos ###</span><br><span class="line">third-party/nacos/derby.log</span><br><span class="line">third-party/nacos/data/</span><br><span class="line">third-party/nacos/work/</span><br><span class="line"></span><br><span class="line">file/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.p04e.com/baid/i/2022/09/20/aqjg.png"><br><img src="https://i.p04e.com/baid/i/2022/09/20/7w1.png"><br><img src="https://i.p04e.com/baid/i/2022/09/20/1j7t.png"><br><img src="https://i.p04e.com/baid/i/2022/09/20/23809.png"><br><img src="https://i.p04e.com/baid/i/2022/09/20/7w9.png"><br><img src="https://i.p04e.com/baid/i/2022/09/20/1j9d.png"><br><img src="https://i.p04e.com/baid/i/2022/09/20/7w3.png"><br><img src="https://i.p04e.com/baid/i/2022/09/20/237q6.png"><br><img src="https://i.p04e.com/baid/i/2022/09/20/ar6a.png"><br><img src="https://i.p04e.com/baid/i/2022/09/20/1jaq.png"><br><img src="https://i.p04e.com/baid/i/2022/09/20/ar1g.png"></p>
+]]></content>
+      <tags>
+        <tag>springboot - 外卖平台</tag>
+        <tag>项目开发</tag>
+        <tag>mybatis plus</tag>
+        <tag>使用git管理代码</tag>
+        <tag>git</tag>
+      </tags>
+  </entry>
 </search>
