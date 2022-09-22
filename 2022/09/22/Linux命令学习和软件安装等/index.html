@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <!--pjax：防止跳转页面音乐暂停-->
+  <script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="自主学习了一天很懒的打字了，大部分就用图片替代吧 VMware安装">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux命令学习和软件安装等">
+<meta property="og:url" content="http://example.com/2022/09/22/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0%E5%92%8C%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E7%AD%89/index.html">
+<meta property="og:site_name" content="白都">
+<meta property="og:description" content="自主学习了一天很懒的打字了，大部分就用图片替代吧 VMware安装">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/3bv.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/vq9g.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/4j8q.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/vq8s.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/3bv_1.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/nd1.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/ncf.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/4je9.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/nc7.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/4je7.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/nc2.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/vtp7.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/nd8.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/4jqh.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/4jro.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/4jnd.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/54n6.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/9i2le1.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/1cv9a2.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/1cv9ph.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/6zbte.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/54nf.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/9i2yg5.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/zwjj.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/zwjr.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/6zc0e.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/1cvct3.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/6zbyc.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/zwlb.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/6zc0z.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/1cvcwh.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/zwhl.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/54nj.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/zwf7.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/54mm.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/4ju0.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/nez.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/nfg.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/vv1m.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/6zmgo.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/zy5i.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/vxab.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/ngn.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/4k8s.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/4kcp.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/4k7c.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/1d3qa3.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/w00d.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/vyu0.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/nhj.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/nho.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/10453.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/70t09.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/vyxp.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/njj.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/njj_1.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2022/09/22/nj1.png">
+<meta property="article:published_time" content="2022-09-22T12:25:51.000Z">
+<meta property="article:modified_time" content="2022-09-22T12:28:51.710Z">
+<meta property="article:author" content="白都">
+<meta property="article:tag" content="Mysql">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="防火墙命令">
+<meta property="article:tag" content="Tomcat">
+<meta property="article:tag" content="lrzsz">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.p04e.com/baid/i/2022/09/22/3bv.png">
+
+<link rel="canonical" href="http://example.com/2022/09/22/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0%E5%92%8C%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E7%AD%89/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Linux命令学习和软件安装等 | 白都</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">白都</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">linBaiDu</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/yourname" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/22/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0%E5%92%8C%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E7%AD%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="白都">
+      <meta itemprop="description" content="这是我的个人知识技术总结博客，欢迎大家的到来，博客会慢慢更新。 ------------有问题请通过邮箱2653751429@qq.com联系，评论功能是不会开启的。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白都">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux命令学习和软件安装等
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-09-22 20:25:51 / 修改时间：20:28:51" itemprop="dateCreated datePublished" datetime="2022-09-22T20:25:51+08:00">2022-09-22</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>自主学习了一天很懒的打字了，大部分就用图片替代吧</p>
+<h3 id="VMware安装"><a href="#VMware安装" class="headerlink" title="VMware安装"></a>VMware安装</h3><span id="more"></span>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/3bv.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/vq9g.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/4j8q.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/vq8s.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/3bv_1.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/nd1.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/ncf.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/4je9.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/nc7.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/4je7.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/nc2.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/vtp7.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/nd8.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/4jqh.png"></p>
+<h3 id="Linux学习"><a href="#Linux学习" class="headerlink" title="Linux学习"></a>Linux学习</h3><h4 id="Linux目录介绍"><a href="#Linux目录介绍" class="headerlink" title="Linux目录介绍"></a>Linux目录介绍</h4><ul>
+<li><code>bin 存放二进制可执行文件</code></li>
+<li><code>boot存放系统引导时使用的各种文件</code></li>
+<li>`dev存放设备文件</li>
+<li><code>etc存放系统配置文件</code></li>
+<li>`home存放系统用户的文件</li>
+<li><code>lib存放程序运行所需的共享库和内核模块</code></li>
+<li><code>opt额外安装的可选应用程序包所放置的位置</code></li>
+<li>`root超级用户目录</li>
+<li><code>sbin存放二进制可执行文件，只有root用户才能访问tmp存放临时文件</code></li>
+<li><code>usr存放系统应用程序</code></li>
+<li><code>var存放运行时需要改变数据的文件，例如日志文件</code></li>
+</ul>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/4jro.png"></p>
+<h4 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h4><p><img src="https://i.p04e.com/baid/i/2022/09/22/4jnd.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/54n6.png"></p>
+<mg src="https://i.p04e.com/baid/i/2022/09/22/1cv9d5.png">
+
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/9i2le1.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/1cv9a2.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/1cv9ph.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/6zbte.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/54nf.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/9i2yg5.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/zwjj.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/zwjr.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/6zc0e.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/1cvct3.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/6zbyc.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/zwlb.png"><br><img src="https://i.p04e.com/baid/i/2022/09/22/6zc0z.png"><br><img src="https://i.p04e.com/baid/i/2022/09/22/1cvcwh.png"><br><img src="https://i.p04e.com/baid/i/2022/09/22/zwhl.png"><br><img src="https://i.p04e.com/baid/i/2022/09/22/54nj.png"></p>
+<h3 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h3><p><img src="https://i.p04e.com/baid/i/2022/09/22/zwf7.png"><br><img src="https://i.p04e.com/baid/i/2022/09/22/54mm.png"></p>
+<h3 id="安装Tomcat"><a href="#安装Tomcat" class="headerlink" title="安装Tomcat"></a>安装Tomcat</h3><p><img src="https://i.p04e.com/baid/i/2022/09/22/4ju0.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">防火墙操作:</span><br><span class="line">查看防火墙状态(systemctl status firewalld、 firewall-cmd --state)</span><br><span class="line"></span><br><span class="line">暂时关闭防火墙(systemctl stop firewalld)</span><br><span class="line"></span><br><span class="line">永久关闭防火墙(systemctl disable firewalld)</span><br><span class="line"></span><br><span class="line">开启防火墙(systemctl start firewalld)</span><br><span class="line"></span><br><span class="line">开放指定端口(firewall-cmd --zone=public --add-port=8080/tcp --permanent)</span><br><span class="line"></span><br><span class="line">关闭指定端口(firewall-cmd --zone=public --remove-port=8080/tcp --permanent)</span><br><span class="line"></span><br><span class="line">立即生效(firewall-cmd --reload)</span><br><span class="line"></span><br><span class="line">查看开放的端口(firewall-cmd --zone=public --list-ports)</span><br><span class="line"></span><br><span class="line">注意:</span><br><span class="line">1、 systemctl是管理Linux中服务的命令，可以对服务进行启动、停止、重启、查看状态等操作</span><br><span class="line"></span><br><span class="line">2、firewall-cmd是Linux中专门用于控制防火墙的命令</span><br><span class="line"></span><br><span class="line">3、为了保证系统安全，服务器的防火墙不建议关闭</span><br></pre></td></tr></table></figure>
+<h3 id="安装Mysql"><a href="#安装Mysql" class="headerlink" title="安装Mysql"></a>安装Mysql</h3><p><img src="https://i.p04e.com/baid/i/2022/09/22/nez.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/nfg.png"><br><img src="https://i.p04e.com/baid/i/2022/09/22/vv1m.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/6zmgo.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/zy5i.png"></p>
+<h3 id="安装lrzsz"><a href="#安装lrzsz" class="headerlink" title="安装lrzsz"></a>安装lrzsz</h3><p><img src="https://i.p04e.com/baid/i/2022/09/22/vxab.png"></p>
+<h3 id="手动部署项目"><a href="#手动部署项目" class="headerlink" title="手动部署项目"></a>手动部署项目</h3><p><img src="https://i.p04e.com/baid/i/2022/09/22/ngn.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/4k8s.png"><br><img src="https://i.p04e.com/baid/i/2022/09/22/4kcp.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/4k7c.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/1d3qa3.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/w00d.png"></p>
+<h3 id="通过shell脚本自动部署项目"><a href="#通过shell脚本自动部署项目" class="headerlink" title="通过shell脚本自动部署项目"></a>通过shell脚本自动部署项目</h3><p><img src="https://i.p04e.com/baid/i/2022/09/22/vyu0.png"><br><img src="https://i.p04e.com/baid/i/2022/09/22/nhj.png"><br><img src="https://i.p04e.com/baid/i/2022/09/22/nho.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/10453.png"><br><img src="https://i.p04e.com/baid/i/2022/09/22/70t09.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">echo =================================</span><br><span class="line">echo  自动化部署脚本启动</span><br><span class="line">echo =================================</span><br><span class="line"></span><br><span class="line">echo 停止原来运行中的工程</span><br><span class="line">APP_NAME=helloworld</span><br><span class="line"></span><br><span class="line">tpid=`ps -ef|grep $APP_NAME|grep -v grep|grep -v kill|awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">if [ $&#123;tpid&#125; ]; then</span><br><span class="line">    echo &#x27;Stop Process...&#x27;</span><br><span class="line">    kill -15 $tpid</span><br><span class="line">fi</span><br><span class="line">sleep 2</span><br><span class="line">tpid=`ps -ef|grep $APP_NAME|grep -v grep|grep -v kill|awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">if [ $&#123;tpid&#125; ]; then</span><br><span class="line">    echo &#x27;Kill Process!&#x27;</span><br><span class="line">    kill -9 $tpid</span><br><span class="line">else</span><br><span class="line">    echo &#x27;Stop Success!&#x27;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">echo 准备从Git仓库拉取最新代码</span><br><span class="line">cd /usr/local/helloworld</span><br><span class="line"></span><br><span class="line">echo 开始从Git仓库拉取最新代码</span><br><span class="line">git pull</span><br><span class="line">echo 代码拉取完成</span><br><span class="line"></span><br><span class="line">echo 开始打包</span><br><span class="line">output=`mvn clean package -Dmaven.test.skip=true`</span><br><span class="line"></span><br><span class="line">cd target</span><br><span class="line"></span><br><span class="line">echo 启动项目</span><br><span class="line">nohup java -jar helloworld-1.0-SNAPSHOT.jar &amp;&gt; helloworld.log &amp;</span><br><span class="line">echo 项目启动完成</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/vyxp.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/njj.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/njj_1.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/nj1.png"></p>
+</mg>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Mysql/" rel="tag"># Mysql</a>
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99%E5%91%BD%E4%BB%A4/" rel="tag"># 防火墙命令</a>
+              <a href="/tags/Tomcat/" rel="tag"># Tomcat</a>
+              <a href="/tags/lrzsz/" rel="tag"># lrzsz</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/20/Linux%E6%9F%A5%E7%9C%8Bip%E5%9C%B0%E5%9D%80%E5%87%BA%E9%94%99%EF%BC%8Cens33%E4%B8%8D%E6%98%BE%E7%A4%BAinet%E8%A7%A3%E5%86%B3/" rel="prev" title="Linux查看ip地址出错，ens33不显示inet解决">
+      <i class="fa fa-chevron-left"></i> Linux查看ip地址出错，ens33不显示inet解决
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+  
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=52 src="//music.163.com/outchain/player?type=0&id=6660459076&auto=1&height=32"></iframe>
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#VMware%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">VMware安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux%E5%AD%A6%E4%B9%A0"><span class="nav-number">2.</span> <span class="nav-text">Linux学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%E7%9B%AE%E5%BD%95%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.1.</span> <span class="nav-text">Linux目录介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.2.</span> <span class="nav-text">Linux常用命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">软件安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Tomcat"><span class="nav-number">4.</span> <span class="nav-text">安装Tomcat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Mysql"><span class="nav-number">5.</span> <span class="nav-text">安装Mysql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85lrzsz"><span class="nav-number">6.</span> <span class="nav-text">安装lrzsz</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE"><span class="nav-number">7.</span> <span class="nav-text">手动部署项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87shell%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE"><span class="nav-number">8.</span> <span class="nav-text">通过shell脚本自动部署项目</span></a></li></ol></div>
+      </div>
+      
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="白都"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">白都</p>
+  <div class="site-description" itemprop="description">这是我的个人知识技术总结博客，欢迎大家的到来，博客会慢慢更新。 ------------有问题请通过邮箱2653751429@qq.com联系，评论功能是不会开启的。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+          
+  <div id="sidebar-dimmer"></div>
+  
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">白都</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="true"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+
+    </div>
+</body>
+</html>

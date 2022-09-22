@@ -724,4 +724,82 @@
         <tag>git</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Linux命令学习和软件安装等</title>
+    <url>/2022/09/22/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0%E5%92%8C%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E7%AD%89/</url>
+    <content><![CDATA[<p>自主学习了一天很懒的打字了，大部分就用图片替代吧</p>
+<h3 id="VMware安装"><a href="#VMware安装" class="headerlink" title="VMware安装"></a>VMware安装</h3><span id="more"></span>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/3bv.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/vq9g.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/4j8q.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/vq8s.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/3bv_1.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/nd1.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/ncf.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/4je9.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/nc7.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/4je7.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/nc2.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/vtp7.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/nd8.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/4jqh.png"></p>
+<h3 id="Linux学习"><a href="#Linux学习" class="headerlink" title="Linux学习"></a>Linux学习</h3><h4 id="Linux目录介绍"><a href="#Linux目录介绍" class="headerlink" title="Linux目录介绍"></a>Linux目录介绍</h4><ul>
+<li><code>bin 存放二进制可执行文件</code></li>
+<li><code>boot存放系统引导时使用的各种文件</code></li>
+<li>`dev存放设备文件</li>
+<li><code>etc存放系统配置文件</code></li>
+<li>`home存放系统用户的文件</li>
+<li><code>lib存放程序运行所需的共享库和内核模块</code></li>
+<li><code>opt额外安装的可选应用程序包所放置的位置</code></li>
+<li>`root超级用户目录</li>
+<li><code>sbin存放二进制可执行文件，只有root用户才能访问tmp存放临时文件</code></li>
+<li><code>usr存放系统应用程序</code></li>
+<li><code>var存放运行时需要改变数据的文件，例如日志文件</code></li>
+</ul>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/4jro.png"></p>
+<h4 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h4><p><img src="https://i.p04e.com/baid/i/2022/09/22/4jnd.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/54n6.png"></p>
+<mg src="https://i.p04e.com/baid/i/2022/09/22/1cv9d5.png">
+
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/9i2le1.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/1cv9a2.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/1cv9ph.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/6zbte.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/54nf.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/9i2yg5.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/zwjj.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/zwjr.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/6zc0e.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/1cvct3.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/6zbyc.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/zwlb.png"><br><img src="https://i.p04e.com/baid/i/2022/09/22/6zc0z.png"><br><img src="https://i.p04e.com/baid/i/2022/09/22/1cvcwh.png"><br><img src="https://i.p04e.com/baid/i/2022/09/22/zwhl.png"><br><img src="https://i.p04e.com/baid/i/2022/09/22/54nj.png"></p>
+<h3 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h3><p><img src="https://i.p04e.com/baid/i/2022/09/22/zwf7.png"><br><img src="https://i.p04e.com/baid/i/2022/09/22/54mm.png"></p>
+<h3 id="安装Tomcat"><a href="#安装Tomcat" class="headerlink" title="安装Tomcat"></a>安装Tomcat</h3><p><img src="https://i.p04e.com/baid/i/2022/09/22/4ju0.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">防火墙操作:</span><br><span class="line">查看防火墙状态(systemctl status firewalld、 firewall-cmd --state)</span><br><span class="line"></span><br><span class="line">暂时关闭防火墙(systemctl stop firewalld)</span><br><span class="line"></span><br><span class="line">永久关闭防火墙(systemctl disable firewalld)</span><br><span class="line"></span><br><span class="line">开启防火墙(systemctl start firewalld)</span><br><span class="line"></span><br><span class="line">开放指定端口(firewall-cmd --zone=public --add-port=8080/tcp --permanent)</span><br><span class="line"></span><br><span class="line">关闭指定端口(firewall-cmd --zone=public --remove-port=8080/tcp --permanent)</span><br><span class="line"></span><br><span class="line">立即生效(firewall-cmd --reload)</span><br><span class="line"></span><br><span class="line">查看开放的端口(firewall-cmd --zone=public --list-ports)</span><br><span class="line"></span><br><span class="line">注意:</span><br><span class="line">1、 systemctl是管理Linux中服务的命令，可以对服务进行启动、停止、重启、查看状态等操作</span><br><span class="line"></span><br><span class="line">2、firewall-cmd是Linux中专门用于控制防火墙的命令</span><br><span class="line"></span><br><span class="line">3、为了保证系统安全，服务器的防火墙不建议关闭</span><br></pre></td></tr></table></figure>
+<h3 id="安装Mysql"><a href="#安装Mysql" class="headerlink" title="安装Mysql"></a>安装Mysql</h3><p><img src="https://i.p04e.com/baid/i/2022/09/22/nez.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/nfg.png"><br><img src="https://i.p04e.com/baid/i/2022/09/22/vv1m.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/6zmgo.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/zy5i.png"></p>
+<h3 id="安装lrzsz"><a href="#安装lrzsz" class="headerlink" title="安装lrzsz"></a>安装lrzsz</h3><p><img src="https://i.p04e.com/baid/i/2022/09/22/vxab.png"></p>
+<h3 id="手动部署项目"><a href="#手动部署项目" class="headerlink" title="手动部署项目"></a>手动部署项目</h3><p><img src="https://i.p04e.com/baid/i/2022/09/22/ngn.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/4k8s.png"><br><img src="https://i.p04e.com/baid/i/2022/09/22/4kcp.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/4k7c.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/1d3qa3.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/w00d.png"></p>
+<h3 id="通过shell脚本自动部署项目"><a href="#通过shell脚本自动部署项目" class="headerlink" title="通过shell脚本自动部署项目"></a>通过shell脚本自动部署项目</h3><p><img src="https://i.p04e.com/baid/i/2022/09/22/vyu0.png"><br><img src="https://i.p04e.com/baid/i/2022/09/22/nhj.png"><br><img src="https://i.p04e.com/baid/i/2022/09/22/nho.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/10453.png"><br><img src="https://i.p04e.com/baid/i/2022/09/22/70t09.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">echo =================================</span><br><span class="line">echo  自动化部署脚本启动</span><br><span class="line">echo =================================</span><br><span class="line"></span><br><span class="line">echo 停止原来运行中的工程</span><br><span class="line">APP_NAME=helloworld</span><br><span class="line"></span><br><span class="line">tpid=`ps -ef|grep $APP_NAME|grep -v grep|grep -v kill|awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">if [ $&#123;tpid&#125; ]; then</span><br><span class="line">    echo &#x27;Stop Process...&#x27;</span><br><span class="line">    kill -15 $tpid</span><br><span class="line">fi</span><br><span class="line">sleep 2</span><br><span class="line">tpid=`ps -ef|grep $APP_NAME|grep -v grep|grep -v kill|awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">if [ $&#123;tpid&#125; ]; then</span><br><span class="line">    echo &#x27;Kill Process!&#x27;</span><br><span class="line">    kill -9 $tpid</span><br><span class="line">else</span><br><span class="line">    echo &#x27;Stop Success!&#x27;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">echo 准备从Git仓库拉取最新代码</span><br><span class="line">cd /usr/local/helloworld</span><br><span class="line"></span><br><span class="line">echo 开始从Git仓库拉取最新代码</span><br><span class="line">git pull</span><br><span class="line">echo 代码拉取完成</span><br><span class="line"></span><br><span class="line">echo 开始打包</span><br><span class="line">output=`mvn clean package -Dmaven.test.skip=true`</span><br><span class="line"></span><br><span class="line">cd target</span><br><span class="line"></span><br><span class="line">echo 启动项目</span><br><span class="line">nohup java -jar helloworld-1.0-SNAPSHOT.jar &amp;&gt; helloworld.log &amp;</span><br><span class="line">echo 项目启动完成</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/vyxp.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/njj.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/njj_1.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/22/nj1.png"></p>
+</mg>]]></content>
+      <tags>
+        <tag>Mysql</tag>
+        <tag>Linux</tag>
+        <tag>防火墙命令</tag>
+        <tag>Tomcat</tag>
+        <tag>lrzsz</tag>
+      </tags>
+  </entry>
 </search>
