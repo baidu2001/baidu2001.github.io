@@ -312,6 +312,7 @@
 <p>4.进入/usr/local/redis-4.0.0，进行编译，命令: make</p>
 <p>5.进入redis的src目录，进行安装，命令: make install</p>
 <h4 id="Redis服务启动与停止"><a href="#Redis服务启动与停止" class="headerlink" title="Redis服务启动与停止"></a>Redis服务启动与停止</h4><p>Linux中redis服务启动，可以使用redis-server，默认端口号为6379</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">src/redis-serve ./redis.conf</span><br><span class="line"></span><br><span class="line">src/redis-cli - p 6379 -a 123456</span><br></pre></td></tr></table></figure>
 <p>Ctrl+C停止Redis服务</p>
 <h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>介绍</p>
 <p>Redis存储的是key-value结构的数据，其中key是字符串类型，value有5种常用的数据类型:</p>
@@ -417,6 +418,28 @@
       </tags>
   </entry>
   <entry>
+    <title>白都的一封信</title>
+    <url>/2022/08/26/%E4%BF%A1/</url>
+    <content><![CDATA[<p>已至凌晨却无论如何都睡不着了，心里藏着很多事情。</p>
+<span id="more"></span>
+<hr>
+<p>​    可对于已经发生过的事情，我们无能为力，能做好的只有接下来的事情。</p>
+<p>​    <code>小时候经常仰望着星空，渴望着自己成为逆转时空的飞人</code></p>
+<p>​    </p>
+<hr>
+<p>​    <code>黑还是白并不重要</code></p>
+<hr>
+<p>​    在痛苦开心的过程中会慢慢的触摸到心中真正的所想所愿。那是一种奇妙的感觉，很像是悟道一样的感觉。</p>
+<p>​    <code>每天每天每月每月，实现那个梦</code></p>
+<hr>
+<p>​    生命的所有，都来自于想象力。</p>
+<p>所有的可能，所有的道都来自于想象力。</p>
+]]></content>
+      <tags>
+        <tag>念想</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>个人博客网站问题解决</title>
     <url>/2022/08/29/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
     <content><![CDATA[<h2 id="一、Hexo-Next-实现全局播放背景音乐"><a href="#一、Hexo-Next-实现全局播放背景音乐" class="headerlink" title="一、Hexo + Next 实现全局播放背景音乐"></a>一、Hexo + Next 实现全局播放背景音乐</h2><p>进入网页版的网易云，进入你想选的歌单，按F12键进入开发人员工具，在元素里面 按ctrl + F 进行搜索生成外链，</p>
@@ -451,28 +474,6 @@
       </tags>
   </entry>
   <entry>
-    <title>白都的一封信</title>
-    <url>/2022/08/26/%E4%BF%A1/</url>
-    <content><![CDATA[<p>已至凌晨却无论如何都睡不着了，心里藏着很多事情。</p>
-<span id="more"></span>
-<hr>
-<p>​    可对于已经发生过的事情，我们无能为力，能做好的只有接下来的事情。</p>
-<p>​    <code>小时候经常仰望着星空，渴望着自己成为逆转时空的飞人</code></p>
-<p>​    </p>
-<hr>
-<p>​    <code>黑还是白并不重要</code></p>
-<hr>
-<p>​    在痛苦开心的过程中会慢慢的触摸到心中真正的所想所愿。那是一种奇妙的感觉，很像是悟道一样的感觉。</p>
-<p>​    <code>每天每天每月每月，实现那个梦</code></p>
-<hr>
-<p>​    生命的所有，都来自于想象力。</p>
-<p>所有的可能，所有的道都来自于想象力。</p>
-]]></content>
-      <tags>
-        <tag>念想</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>外卖管理平台修改菜品</title>
     <url>/2022/09/12/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E4%BF%AE%E6%94%B9%E8%8F%9C%E5%93%81/</url>
     <content><![CDATA[<h3 id="一、需求分析"><a href="#一、需求分析" class="headerlink" title="一、需求分析"></a>一、需求分析</h3><p>在菜品管理列表页面点击修改按钮，跳转到修改菜品页面，在修改页面回显菜品相关信息并进行修改，最后点击确定按钮完成修改操作</p>
@@ -492,6 +493,25 @@
         <tag>项目开发</tag>
         <tag>修改菜品</tag>
         <tag>mybatis plus</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>外卖管理平台套餐信息分页查询</title>
+    <url>/2022/09/14/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E5%A5%97%E9%A4%90%E4%BF%A1%E6%81%AF%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/</url>
+    <content><![CDATA[<h3 id="一、需求分析"><a href="#一、需求分析" class="headerlink" title="一、需求分析"></a>一、需求分析</h3><p>系统中的套餐数据很多的时候，如果在一个页面中全部展示出来会显得比较乱，不便于查看，所以一般的系统中都会以分页的方式来展示列表数据。</p>
+<span id="more"></span>
+<h3 id="二、代码开发-梳理交互过程"><a href="#二、代码开发-梳理交互过程" class="headerlink" title="二、代码开发-梳理交互过程"></a>二、代码开发-梳理交互过程</h3><p>在开发代码之前，需要梳理一下套餐分页查询时前端页面和服务端的交互过程:</p>
+<p>1、页面(backend/page/combo/list.html)发送ajax请求，将分页查询参数(page. pageSize、</p>
+<p>name)提交到服务端，获取分页数据</p>
+<p>2、页面发送请求，请求服务端进行图片下载，用于页面图片展示</p>
+<p>开发套餐信息分页查询功能，其实就是在服务端编写代码去处理前端页面发送的这2次请求即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.controller;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     *套餐分页查询</span><br><span class="line">     * @param page</span><br><span class="line">     * @param pageSize</span><br><span class="line">     * @param name</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @GetMapping(&quot;/page&quot;)</span><br><span class="line">    public R&lt;Page&gt; page(int page, int pageSize, String name) &#123;</span><br><span class="line">        //分页构造器对象</span><br><span class="line">        Page&lt;Setmeal&gt; pageInfo = new Page&lt;&gt;(page, pageSize);</span><br><span class="line">        Page&lt;SetmealDto&gt; dtoPage = new Page&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        LambdaQueryWrapper&lt;Setmeal&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">        //添加查询条件，根据name进行like模糊查询</span><br><span class="line">        queryWrapper.like(name != null, Setmeal::getName, name);</span><br><span class="line">        //添加排序条件，根据更新时间降序排列</span><br><span class="line">        queryWrapper.orderByDesc(Setmeal::getUpdateTime);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        setmealService.page(pageInfo,queryWrapper);</span><br><span class="line"></span><br><span class="line">        //对象拷贝</span><br><span class="line">        BeanUtils.copyProperties(pageInfo, dtoPage,&quot;records&quot;);</span><br><span class="line">        List&lt;Setmeal&gt; records = pageInfo.getRecords();</span><br><span class="line"></span><br><span class="line">        List&lt;SetmealDto&gt; list = records.stream().map((item) -&gt; &#123;</span><br><span class="line">            SetmealDto setmealDto = new SetmealDto();</span><br><span class="line">            //对象拷贝</span><br><span class="line">            BeanUtils.copyProperties(item,setmealDto);</span><br><span class="line">            //分类id</span><br><span class="line">            Long categoryId = item.getCategoryId();</span><br><span class="line">            //根据分类id查询分类对象</span><br><span class="line">            Category category = categoryService.getById(categoryId);</span><br><span class="line">            if (category != null) &#123;</span><br><span class="line">                //分类名称</span><br><span class="line">                String categoryName = category.getName();</span><br><span class="line">                setmealDto.setCategoryName(categoryName);</span><br><span class="line">            &#125;</span><br><span class="line">            return setmealDto;</span><br><span class="line">        &#125;).collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        dtoPage.setRecords(list);</span><br><span class="line">        return R.success(dtoPage);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>springboot - 外卖平台</tag>
+        <tag>项目开发</tag>
+        <tag>mybatis plus</tag>
+        <tag>套餐信息分页查询</tag>
       </tags>
   </entry>
   <entry>
@@ -515,25 +535,6 @@
         <tag>项目开发</tag>
         <tag>mybatis plus</tag>
         <tag>删除套餐</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>外卖管理平台套餐信息分页查询</title>
-    <url>/2022/09/14/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E5%A5%97%E9%A4%90%E4%BF%A1%E6%81%AF%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/</url>
-    <content><![CDATA[<h3 id="一、需求分析"><a href="#一、需求分析" class="headerlink" title="一、需求分析"></a>一、需求分析</h3><p>系统中的套餐数据很多的时候，如果在一个页面中全部展示出来会显得比较乱，不便于查看，所以一般的系统中都会以分页的方式来展示列表数据。</p>
-<span id="more"></span>
-<h3 id="二、代码开发-梳理交互过程"><a href="#二、代码开发-梳理交互过程" class="headerlink" title="二、代码开发-梳理交互过程"></a>二、代码开发-梳理交互过程</h3><p>在开发代码之前，需要梳理一下套餐分页查询时前端页面和服务端的交互过程:</p>
-<p>1、页面(backend/page/combo/list.html)发送ajax请求，将分页查询参数(page. pageSize、</p>
-<p>name)提交到服务端，获取分页数据</p>
-<p>2、页面发送请求，请求服务端进行图片下载，用于页面图片展示</p>
-<p>开发套餐信息分页查询功能，其实就是在服务端编写代码去处理前端页面发送的这2次请求即可。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.controller;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     *套餐分页查询</span><br><span class="line">     * @param page</span><br><span class="line">     * @param pageSize</span><br><span class="line">     * @param name</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @GetMapping(&quot;/page&quot;)</span><br><span class="line">    public R&lt;Page&gt; page(int page, int pageSize, String name) &#123;</span><br><span class="line">        //分页构造器对象</span><br><span class="line">        Page&lt;Setmeal&gt; pageInfo = new Page&lt;&gt;(page, pageSize);</span><br><span class="line">        Page&lt;SetmealDto&gt; dtoPage = new Page&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        LambdaQueryWrapper&lt;Setmeal&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">        //添加查询条件，根据name进行like模糊查询</span><br><span class="line">        queryWrapper.like(name != null, Setmeal::getName, name);</span><br><span class="line">        //添加排序条件，根据更新时间降序排列</span><br><span class="line">        queryWrapper.orderByDesc(Setmeal::getUpdateTime);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        setmealService.page(pageInfo,queryWrapper);</span><br><span class="line"></span><br><span class="line">        //对象拷贝</span><br><span class="line">        BeanUtils.copyProperties(pageInfo, dtoPage,&quot;records&quot;);</span><br><span class="line">        List&lt;Setmeal&gt; records = pageInfo.getRecords();</span><br><span class="line"></span><br><span class="line">        List&lt;SetmealDto&gt; list = records.stream().map((item) -&gt; &#123;</span><br><span class="line">            SetmealDto setmealDto = new SetmealDto();</span><br><span class="line">            //对象拷贝</span><br><span class="line">            BeanUtils.copyProperties(item,setmealDto);</span><br><span class="line">            //分类id</span><br><span class="line">            Long categoryId = item.getCategoryId();</span><br><span class="line">            //根据分类id查询分类对象</span><br><span class="line">            Category category = categoryService.getById(categoryId);</span><br><span class="line">            if (category != null) &#123;</span><br><span class="line">                //分类名称</span><br><span class="line">                String categoryName = category.getName();</span><br><span class="line">                setmealDto.setCategoryName(categoryName);</span><br><span class="line">            &#125;</span><br><span class="line">            return setmealDto;</span><br><span class="line">        &#125;).collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        dtoPage.setRecords(list);</span><br><span class="line">        return R.success(dtoPage);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>springboot - 外卖平台</tag>
-        <tag>项目开发</tag>
-        <tag>mybatis plus</tag>
-        <tag>套餐信息分页查询</tag>
       </tags>
   </entry>
   <entry>
@@ -621,6 +622,41 @@
       </tags>
   </entry>
   <entry>
+    <title>外卖管理平台用户下单</title>
+    <url>/2022/09/19/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E7%94%A8%E6%88%B7%E4%B8%8B%E5%8D%95/</url>
+    <content><![CDATA[<h3 id="一、需求分析"><a href="#一、需求分析" class="headerlink" title="一、需求分析"></a>一、需求分析</h3><p>移动端用户将菜品或者套餐加入购物车后，可以点击购物车中的去结算按钮，页面跳转到订单确认页面，点<br>击去支付按钮则完成下单操作。</p>
+<span id="more"></span>
+<h4 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h4><p>用户下单业务对应的数据表为orders表和order_detail表:</p>
+<ul>
+<li>orders:订单表</li>
+<li>order_detail:订单明细表</li>
+</ul>
+<h3 id="二、代码开发-梳理交互过程"><a href="#二、代码开发-梳理交互过程" class="headerlink" title="二、代码开发-梳理交互过程"></a>二、代码开发-梳理交互过程</h3><p>在开发代码之前，需要梳理一下用户下单操作时前端页面和服务端的交互过程:</p>
+<p>1、在购物车中点击按钮，页面跳转到订单确认页面</p>
+<p>2、在订单确认页面，发送ajax请求，请求服务端获取当前登录用户的默认地址</p>
+<p>3、在订单确认页面，发送ajax请求，请求服务端获取当前登录用户的购物车数据</p>
+<p>4、在订单确认页面点击去支付按钮，发送ajax请求，请求服务端完成下单操作</p>
+<p>开发用户下单功能，其实就是在服务端编写代码去处理前端页面发送的请求即可。</p>
+<h4 id="代码开发-准备工作"><a href="#代码开发-准备工作" class="headerlink" title="代码开发-准备工作"></a>代码开发-准备工作</h4><p>在开发业务功能前，先将需要用到的类和接口基本结构创建好:</p>
+<ul>
+<li>实体类Orders、OrderDetail </li>
+<li>Mapper接口OrderMapper、OrderDetailMapper</li>
+<li>业务层接口OrderService.OrderDetailService</li>
+<li>业务层实现类QrderServicelmpl、OrderDetailServicelmpl</li>
+<li>控制层OrderController、OrderDetailController</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.controller;</span><br><span class="line"></span><br><span class="line">import com.itheima.reggie.common.R;</span><br><span class="line">import com.itheima.reggie.entity.Orders;</span><br><span class="line">import com.itheima.reggie.service.OrderService;</span><br><span class="line">import lombok.extern.slf4j.Slf4j;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.web.bind.annotation.PostMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestBody;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 订单</span><br><span class="line"> */</span><br><span class="line">@Slf4j</span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/order&quot;)</span><br><span class="line">public class OrderController &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private OrderService orderService;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 用户下单</span><br><span class="line">     * @param orders</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @PostMapping(&quot;/submit&quot;)</span><br><span class="line">    public R&lt;String&gt; submit(@RequestBody Orders orders)&#123;</span><br><span class="line">        log.info(&quot;订单数据：&#123;&#125;&quot;,orders);</span><br><span class="line">        orderService.submit(orders);</span><br><span class="line">        return R.success(&quot;下单成功&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.service;</span><br><span class="line"></span><br><span class="line">import com.baomidou.mybatisplus.extension.service.IService;</span><br><span class="line">import com.itheima.reggie.entity.Orders;</span><br><span class="line"></span><br><span class="line">public interface OrderService extends IService&lt;Orders&gt; &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 用户下单</span><br><span class="line">     * @param orders</span><br><span class="line">     */</span><br><span class="line">    public void submit(Orders orders);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.service.impl;</span><br><span class="line"></span><br><span class="line">import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;</span><br><span class="line">import com.baomidou.mybatisplus.core.toolkit.IdWorker;</span><br><span class="line">import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;</span><br><span class="line">import com.itheima.reggie.common.BaseContext;</span><br><span class="line">import com.itheima.reggie.common.CustomException;</span><br><span class="line">import com.itheima.reggie.entity.*;</span><br><span class="line">import com.itheima.reggie.mapper.OrderMapper;</span><br><span class="line">import com.itheima.reggie.service.*;</span><br><span class="line">import lombok.extern.slf4j.Slf4j;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.stereotype.Service;</span><br><span class="line">import org.springframework.transaction.annotation.Transactional;</span><br><span class="line"></span><br><span class="line">import java.math.BigDecimal;</span><br><span class="line">import java.time.LocalDateTime;</span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.concurrent.atomic.AtomicInteger;</span><br><span class="line">import java.util.stream.Collectors;</span><br><span class="line"></span><br><span class="line">@Service</span><br><span class="line">@Slf4j</span><br><span class="line">public class OrderServiceImpl extends ServiceImpl&lt;OrderMapper, Orders&gt; implements OrderService &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private ShoppingCartService shoppingCartService;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private UserService userService;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private AddressBookService addressBookService;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private OrderDetailService orderDetailService;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 用户下单</span><br><span class="line">     * @param orders</span><br><span class="line">     */</span><br><span class="line">    @Transactional</span><br><span class="line">    public void submit(Orders orders) &#123;</span><br><span class="line">        //获得当前用户id</span><br><span class="line">        Long userId = BaseContext.getCurrentId();</span><br><span class="line"></span><br><span class="line">        //查询当前用户的购物车数据</span><br><span class="line">        LambdaQueryWrapper&lt;ShoppingCart&gt; wrapper = new LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">        wrapper.eq(ShoppingCart::getUserId,userId);</span><br><span class="line">        List&lt;ShoppingCart&gt; shoppingCarts = shoppingCartService.list(wrapper);</span><br><span class="line"></span><br><span class="line">        if(shoppingCarts == null || shoppingCarts.size() == 0)&#123;</span><br><span class="line">            throw new CustomException(&quot;购物车为空，不能下单&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //查询用户数据</span><br><span class="line">        User user = userService.getById(userId);</span><br><span class="line"></span><br><span class="line">        //查询地址数据</span><br><span class="line">        Long addressBookId = orders.getAddressBookId();</span><br><span class="line">        AddressBook addressBook = addressBookService.getById(addressBookId);</span><br><span class="line">        if(addressBook == null)&#123;</span><br><span class="line">            throw new CustomException(&quot;用户地址信息有误，不能下单&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        long orderId = IdWorker.getId();//订单号</span><br><span class="line"></span><br><span class="line">        AtomicInteger amount = new AtomicInteger(0);</span><br><span class="line"></span><br><span class="line">        List&lt;OrderDetail&gt; orderDetails = shoppingCarts.stream().map((item) -&gt; &#123;</span><br><span class="line">            OrderDetail orderDetail = new OrderDetail();</span><br><span class="line">            orderDetail.setOrderId(orderId);</span><br><span class="line">            orderDetail.setNumber(item.getNumber());</span><br><span class="line">            orderDetail.setDishFlavor(item.getDishFlavor());</span><br><span class="line">            orderDetail.setDishId(item.getDishId());</span><br><span class="line">            orderDetail.setSetmealId(item.getSetmealId());</span><br><span class="line">            orderDetail.setName(item.getName());</span><br><span class="line">            orderDetail.setImage(item.getImage());</span><br><span class="line">            orderDetail.setAmount(item.getAmount());</span><br><span class="line">            amount.addAndGet(item.getAmount().multiply(new BigDecimal(item.getNumber())).intValue());</span><br><span class="line">            return orderDetail;</span><br><span class="line">        &#125;).collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        orders.setId(orderId);</span><br><span class="line">        orders.setOrderTime(LocalDateTime.now());</span><br><span class="line">        orders.setCheckoutTime(LocalDateTime.now());</span><br><span class="line">        orders.setStatus(2);</span><br><span class="line">        orders.setAmount(new BigDecimal(amount.get()));//总金额</span><br><span class="line">        orders.setUserId(userId);</span><br><span class="line">        orders.setNumber(String.valueOf(orderId));</span><br><span class="line">        orders.setUserName(user.getName());</span><br><span class="line">        orders.setConsignee(addressBook.getConsignee());</span><br><span class="line">        orders.setPhone(addressBook.getPhone());</span><br><span class="line">        orders.setAddress((addressBook.getProvinceName() == null ? &quot;&quot; : addressBook.getProvinceName())</span><br><span class="line">                + (addressBook.getCityName() == null ? &quot;&quot; : addressBook.getCityName())</span><br><span class="line">                + (addressBook.getDistrictName() == null ? &quot;&quot; : addressBook.getDistrictName())</span><br><span class="line">                + (addressBook.getDetail() == null ? &quot;&quot; : addressBook.getDetail()));</span><br><span class="line">        //向订单表插入数据，一条数据</span><br><span class="line">        this.save(orders);</span><br><span class="line"></span><br><span class="line">        //向订单明细表插入数据，多条数据</span><br><span class="line">        orderDetailService.saveBatch(orderDetails);</span><br><span class="line"></span><br><span class="line">        //清空购物车数据</span><br><span class="line">        shoppingCartService.remove(wrapper);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>springboot - 外卖平台</tag>
+        <tag>项目开发</tag>
+        <tag>mybatis plus</tag>
+        <tag>用户下单</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>外卖管理平台新增菜品</title>
     <url>/2022/09/10/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E6%96%B0%E5%A2%9E%E8%8F%9C%E5%93%81/</url>
     <content><![CDATA[<h3 id="一、需求分析"><a href="#一、需求分析" class="headerlink" title="一、需求分析"></a>一、需求分析</h3><p>后台系统中可以管理菜品信息，通过新增功能来添加一个新的菜品，在添加菜品时需要选择当前菜品所属的菜品分类，并且需要上传菜品图片，在移动端会按照菜品分类来展示对应的菜品信息。</p>
@@ -657,41 +693,6 @@
         <tag>项目开发</tag>
         <tag>mybatis plus</tag>
         <tag>新增菜品</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>外卖管理平台用户下单</title>
-    <url>/2022/09/19/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E7%94%A8%E6%88%B7%E4%B8%8B%E5%8D%95/</url>
-    <content><![CDATA[<h3 id="一、需求分析"><a href="#一、需求分析" class="headerlink" title="一、需求分析"></a>一、需求分析</h3><p>移动端用户将菜品或者套餐加入购物车后，可以点击购物车中的去结算按钮，页面跳转到订单确认页面，点<br>击去支付按钮则完成下单操作。</p>
-<span id="more"></span>
-<h4 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h4><p>用户下单业务对应的数据表为orders表和order_detail表:</p>
-<ul>
-<li>orders:订单表</li>
-<li>order_detail:订单明细表</li>
-</ul>
-<h3 id="二、代码开发-梳理交互过程"><a href="#二、代码开发-梳理交互过程" class="headerlink" title="二、代码开发-梳理交互过程"></a>二、代码开发-梳理交互过程</h3><p>在开发代码之前，需要梳理一下用户下单操作时前端页面和服务端的交互过程:</p>
-<p>1、在购物车中点击按钮，页面跳转到订单确认页面</p>
-<p>2、在订单确认页面，发送ajax请求，请求服务端获取当前登录用户的默认地址</p>
-<p>3、在订单确认页面，发送ajax请求，请求服务端获取当前登录用户的购物车数据</p>
-<p>4、在订单确认页面点击去支付按钮，发送ajax请求，请求服务端完成下单操作</p>
-<p>开发用户下单功能，其实就是在服务端编写代码去处理前端页面发送的请求即可。</p>
-<h4 id="代码开发-准备工作"><a href="#代码开发-准备工作" class="headerlink" title="代码开发-准备工作"></a>代码开发-准备工作</h4><p>在开发业务功能前，先将需要用到的类和接口基本结构创建好:</p>
-<ul>
-<li>实体类Orders、OrderDetail </li>
-<li>Mapper接口OrderMapper、OrderDetailMapper</li>
-<li>业务层接口OrderService.OrderDetailService</li>
-<li>业务层实现类QrderServicelmpl、OrderDetailServicelmpl</li>
-<li>控制层OrderController、OrderDetailController</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.controller;</span><br><span class="line"></span><br><span class="line">import com.itheima.reggie.common.R;</span><br><span class="line">import com.itheima.reggie.entity.Orders;</span><br><span class="line">import com.itheima.reggie.service.OrderService;</span><br><span class="line">import lombok.extern.slf4j.Slf4j;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.web.bind.annotation.PostMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestBody;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 订单</span><br><span class="line"> */</span><br><span class="line">@Slf4j</span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/order&quot;)</span><br><span class="line">public class OrderController &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private OrderService orderService;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 用户下单</span><br><span class="line">     * @param orders</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @PostMapping(&quot;/submit&quot;)</span><br><span class="line">    public R&lt;String&gt; submit(@RequestBody Orders orders)&#123;</span><br><span class="line">        log.info(&quot;订单数据：&#123;&#125;&quot;,orders);</span><br><span class="line">        orderService.submit(orders);</span><br><span class="line">        return R.success(&quot;下单成功&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.service;</span><br><span class="line"></span><br><span class="line">import com.baomidou.mybatisplus.extension.service.IService;</span><br><span class="line">import com.itheima.reggie.entity.Orders;</span><br><span class="line"></span><br><span class="line">public interface OrderService extends IService&lt;Orders&gt; &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 用户下单</span><br><span class="line">     * @param orders</span><br><span class="line">     */</span><br><span class="line">    public void submit(Orders orders);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.service.impl;</span><br><span class="line"></span><br><span class="line">import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;</span><br><span class="line">import com.baomidou.mybatisplus.core.toolkit.IdWorker;</span><br><span class="line">import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;</span><br><span class="line">import com.itheima.reggie.common.BaseContext;</span><br><span class="line">import com.itheima.reggie.common.CustomException;</span><br><span class="line">import com.itheima.reggie.entity.*;</span><br><span class="line">import com.itheima.reggie.mapper.OrderMapper;</span><br><span class="line">import com.itheima.reggie.service.*;</span><br><span class="line">import lombok.extern.slf4j.Slf4j;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.stereotype.Service;</span><br><span class="line">import org.springframework.transaction.annotation.Transactional;</span><br><span class="line"></span><br><span class="line">import java.math.BigDecimal;</span><br><span class="line">import java.time.LocalDateTime;</span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.concurrent.atomic.AtomicInteger;</span><br><span class="line">import java.util.stream.Collectors;</span><br><span class="line"></span><br><span class="line">@Service</span><br><span class="line">@Slf4j</span><br><span class="line">public class OrderServiceImpl extends ServiceImpl&lt;OrderMapper, Orders&gt; implements OrderService &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private ShoppingCartService shoppingCartService;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private UserService userService;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private AddressBookService addressBookService;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private OrderDetailService orderDetailService;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 用户下单</span><br><span class="line">     * @param orders</span><br><span class="line">     */</span><br><span class="line">    @Transactional</span><br><span class="line">    public void submit(Orders orders) &#123;</span><br><span class="line">        //获得当前用户id</span><br><span class="line">        Long userId = BaseContext.getCurrentId();</span><br><span class="line"></span><br><span class="line">        //查询当前用户的购物车数据</span><br><span class="line">        LambdaQueryWrapper&lt;ShoppingCart&gt; wrapper = new LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">        wrapper.eq(ShoppingCart::getUserId,userId);</span><br><span class="line">        List&lt;ShoppingCart&gt; shoppingCarts = shoppingCartService.list(wrapper);</span><br><span class="line"></span><br><span class="line">        if(shoppingCarts == null || shoppingCarts.size() == 0)&#123;</span><br><span class="line">            throw new CustomException(&quot;购物车为空，不能下单&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //查询用户数据</span><br><span class="line">        User user = userService.getById(userId);</span><br><span class="line"></span><br><span class="line">        //查询地址数据</span><br><span class="line">        Long addressBookId = orders.getAddressBookId();</span><br><span class="line">        AddressBook addressBook = addressBookService.getById(addressBookId);</span><br><span class="line">        if(addressBook == null)&#123;</span><br><span class="line">            throw new CustomException(&quot;用户地址信息有误，不能下单&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        long orderId = IdWorker.getId();//订单号</span><br><span class="line"></span><br><span class="line">        AtomicInteger amount = new AtomicInteger(0);</span><br><span class="line"></span><br><span class="line">        List&lt;OrderDetail&gt; orderDetails = shoppingCarts.stream().map((item) -&gt; &#123;</span><br><span class="line">            OrderDetail orderDetail = new OrderDetail();</span><br><span class="line">            orderDetail.setOrderId(orderId);</span><br><span class="line">            orderDetail.setNumber(item.getNumber());</span><br><span class="line">            orderDetail.setDishFlavor(item.getDishFlavor());</span><br><span class="line">            orderDetail.setDishId(item.getDishId());</span><br><span class="line">            orderDetail.setSetmealId(item.getSetmealId());</span><br><span class="line">            orderDetail.setName(item.getName());</span><br><span class="line">            orderDetail.setImage(item.getImage());</span><br><span class="line">            orderDetail.setAmount(item.getAmount());</span><br><span class="line">            amount.addAndGet(item.getAmount().multiply(new BigDecimal(item.getNumber())).intValue());</span><br><span class="line">            return orderDetail;</span><br><span class="line">        &#125;).collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        orders.setId(orderId);</span><br><span class="line">        orders.setOrderTime(LocalDateTime.now());</span><br><span class="line">        orders.setCheckoutTime(LocalDateTime.now());</span><br><span class="line">        orders.setStatus(2);</span><br><span class="line">        orders.setAmount(new BigDecimal(amount.get()));//总金额</span><br><span class="line">        orders.setUserId(userId);</span><br><span class="line">        orders.setNumber(String.valueOf(orderId));</span><br><span class="line">        orders.setUserName(user.getName());</span><br><span class="line">        orders.setConsignee(addressBook.getConsignee());</span><br><span class="line">        orders.setPhone(addressBook.getPhone());</span><br><span class="line">        orders.setAddress((addressBook.getProvinceName() == null ? &quot;&quot; : addressBook.getProvinceName())</span><br><span class="line">                + (addressBook.getCityName() == null ? &quot;&quot; : addressBook.getCityName())</span><br><span class="line">                + (addressBook.getDistrictName() == null ? &quot;&quot; : addressBook.getDistrictName())</span><br><span class="line">                + (addressBook.getDetail() == null ? &quot;&quot; : addressBook.getDetail()));</span><br><span class="line">        //向订单表插入数据，一条数据</span><br><span class="line">        this.save(orders);</span><br><span class="line"></span><br><span class="line">        //向订单明细表插入数据，多条数据</span><br><span class="line">        orderDetailService.saveBatch(orderDetails);</span><br><span class="line"></span><br><span class="line">        //清空购物车数据</span><br><span class="line">        shoppingCartService.remove(wrapper);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>springboot - 外卖平台</tag>
-        <tag>项目开发</tag>
-        <tag>mybatis plus</tag>
-        <tag>用户下单</tag>
       </tags>
   </entry>
   <entry>
@@ -801,6 +802,32 @@
       </tags>
   </entry>
   <entry>
+    <title>外卖管理平台购物车</title>
+    <url>/2022/09/19/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E8%B4%AD%E7%89%A9%E8%BD%A6/</url>
+    <content><![CDATA[<h3 id="一、需求分析"><a href="#一、需求分析" class="headerlink" title="一、需求分析"></a>一、需求分析</h3><p>移动端用户可以将菜品或者套餐添加到购物车。对于菜品来说，如果设置了口味信息，则需要选择规格后才能加入购物车;对于套餐来说，可以直接点击将当前套餐加入购物车。在购物车中可以修改菜品和套餐的数量，也可以清空购物车。</p>
+<span id="more"></span>
+<h3 id="二、代码开发-梳理交互过程"><a href="#二、代码开发-梳理交互过程" class="headerlink" title="二、代码开发-梳理交互过程"></a>二、代码开发-梳理交互过程</h3><p>在开发代码之前，需要梳理一下购物车操作时前端页面和服务端的交互过程:</p>
+<p>1、点击加入购物或者按钮+，页面发送ajax请求，请求服务端，将菜品或者套餐添加到购物车</p>
+<p>2、点击购物车图标，页面发送ajax请求，请求服务端查询购物车中的菜品和套餐</p>
+<p>3、点击清空购物车按钮，页面发送ajax请求，请求服务端来执行清空购物车操作</p>
+<p>开发购物车功能，其实就是在服务端编写代码去处理前端页面发送的这3次请求即可。</p>
+<h4 id="代码开发-准备工作"><a href="#代码开发-准备工作" class="headerlink" title="代码开发-准备工作"></a>代码开发-准备工作</h4><p>在开发业务功能前，先将需要用到的类和接口基本结构创建好:</p>
+<ul>
+<li>实体类ShoppingCart(直接从课程资料中导入即可)</li>
+<li>Mapper接口ShoppingCartMapper</li>
+<li>业务层接口ShoppingCartservice</li>
+<li>业务层实现类ShoppingCartServicelmpl控制层 ShoppingcartController</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.controller;</span><br><span class="line"></span><br><span class="line">import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;</span><br><span class="line">import com.itheima.reggie.common.BaseContext;</span><br><span class="line">import com.itheima.reggie.common.R;</span><br><span class="line">import com.itheima.reggie.entity.ShoppingCart;</span><br><span class="line">import com.itheima.reggie.service.ShoppingCartService;</span><br><span class="line">import lombok.extern.slf4j.Slf4j;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.web.bind.annotation.*;</span><br><span class="line"></span><br><span class="line">import java.time.LocalDateTime;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 购物车</span><br><span class="line"> */</span><br><span class="line">@Slf4j</span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/shoppingCart&quot;)</span><br><span class="line">public class ShoppingCartController &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private ShoppingCartService shoppingCartService;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 添加购物车</span><br><span class="line">     * @param shoppingCart</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @PostMapping(&quot;/add&quot;)</span><br><span class="line">    public R&lt;ShoppingCart&gt; add(@RequestBody ShoppingCart shoppingCart)&#123;</span><br><span class="line">        log.info(&quot;购物车数据:&#123;&#125;&quot;,shoppingCart);</span><br><span class="line"></span><br><span class="line">        //设置用户id，指定当前是哪个用户的购物车数据</span><br><span class="line">        Long currentId = BaseContext.getCurrentId();</span><br><span class="line">        shoppingCart.setUserId(currentId);</span><br><span class="line"></span><br><span class="line">        Long dishId = shoppingCart.getDishId();</span><br><span class="line"></span><br><span class="line">        LambdaQueryWrapper&lt;ShoppingCart&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">        queryWrapper.eq(ShoppingCart::getUserId,currentId);</span><br><span class="line"></span><br><span class="line">        if(dishId != null)&#123;</span><br><span class="line">            //添加到购物车的是菜品</span><br><span class="line">            queryWrapper.eq(ShoppingCart::getDishId,dishId);</span><br><span class="line"></span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            //添加到购物车的是套餐</span><br><span class="line">            queryWrapper.eq(ShoppingCart::getSetmealId,shoppingCart.getSetmealId());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //查询当前菜品或者套餐是否在购物车中</span><br><span class="line">        //SQL:select * from shopping_cart where user_id = ? and dish_id/setmeal_id = ?</span><br><span class="line">        ShoppingCart cartServiceOne = shoppingCartService.getOne(queryWrapper);</span><br><span class="line"></span><br><span class="line">        if(cartServiceOne != null)&#123;</span><br><span class="line">            //如果已经存在，就在原来数量基础上加一</span><br><span class="line">            Integer number = cartServiceOne.getNumber();</span><br><span class="line">            cartServiceOne.setNumber(number + 1);</span><br><span class="line">            shoppingCartService.updateById(cartServiceOne);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            //如果不存在，则添加到购物车，数量默认就是一</span><br><span class="line">            shoppingCart.setNumber(1);</span><br><span class="line">            shoppingCart.setCreateTime(LocalDateTime.now());</span><br><span class="line">            shoppingCartService.save(shoppingCart);</span><br><span class="line">            cartServiceOne = shoppingCart;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return R.success(cartServiceOne);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 查看购物车</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @GetMapping(&quot;/list&quot;)</span><br><span class="line">    public R&lt;List&lt;ShoppingCart&gt;&gt; list()&#123;</span><br><span class="line">        log.info(&quot;查看购物车...&quot;);</span><br><span class="line"></span><br><span class="line">        LambdaQueryWrapper&lt;ShoppingCart&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">        queryWrapper.eq(ShoppingCart::getUserId,BaseContext.getCurrentId());</span><br><span class="line">        queryWrapper.orderByAsc(ShoppingCart::getCreateTime);</span><br><span class="line"></span><br><span class="line">        List&lt;ShoppingCart&gt; list = shoppingCartService.list(queryWrapper);</span><br><span class="line"></span><br><span class="line">        return R.success(list);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 清空购物车</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @DeleteMapping(&quot;/clean&quot;)</span><br><span class="line">    public R&lt;String&gt; clean()&#123;</span><br><span class="line">        //SQL:delete from shopping_cart where user_id = ?</span><br><span class="line"></span><br><span class="line">        LambdaQueryWrapper&lt;ShoppingCart&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">        queryWrapper.eq(ShoppingCart::getUserId,BaseContext.getCurrentId());</span><br><span class="line"></span><br><span class="line">        shoppingCartService.remove(queryWrapper);</span><br><span class="line"></span><br><span class="line">        return R.success(&quot;清空购物车成功&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>springboot - 外卖平台</tag>
+        <tag>项目开发</tag>
+        <tag>mybatis plus</tag>
+        <tag>购物车</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>外卖项目优化之使用git管理代码</title>
     <url>/2022/09/20/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E4%B9%8B%E4%BD%BF%E7%94%A8git%E7%AE%A1%E7%90%86%E4%BB%A3%E7%A0%81/</url>
     <content><![CDATA[<h3 id="一、配置ssh公钥"><a href="#一、配置ssh公钥" class="headerlink" title="一、配置ssh公钥"></a>一、配置ssh公钥</h3><p>在原来项目的基础上做出优化，先将代码移至gitee好管理代码。</p>
@@ -837,37 +864,6 @@
       </tags>
   </entry>
   <entry>
-    <title>外卖管理平台购物车</title>
-    <url>/2022/09/19/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E8%B4%AD%E7%89%A9%E8%BD%A6/</url>
-    <content><![CDATA[<h3 id="一、需求分析"><a href="#一、需求分析" class="headerlink" title="一、需求分析"></a>一、需求分析</h3><p>移动端用户可以将菜品或者套餐添加到购物车。对于菜品来说，如果设置了口味信息，则需要选择规格后才能加入购物车;对于套餐来说，可以直接点击将当前套餐加入购物车。在购物车中可以修改菜品和套餐的数量，也可以清空购物车。</p>
-<span id="more"></span>
-<h3 id="二、代码开发-梳理交互过程"><a href="#二、代码开发-梳理交互过程" class="headerlink" title="二、代码开发-梳理交互过程"></a>二、代码开发-梳理交互过程</h3><p>在开发代码之前，需要梳理一下购物车操作时前端页面和服务端的交互过程:</p>
-<p>1、点击加入购物或者按钮+，页面发送ajax请求，请求服务端，将菜品或者套餐添加到购物车</p>
-<p>2、点击购物车图标，页面发送ajax请求，请求服务端查询购物车中的菜品和套餐</p>
-<p>3、点击清空购物车按钮，页面发送ajax请求，请求服务端来执行清空购物车操作</p>
-<p>开发购物车功能，其实就是在服务端编写代码去处理前端页面发送的这3次请求即可。</p>
-<h4 id="代码开发-准备工作"><a href="#代码开发-准备工作" class="headerlink" title="代码开发-准备工作"></a>代码开发-准备工作</h4><p>在开发业务功能前，先将需要用到的类和接口基本结构创建好:</p>
-<ul>
-<li>实体类ShoppingCart(直接从课程资料中导入即可)</li>
-<li>Mapper接口ShoppingCartMapper</li>
-<li>业务层接口ShoppingCartservice</li>
-<li>业务层实现类ShoppingCartServicelmpl控制层 ShoppingcartController</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.controller;</span><br><span class="line"></span><br><span class="line">import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;</span><br><span class="line">import com.itheima.reggie.common.BaseContext;</span><br><span class="line">import com.itheima.reggie.common.R;</span><br><span class="line">import com.itheima.reggie.entity.ShoppingCart;</span><br><span class="line">import com.itheima.reggie.service.ShoppingCartService;</span><br><span class="line">import lombok.extern.slf4j.Slf4j;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.web.bind.annotation.*;</span><br><span class="line"></span><br><span class="line">import java.time.LocalDateTime;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 购物车</span><br><span class="line"> */</span><br><span class="line">@Slf4j</span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/shoppingCart&quot;)</span><br><span class="line">public class ShoppingCartController &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private ShoppingCartService shoppingCartService;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 添加购物车</span><br><span class="line">     * @param shoppingCart</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @PostMapping(&quot;/add&quot;)</span><br><span class="line">    public R&lt;ShoppingCart&gt; add(@RequestBody ShoppingCart shoppingCart)&#123;</span><br><span class="line">        log.info(&quot;购物车数据:&#123;&#125;&quot;,shoppingCart);</span><br><span class="line"></span><br><span class="line">        //设置用户id，指定当前是哪个用户的购物车数据</span><br><span class="line">        Long currentId = BaseContext.getCurrentId();</span><br><span class="line">        shoppingCart.setUserId(currentId);</span><br><span class="line"></span><br><span class="line">        Long dishId = shoppingCart.getDishId();</span><br><span class="line"></span><br><span class="line">        LambdaQueryWrapper&lt;ShoppingCart&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">        queryWrapper.eq(ShoppingCart::getUserId,currentId);</span><br><span class="line"></span><br><span class="line">        if(dishId != null)&#123;</span><br><span class="line">            //添加到购物车的是菜品</span><br><span class="line">            queryWrapper.eq(ShoppingCart::getDishId,dishId);</span><br><span class="line"></span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            //添加到购物车的是套餐</span><br><span class="line">            queryWrapper.eq(ShoppingCart::getSetmealId,shoppingCart.getSetmealId());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //查询当前菜品或者套餐是否在购物车中</span><br><span class="line">        //SQL:select * from shopping_cart where user_id = ? and dish_id/setmeal_id = ?</span><br><span class="line">        ShoppingCart cartServiceOne = shoppingCartService.getOne(queryWrapper);</span><br><span class="line"></span><br><span class="line">        if(cartServiceOne != null)&#123;</span><br><span class="line">            //如果已经存在，就在原来数量基础上加一</span><br><span class="line">            Integer number = cartServiceOne.getNumber();</span><br><span class="line">            cartServiceOne.setNumber(number + 1);</span><br><span class="line">            shoppingCartService.updateById(cartServiceOne);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            //如果不存在，则添加到购物车，数量默认就是一</span><br><span class="line">            shoppingCart.setNumber(1);</span><br><span class="line">            shoppingCart.setCreateTime(LocalDateTime.now());</span><br><span class="line">            shoppingCartService.save(shoppingCart);</span><br><span class="line">            cartServiceOne = shoppingCart;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return R.success(cartServiceOne);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 查看购物车</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @GetMapping(&quot;/list&quot;)</span><br><span class="line">    public R&lt;List&lt;ShoppingCart&gt;&gt; list()&#123;</span><br><span class="line">        log.info(&quot;查看购物车...&quot;);</span><br><span class="line"></span><br><span class="line">        LambdaQueryWrapper&lt;ShoppingCart&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">        queryWrapper.eq(ShoppingCart::getUserId,BaseContext.getCurrentId());</span><br><span class="line">        queryWrapper.orderByAsc(ShoppingCart::getCreateTime);</span><br><span class="line"></span><br><span class="line">        List&lt;ShoppingCart&gt; list = shoppingCartService.list(queryWrapper);</span><br><span class="line"></span><br><span class="line">        return R.success(list);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 清空购物车</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @DeleteMapping(&quot;/clean&quot;)</span><br><span class="line">    public R&lt;String&gt; clean()&#123;</span><br><span class="line">        //SQL:delete from shopping_cart where user_id = ?</span><br><span class="line"></span><br><span class="line">        LambdaQueryWrapper&lt;ShoppingCart&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">        queryWrapper.eq(ShoppingCart::getUserId,BaseContext.getCurrentId());</span><br><span class="line"></span><br><span class="line">        shoppingCartService.remove(queryWrapper);</span><br><span class="line"></span><br><span class="line">        return R.success(&quot;清空购物车成功&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>springboot - 外卖平台</tag>
-        <tag>项目开发</tag>
-        <tag>mybatis plus</tag>
-        <tag>购物车</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>外卖项目优化之环境搭建</title>
-    <url>/2022/09/20/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>音乐资源</title>
     <url>/2022/08/30/%E9%9F%B3%E4%B9%90%E8%B5%84%E6%BA%90/</url>
     <content><![CDATA[<h2 id="PC魔音"><a href="#PC魔音" class="headerlink" title="PC魔音-"></a>PC魔音-</h2><h2 id="PC魔音-听歌神器"><a href="#PC魔音-听歌神器" class="headerlink" title="PC魔音-听歌神器"></a>PC魔音-听歌神器</h2><p>PC魔音 Morin 是一款非常受欢迎的听歌神器，它可以为用户提供全网的无损音乐在线试听及下载，聚合四大音乐平台搜索接口</p>
@@ -882,6 +878,11 @@
         <tag>资源</tag>
         <tag>音乐</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>外卖项目优化之环境搭建</title>
+    <url>/2022/09/20/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>外卖管理平台新增分类代码开发</title>
