@@ -1,31 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Linux查看ip地址出错，ens33不显示inet解决</title>
-    <url>/2022/09/20/Linux%E6%9F%A5%E7%9C%8Bip%E5%9C%B0%E5%9D%80%E5%87%BA%E9%94%99%EF%BC%8Cens33%E4%B8%8D%E6%98%BE%E7%A4%BAinet%E8%A7%A3%E5%86%B3/</url>
-    <content><![CDATA[<p>问题：在 CentOS7中输入 ip addr 时，没有显示出局域网 IP</p>
-<span id="more"></span>
-<p>一下午尝试了网上各种的修改方法，还是不可以，这里就不一一赘述了。</p>
-<h5 id="有两种解决办法"><a href="#有两种解决办法" class="headerlink" title="有两种解决办法"></a>有两种解决办法</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.暂时解决，重新启动虚拟机后ip地址还是会消失</span><br><span class="line"></span><br><span class="line">dhclient ens33  //ens33有时也是32，这里看自己具体的内容</span><br><span class="line"></span><br><span class="line">cd /etc/sysconfig/network-scripts/   </span><br><span class="line">ls</span><br><span class="line">进这个目录下可查看</span><br></pre></td></tr></table></figure>
-<p>之后重启后发现ip地址继续隐藏</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vi/etc/sysconfig/network-scripts/ifcfg-ens33</span><br><span class="line"></span><br><span class="line">改BOOTPROTO=static</span><br><span class="line">  ONBOOT=yes</span><br><span class="line">  </span><br><span class="line">  之后添加自己的网关掩码等等</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><img src="https://i.p04e.com/baid/i/2022/09/20/7khnp.png"></p>
-<h5 id="那怎么找到自己的DNS等等呢"><a href="#那怎么找到自己的DNS等等呢" class="headerlink" title="那怎么找到自己的DNS等等呢"></a>那怎么找到自己的DNS等等呢</h5><p><img src="https://i.p04e.com/baid/i/2022/09/20/5lp3.png"></p>
-<p><img src="https://i.p04e.com/baid/i/2022/09/20/137wp.png"></p>
-<p>以上为ip 掩码 网关</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">查看文件</span><br><span class="line">/var/lib/dhclient/dhclient.leases</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.p04e.com/baid/i/2022/09/20/sqk.png"></p>
-<p>即为DNS</p>
-<p>此时填回ifcfg-ens33，再次 ip addr</p>
-<p><img src="https://i.p04e.com/baid/i/2022/09/20/7nc56.png"></p>
-<p>出现inet!</p>
-]]></content>
-      <tags>
-        <tag>Linux</tag>
-        <tag>inet</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux命令学习和软件安装等</title>
     <url>/2022/09/22/Linux%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0%E5%92%8C%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E7%AD%89/</url>
     <content><![CDATA[<p>自主学习了一天很懒的打字了，大部分就用图片替代吧</p>
@@ -101,6 +76,53 @@
         <tag>Tomcat</tag>
         <tag>Mysql</tag>
         <tag>lrzsz</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux查看ip地址出错，ens33不显示inet解决</title>
+    <url>/2022/09/20/Linux%E6%9F%A5%E7%9C%8Bip%E5%9C%B0%E5%9D%80%E5%87%BA%E9%94%99%EF%BC%8Cens33%E4%B8%8D%E6%98%BE%E7%A4%BAinet%E8%A7%A3%E5%86%B3/</url>
+    <content><![CDATA[<p>问题：在 CentOS7中输入 ip addr 时，没有显示出局域网 IP</p>
+<span id="more"></span>
+<p>一下午尝试了网上各种的修改方法，还是不可以，这里就不一一赘述了。</p>
+<h5 id="有两种解决办法"><a href="#有两种解决办法" class="headerlink" title="有两种解决办法"></a>有两种解决办法</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.暂时解决，重新启动虚拟机后ip地址还是会消失</span><br><span class="line"></span><br><span class="line">dhclient ens33  //ens33有时也是32，这里看自己具体的内容</span><br><span class="line"></span><br><span class="line">cd /etc/sysconfig/network-scripts/   </span><br><span class="line">ls</span><br><span class="line">进这个目录下可查看</span><br></pre></td></tr></table></figure>
+<p>之后重启后发现ip地址继续隐藏</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vi/etc/sysconfig/network-scripts/ifcfg-ens33</span><br><span class="line"></span><br><span class="line">改BOOTPROTO=static</span><br><span class="line">  ONBOOT=yes</span><br><span class="line">  </span><br><span class="line">  之后添加自己的网关掩码等等</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.p04e.com/baid/i/2022/09/20/7khnp.png"></p>
+<h5 id="那怎么找到自己的DNS等等呢"><a href="#那怎么找到自己的DNS等等呢" class="headerlink" title="那怎么找到自己的DNS等等呢"></a>那怎么找到自己的DNS等等呢</h5><p><img src="https://i.p04e.com/baid/i/2022/09/20/5lp3.png"></p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/20/137wp.png"></p>
+<p>以上为ip 掩码 网关</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">查看文件</span><br><span class="line">/var/lib/dhclient/dhclient.leases</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.p04e.com/baid/i/2022/09/20/sqk.png"></p>
+<p>即为DNS</p>
+<p>此时填回ifcfg-ens33，再次 ip addr</p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/20/7nc56.png"></p>
+<p>出现inet!</p>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+        <tag>inet</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL主从同步故障：Slave_SQL_Running:NO</title>
+    <url>/2022/10/03/MySQL%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E6%95%85%E9%9A%9C%EF%BC%9ASlave-SQL-Running-NO/</url>
+    <content><![CDATA[<p><img src="https://i.p04e.com/baid/i/2022/10/03/3jdmr.png"></p>
+<p>Slave_SQL_Running: No</p>
+<p>1.程序可能在slave上进行了写操作</p>
+<p>2.也可能是slave机器重起后，事务回滚造成的.</p>
+<p>一般是事务回滚造成的：</p>
+<p>解决办法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; stop slave ;</span><br><span class="line">mysql&gt; set GLOBAL SQL_SLAVE_SKIP_COUNTER=1;</span><br><span class="line">mysql&gt; start slave ;</span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">change master to master_host=&#x27;------&#x27;,master_user=&#x27;xiaoming&#x27;,master_password=&#x27;Root@123456&#x27;,master_log_file=&#x27;mysql-bin.----&#x27;,master_log_pos=---;</span><br></pre></td></tr></table></figure>
+<p>——都是自己的</p>
+<p><img src="https://i.p04e.com/baid/i/2022/10/03/ifdz.png"></p>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Mysql</tag>
+        <tag>主从复制</tag>
+        <tag>错误</tag>
       </tags>
   </entry>
   <entry>
@@ -418,6 +440,28 @@
       </tags>
   </entry>
   <entry>
+    <title>白都的一封信</title>
+    <url>/2022/08/26/%E4%BF%A1/</url>
+    <content><![CDATA[<p>已至凌晨却无论如何都睡不着了，心里藏着很多事情。</p>
+<span id="more"></span>
+<hr>
+<p>​    可对于已经发生过的事情，我们无能为力，能做好的只有接下来的事情。</p>
+<p>​    <code>小时候经常仰望着星空，渴望着自己成为逆转时空的飞人</code></p>
+<p>​    </p>
+<hr>
+<p>​    <code>黑还是白并不重要</code></p>
+<hr>
+<p>​    在痛苦开心的过程中会慢慢的触摸到心中真正的所想所愿。那是一种奇妙的感觉，很像是悟道一样的感觉。</p>
+<p>​    <code>每天每天每月每月，实现那个梦</code></p>
+<hr>
+<p>​    生命的所有，都来自于想象力。</p>
+<p>所有的可能，所有的道都来自于想象力。</p>
+]]></content>
+      <tags>
+        <tag>念想</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>个人博客网站问题解决</title>
     <url>/2022/08/29/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
     <content><![CDATA[<h2 id="一、Hexo-Next-实现全局播放背景音乐"><a href="#一、Hexo-Next-实现全局播放背景音乐" class="headerlink" title="一、Hexo + Next 实现全局播放背景音乐"></a>一、Hexo + Next 实现全局播放背景音乐</h2><p>进入网页版的网易云，进入你想选的歌单，按F12键进入开发人员工具，在元素里面 按ctrl + F 进行搜索生成外链，</p>
@@ -452,25 +496,26 @@
       </tags>
   </entry>
   <entry>
-    <title>白都的一封信</title>
-    <url>/2022/08/26/%E4%BF%A1/</url>
-    <content><![CDATA[<p>已至凌晨却无论如何都睡不着了，心里藏着很多事情。</p>
+    <title>外卖管理平台删除套餐</title>
+    <url>/2022/09/14/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E5%88%A0%E9%99%A4%E5%A5%97%E9%A4%90/</url>
+    <content><![CDATA[<h3 id="一、需求分析"><a href="#一、需求分析" class="headerlink" title="一、需求分析"></a>一、需求分析</h3><p>在套餐管理列表页面点击删除按钮，可以删除对应的套餐信息。也可以通过复选框选择多个套餐，点击批量删除按钮一次删除多个套餐。注意，对于状态为售卖中的套餐不能删除，需要先停售，然后才能删除。</p>
 <span id="more"></span>
-<hr>
-<p>​    可对于已经发生过的事情，我们无能为力，能做好的只有接下来的事情。</p>
-<p>​    <code>小时候经常仰望着星空，渴望着自己成为逆转时空的飞人</code></p>
-<p>​    </p>
-<hr>
-<p>​    <code>黑还是白并不重要</code></p>
-<hr>
-<p>​    在痛苦开心的过程中会慢慢的触摸到心中真正的所想所愿。那是一种奇妙的感觉，很像是悟道一样的感觉。</p>
-<p>​    <code>每天每天每月每月，实现那个梦</code></p>
-<hr>
-<p>​    生命的所有，都来自于想象力。</p>
-<p>所有的可能，所有的道都来自于想象力。</p>
+<h3 id="二、代码开发-梳理交互过程"><a href="#二、代码开发-梳理交互过程" class="headerlink" title="二、代码开发-梳理交互过程"></a>二、代码开发-梳理交互过程</h3><p>在开发代码之前，需要梳理一下删除套餐时前端页面和服务端的交互过程:</p>
+<p>1、删除单个套餐时，页面发送ajax请求，根据套餐id删除对应套餐</p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/15/2lii.png"></p>
+<p>2、删除多个套餐时，页面发送ajax请求，根据提交的多个套餐id删除对应套餐</p>
+<p><img src="https://i.p04e.com/baid/i/2022/09/15/i6q6.png"></p>
+<p>开发删除套餐功能，其实就是在服务端编写代码去处理前端页面发送的这2次请求即可。</p>
+<p>观察删除单个套餐和批量删除套餐的请求信息可以发现，两种请求的地址和请求方式都是相同的，不同的则是传递的id个数，所以在服务端可以提供一个方法来统一处理。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.service;</span><br><span class="line"></span><br><span class="line">import com.baomidou.mybatisplus.extension.service.IService;</span><br><span class="line">import com.itheima.reggie.dto.SetmealDto;</span><br><span class="line">import com.itheima.reggie.entity.Setmeal;</span><br><span class="line"></span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public interface SetmealService extends IService&lt;Setmeal&gt; &#123;</span><br><span class="line">    /**</span><br><span class="line">     * 新增套餐，同时需要保存套餐和菜品的关系</span><br><span class="line">     * @param setmealDto</span><br><span class="line">     */</span><br><span class="line">    public void saveWithDish(SetmealDto setmealDto);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 删除套餐，同时需要删除套餐和菜品的关联数据</span><br><span class="line">     * @param ids</span><br><span class="line">     */</span><br><span class="line">    public void removeWithDish(List&lt;Long&gt; ids);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 删除套餐，同时需要删除套餐和菜品的关联数据</span><br><span class="line"> * @param ids</span><br><span class="line"> */</span><br><span class="line">@Transactional</span><br><span class="line">public void removeWithDish(List&lt;Long&gt; ids) &#123;</span><br><span class="line">    //select count(*) from setmeal where id in (1,2,3) and status = 1</span><br><span class="line">    //查询套餐状态，确定是否可用删除</span><br><span class="line">    LambdaQueryWrapper&lt;Setmeal&gt; queryWrapper = new LambdaQueryWrapper();</span><br><span class="line">    queryWrapper.in(Setmeal::getId,ids);</span><br><span class="line">    queryWrapper.eq(Setmeal::getStatus,1);</span><br><span class="line"></span><br><span class="line">    int count = this.count(queryWrapper);</span><br><span class="line">    if(count &gt; 0)&#123;</span><br><span class="line">        //如果不能删除，抛出一个业务异常</span><br><span class="line">        throw new CustomException(&quot;套餐正在售卖中，不能删除&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //如果可以删除，先删除套餐表中的数据---setmeal</span><br><span class="line">    this.removeByIds(ids);</span><br><span class="line"></span><br><span class="line">    //delete from setmeal_dish where setmeal_id in (1,2,3)</span><br><span class="line">    LambdaQueryWrapper&lt;SetmealDish&gt; lambdaQueryWrapper = new LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">    lambdaQueryWrapper.in(SetmealDish::getSetmealId,ids);</span><br><span class="line">    //删除关系表中的数据----setmeal_dish</span><br><span class="line">    setmealDishService.remove(lambdaQueryWrapper);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 删除套餐</span><br><span class="line"> * @param ids</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">@DeleteMapping</span><br><span class="line">public R&lt;String&gt; delete(@RequestParam List&lt;Long&gt; ids)&#123;</span><br><span class="line">    log.info(&quot;ids:&#123;&#125;&quot;,ids);</span><br><span class="line"></span><br><span class="line">    setmealService.removeWithDish(ids);</span><br><span class="line"></span><br><span class="line">    return R.success(&quot;套餐数据删除成功&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>念想</tag>
+        <tag>springboot - 外卖平台</tag>
+        <tag>项目开发</tag>
+        <tag>删除套餐</tag>
+        <tag>mybatis plus</tag>
       </tags>
   </entry>
   <entry>
@@ -491,8 +536,8 @@
       <tags>
         <tag>springboot - 外卖平台</tag>
         <tag>项目开发</tag>
-        <tag>修改菜品</tag>
         <tag>mybatis plus</tag>
+        <tag>修改菜品</tag>
       </tags>
   </entry>
   <entry>
@@ -512,29 +557,6 @@
         <tag>项目开发</tag>
         <tag>mybatis plus</tag>
         <tag>套餐信息分页查询</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>外卖管理平台删除套餐</title>
-    <url>/2022/09/14/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E5%88%A0%E9%99%A4%E5%A5%97%E9%A4%90/</url>
-    <content><![CDATA[<h3 id="一、需求分析"><a href="#一、需求分析" class="headerlink" title="一、需求分析"></a>一、需求分析</h3><p>在套餐管理列表页面点击删除按钮，可以删除对应的套餐信息。也可以通过复选框选择多个套餐，点击批量删除按钮一次删除多个套餐。注意，对于状态为售卖中的套餐不能删除，需要先停售，然后才能删除。</p>
-<span id="more"></span>
-<h3 id="二、代码开发-梳理交互过程"><a href="#二、代码开发-梳理交互过程" class="headerlink" title="二、代码开发-梳理交互过程"></a>二、代码开发-梳理交互过程</h3><p>在开发代码之前，需要梳理一下删除套餐时前端页面和服务端的交互过程:</p>
-<p>1、删除单个套餐时，页面发送ajax请求，根据套餐id删除对应套餐</p>
-<p><img src="https://i.p04e.com/baid/i/2022/09/15/2lii.png"></p>
-<p>2、删除多个套餐时，页面发送ajax请求，根据提交的多个套餐id删除对应套餐</p>
-<p><img src="https://i.p04e.com/baid/i/2022/09/15/i6q6.png"></p>
-<p>开发删除套餐功能，其实就是在服务端编写代码去处理前端页面发送的这2次请求即可。</p>
-<p>观察删除单个套餐和批量删除套餐的请求信息可以发现，两种请求的地址和请求方式都是相同的，不同的则是传递的id个数，所以在服务端可以提供一个方法来统一处理。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.service;</span><br><span class="line"></span><br><span class="line">import com.baomidou.mybatisplus.extension.service.IService;</span><br><span class="line">import com.itheima.reggie.dto.SetmealDto;</span><br><span class="line">import com.itheima.reggie.entity.Setmeal;</span><br><span class="line"></span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public interface SetmealService extends IService&lt;Setmeal&gt; &#123;</span><br><span class="line">    /**</span><br><span class="line">     * 新增套餐，同时需要保存套餐和菜品的关系</span><br><span class="line">     * @param setmealDto</span><br><span class="line">     */</span><br><span class="line">    public void saveWithDish(SetmealDto setmealDto);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 删除套餐，同时需要删除套餐和菜品的关联数据</span><br><span class="line">     * @param ids</span><br><span class="line">     */</span><br><span class="line">    public void removeWithDish(List&lt;Long&gt; ids);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 删除套餐，同时需要删除套餐和菜品的关联数据</span><br><span class="line"> * @param ids</span><br><span class="line"> */</span><br><span class="line">@Transactional</span><br><span class="line">public void removeWithDish(List&lt;Long&gt; ids) &#123;</span><br><span class="line">    //select count(*) from setmeal where id in (1,2,3) and status = 1</span><br><span class="line">    //查询套餐状态，确定是否可用删除</span><br><span class="line">    LambdaQueryWrapper&lt;Setmeal&gt; queryWrapper = new LambdaQueryWrapper();</span><br><span class="line">    queryWrapper.in(Setmeal::getId,ids);</span><br><span class="line">    queryWrapper.eq(Setmeal::getStatus,1);</span><br><span class="line"></span><br><span class="line">    int count = this.count(queryWrapper);</span><br><span class="line">    if(count &gt; 0)&#123;</span><br><span class="line">        //如果不能删除，抛出一个业务异常</span><br><span class="line">        throw new CustomException(&quot;套餐正在售卖中，不能删除&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //如果可以删除，先删除套餐表中的数据---setmeal</span><br><span class="line">    this.removeByIds(ids);</span><br><span class="line"></span><br><span class="line">    //delete from setmeal_dish where setmeal_id in (1,2,3)</span><br><span class="line">    LambdaQueryWrapper&lt;SetmealDish&gt; lambdaQueryWrapper = new LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">    lambdaQueryWrapper.in(SetmealDish::getSetmealId,ids);</span><br><span class="line">    //删除关系表中的数据----setmeal_dish</span><br><span class="line">    setmealDishService.remove(lambdaQueryWrapper);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 删除套餐</span><br><span class="line"> * @param ids</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">@DeleteMapping</span><br><span class="line">public R&lt;String&gt; delete(@RequestParam List&lt;Long&gt; ids)&#123;</span><br><span class="line">    log.info(&quot;ids:&#123;&#125;&quot;,ids);</span><br><span class="line"></span><br><span class="line">    setmealService.removeWithDish(ids);</span><br><span class="line"></span><br><span class="line">    return R.success(&quot;套餐数据删除成功&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>springboot - 外卖平台</tag>
-        <tag>项目开发</tag>
-        <tag>mybatis plus</tag>
-        <tag>删除套餐</tag>
       </tags>
   </entry>
   <entry>
@@ -762,6 +784,24 @@
       </tags>
   </entry>
   <entry>
+    <title>外卖管理平台菜品信息分页查询</title>
+    <url>/2022/09/11/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E8%8F%9C%E5%93%81%E4%BF%A1%E6%81%AF%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/</url>
+    <content><![CDATA[<h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><h3 id="一、需求分析"><a href="#一、需求分析" class="headerlink" title="一、需求分析"></a>一、需求分析</h3><p>系统中的菜品数据很多的时候，如果在一个页面中全部展示出来会显得比较乱，不便于查看，所以一般的系统中都会以分页的方式来展示列表数据。</p>
+<span id="more"></span>
+<h3 id="二、代码开发"><a href="#二、代码开发" class="headerlink" title="二、代码开发"></a>二、代码开发</h3><h4 id="梳理交互过程"><a href="#梳理交互过程" class="headerlink" title="梳理交互过程"></a>梳理交互过程</h4><p>在开发代码之前，需要梳理一下菜品分页查询时前端页面和服务端的交互过程:</p>
+<p>1、页面(backend/page/food/list.html)发送ajax请求，将分页查询参数(page、pageSize、name)提交到服务端，获取分页数据</p>
+<p>2、页面发送请求，请求服务端进行图片下载，用于页面图片展示</p>
+<p>开发菜品信息分页查询功能，其实就是在服务端编写代码去处理前端页面发送的这2次请求即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.controller;</span><br><span class="line"></span><br><span class="line">import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;</span><br><span class="line">import com.baomidou.mybatisplus.extension.plugins.pagination.Page;</span><br><span class="line">import com.itheima.reggie.common.R;</span><br><span class="line">import com.itheima.reggie.dto.DishDto;</span><br><span class="line">import com.itheima.reggie.entity.Category;</span><br><span class="line">import com.itheima.reggie.entity.Dish;</span><br><span class="line">import com.itheima.reggie.service.CategoryService;</span><br><span class="line">import com.itheima.reggie.service.DishFlavorService;</span><br><span class="line">import com.itheima.reggie.service.DishService;</span><br><span class="line">import lombok.extern.slf4j.Slf4j;</span><br><span class="line">import org.springframework.beans.BeanUtils;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.web.bind.annotation.*;</span><br><span class="line"></span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.stream.Collectors;</span><br><span class="line"></span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/dish&quot;)</span><br><span class="line">@Slf4j</span><br><span class="line">public class DishController &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private DishService dishService;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private DishFlavorService dishFlavorService;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private CategoryService categoryService;</span><br><span class="line"></span><br><span class="line">    @PostMapping</span><br><span class="line">    public R&lt;String&gt; save(@RequestBody DishDto dishDto) &#123;</span><br><span class="line"></span><br><span class="line">        log.info(dishDto.toString());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        dishService.saveWithFlavor(dishDto);</span><br><span class="line">        return R.success(&quot;新增菜品成功&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 菜品信息分页</span><br><span class="line">     * @param page</span><br><span class="line">     * @param pageSize</span><br><span class="line">     * @param name</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @GetMapping(&quot;/page&quot;)</span><br><span class="line">    public R&lt;Page&gt; page(int page, int pageSize, String name) &#123;</span><br><span class="line"></span><br><span class="line">        //构造分页构造器</span><br><span class="line">        Page&lt;Dish&gt; pageInfo = new Page&lt;&gt;(page,pageSize);</span><br><span class="line">        Page&lt;DishDto&gt; dishDtoPage = new Page&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        //条件构造器</span><br><span class="line">        LambdaQueryWrapper&lt;Dish&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        //添加过滤条件</span><br><span class="line">        queryWrapper.like(name != null,Dish::getName, name);</span><br><span class="line"></span><br><span class="line">        //添加排序条件</span><br><span class="line">        queryWrapper.orderByDesc(Dish::getUpdateTime);</span><br><span class="line"></span><br><span class="line">        //执行分页查询</span><br><span class="line">        dishService.page(pageInfo, queryWrapper);</span><br><span class="line"></span><br><span class="line">        //对象拷贝</span><br><span class="line">        BeanUtils.copyProperties(pageInfo,dishDtoPage,&quot;records&quot;);</span><br><span class="line"></span><br><span class="line">        List&lt;Dish&gt; records = pageInfo.getRecords();</span><br><span class="line">        List&lt;DishDto&gt; list = records.stream().map((item) -&gt;  &#123;</span><br><span class="line">            DishDto dishDto = new DishDto();</span><br><span class="line"></span><br><span class="line">            BeanUtils.copyProperties(item, dishDto);</span><br><span class="line"></span><br><span class="line">            Long categoryId = item.getCategoryId();</span><br><span class="line"></span><br><span class="line">            //根据id查询分类对象</span><br><span class="line">            Category category = categoryService.getById(categoryId);</span><br><span class="line"></span><br><span class="line">            if (category != null) &#123;</span><br><span class="line">                String categoryName = category.getName();</span><br><span class="line">                dishDto.setCategoryName(categoryName);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            return dishDto;</span><br><span class="line">        &#125;).collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        dishDtoPage.setRecords(list);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        return R.success(dishDtoPage);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>springboot - 外卖平台</tag>
+        <tag>项目开发</tag>
+        <tag>mybatis plus</tag>
+        <tag>菜品信息分页查询</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>外卖管理平台菜品展示</title>
     <url>/2022/09/19/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E8%8F%9C%E5%93%81%E5%B1%95%E7%A4%BA/</url>
     <content><![CDATA[<h3 id="一、菜品展示"><a href="#一、菜品展示" class="headerlink" title="一、菜品展示"></a>一、菜品展示</h3><p>用户登录成功后跳转到系统首页，在首页需要根据分类来展示菜品和套餐。如果菜品设置了口味信息，需要展示<code>选择规格</code>按钮，否则显示<code>+</code>按钮。</p>
@@ -781,6 +821,32 @@
         <tag>项目开发</tag>
         <tag>mybatis plus</tag>
         <tag>菜品展示</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>外卖管理平台购物车</title>
+    <url>/2022/09/19/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E8%B4%AD%E7%89%A9%E8%BD%A6/</url>
+    <content><![CDATA[<h3 id="一、需求分析"><a href="#一、需求分析" class="headerlink" title="一、需求分析"></a>一、需求分析</h3><p>移动端用户可以将菜品或者套餐添加到购物车。对于菜品来说，如果设置了口味信息，则需要选择规格后才能加入购物车;对于套餐来说，可以直接点击将当前套餐加入购物车。在购物车中可以修改菜品和套餐的数量，也可以清空购物车。</p>
+<span id="more"></span>
+<h3 id="二、代码开发-梳理交互过程"><a href="#二、代码开发-梳理交互过程" class="headerlink" title="二、代码开发-梳理交互过程"></a>二、代码开发-梳理交互过程</h3><p>在开发代码之前，需要梳理一下购物车操作时前端页面和服务端的交互过程:</p>
+<p>1、点击加入购物或者按钮+，页面发送ajax请求，请求服务端，将菜品或者套餐添加到购物车</p>
+<p>2、点击购物车图标，页面发送ajax请求，请求服务端查询购物车中的菜品和套餐</p>
+<p>3、点击清空购物车按钮，页面发送ajax请求，请求服务端来执行清空购物车操作</p>
+<p>开发购物车功能，其实就是在服务端编写代码去处理前端页面发送的这3次请求即可。</p>
+<h4 id="代码开发-准备工作"><a href="#代码开发-准备工作" class="headerlink" title="代码开发-准备工作"></a>代码开发-准备工作</h4><p>在开发业务功能前，先将需要用到的类和接口基本结构创建好:</p>
+<ul>
+<li>实体类ShoppingCart(直接从课程资料中导入即可)</li>
+<li>Mapper接口ShoppingCartMapper</li>
+<li>业务层接口ShoppingCartservice</li>
+<li>业务层实现类ShoppingCartServicelmpl控制层 ShoppingcartController</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.controller;</span><br><span class="line"></span><br><span class="line">import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;</span><br><span class="line">import com.itheima.reggie.common.BaseContext;</span><br><span class="line">import com.itheima.reggie.common.R;</span><br><span class="line">import com.itheima.reggie.entity.ShoppingCart;</span><br><span class="line">import com.itheima.reggie.service.ShoppingCartService;</span><br><span class="line">import lombok.extern.slf4j.Slf4j;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.web.bind.annotation.*;</span><br><span class="line"></span><br><span class="line">import java.time.LocalDateTime;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 购物车</span><br><span class="line"> */</span><br><span class="line">@Slf4j</span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/shoppingCart&quot;)</span><br><span class="line">public class ShoppingCartController &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private ShoppingCartService shoppingCartService;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 添加购物车</span><br><span class="line">     * @param shoppingCart</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @PostMapping(&quot;/add&quot;)</span><br><span class="line">    public R&lt;ShoppingCart&gt; add(@RequestBody ShoppingCart shoppingCart)&#123;</span><br><span class="line">        log.info(&quot;购物车数据:&#123;&#125;&quot;,shoppingCart);</span><br><span class="line"></span><br><span class="line">        //设置用户id，指定当前是哪个用户的购物车数据</span><br><span class="line">        Long currentId = BaseContext.getCurrentId();</span><br><span class="line">        shoppingCart.setUserId(currentId);</span><br><span class="line"></span><br><span class="line">        Long dishId = shoppingCart.getDishId();</span><br><span class="line"></span><br><span class="line">        LambdaQueryWrapper&lt;ShoppingCart&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">        queryWrapper.eq(ShoppingCart::getUserId,currentId);</span><br><span class="line"></span><br><span class="line">        if(dishId != null)&#123;</span><br><span class="line">            //添加到购物车的是菜品</span><br><span class="line">            queryWrapper.eq(ShoppingCart::getDishId,dishId);</span><br><span class="line"></span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            //添加到购物车的是套餐</span><br><span class="line">            queryWrapper.eq(ShoppingCart::getSetmealId,shoppingCart.getSetmealId());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //查询当前菜品或者套餐是否在购物车中</span><br><span class="line">        //SQL:select * from shopping_cart where user_id = ? and dish_id/setmeal_id = ?</span><br><span class="line">        ShoppingCart cartServiceOne = shoppingCartService.getOne(queryWrapper);</span><br><span class="line"></span><br><span class="line">        if(cartServiceOne != null)&#123;</span><br><span class="line">            //如果已经存在，就在原来数量基础上加一</span><br><span class="line">            Integer number = cartServiceOne.getNumber();</span><br><span class="line">            cartServiceOne.setNumber(number + 1);</span><br><span class="line">            shoppingCartService.updateById(cartServiceOne);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            //如果不存在，则添加到购物车，数量默认就是一</span><br><span class="line">            shoppingCart.setNumber(1);</span><br><span class="line">            shoppingCart.setCreateTime(LocalDateTime.now());</span><br><span class="line">            shoppingCartService.save(shoppingCart);</span><br><span class="line">            cartServiceOne = shoppingCart;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return R.success(cartServiceOne);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 查看购物车</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @GetMapping(&quot;/list&quot;)</span><br><span class="line">    public R&lt;List&lt;ShoppingCart&gt;&gt; list()&#123;</span><br><span class="line">        log.info(&quot;查看购物车...&quot;);</span><br><span class="line"></span><br><span class="line">        LambdaQueryWrapper&lt;ShoppingCart&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">        queryWrapper.eq(ShoppingCart::getUserId,BaseContext.getCurrentId());</span><br><span class="line">        queryWrapper.orderByAsc(ShoppingCart::getCreateTime);</span><br><span class="line"></span><br><span class="line">        List&lt;ShoppingCart&gt; list = shoppingCartService.list(queryWrapper);</span><br><span class="line"></span><br><span class="line">        return R.success(list);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 清空购物车</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @DeleteMapping(&quot;/clean&quot;)</span><br><span class="line">    public R&lt;String&gt; clean()&#123;</span><br><span class="line">        //SQL:delete from shopping_cart where user_id = ?</span><br><span class="line"></span><br><span class="line">        LambdaQueryWrapper&lt;ShoppingCart&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">        queryWrapper.eq(ShoppingCart::getUserId,BaseContext.getCurrentId());</span><br><span class="line"></span><br><span class="line">        shoppingCartService.remove(queryWrapper);</span><br><span class="line"></span><br><span class="line">        return R.success(&quot;清空购物车成功&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>springboot - 外卖平台</tag>
+        <tag>项目开发</tag>
+        <tag>mybatis plus</tag>
+        <tag>购物车</tag>
       </tags>
   </entry>
   <entry>
@@ -817,50 +883,6 @@
         <tag>mybatis plus</tag>
         <tag>使用git管理代码</tag>
         <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>外卖管理平台购物车</title>
-    <url>/2022/09/19/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E8%B4%AD%E7%89%A9%E8%BD%A6/</url>
-    <content><![CDATA[<h3 id="一、需求分析"><a href="#一、需求分析" class="headerlink" title="一、需求分析"></a>一、需求分析</h3><p>移动端用户可以将菜品或者套餐添加到购物车。对于菜品来说，如果设置了口味信息，则需要选择规格后才能加入购物车;对于套餐来说，可以直接点击将当前套餐加入购物车。在购物车中可以修改菜品和套餐的数量，也可以清空购物车。</p>
-<span id="more"></span>
-<h3 id="二、代码开发-梳理交互过程"><a href="#二、代码开发-梳理交互过程" class="headerlink" title="二、代码开发-梳理交互过程"></a>二、代码开发-梳理交互过程</h3><p>在开发代码之前，需要梳理一下购物车操作时前端页面和服务端的交互过程:</p>
-<p>1、点击加入购物或者按钮+，页面发送ajax请求，请求服务端，将菜品或者套餐添加到购物车</p>
-<p>2、点击购物车图标，页面发送ajax请求，请求服务端查询购物车中的菜品和套餐</p>
-<p>3、点击清空购物车按钮，页面发送ajax请求，请求服务端来执行清空购物车操作</p>
-<p>开发购物车功能，其实就是在服务端编写代码去处理前端页面发送的这3次请求即可。</p>
-<h4 id="代码开发-准备工作"><a href="#代码开发-准备工作" class="headerlink" title="代码开发-准备工作"></a>代码开发-准备工作</h4><p>在开发业务功能前，先将需要用到的类和接口基本结构创建好:</p>
-<ul>
-<li>实体类ShoppingCart(直接从课程资料中导入即可)</li>
-<li>Mapper接口ShoppingCartMapper</li>
-<li>业务层接口ShoppingCartservice</li>
-<li>业务层实现类ShoppingCartServicelmpl控制层 ShoppingcartController</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.controller;</span><br><span class="line"></span><br><span class="line">import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;</span><br><span class="line">import com.itheima.reggie.common.BaseContext;</span><br><span class="line">import com.itheima.reggie.common.R;</span><br><span class="line">import com.itheima.reggie.entity.ShoppingCart;</span><br><span class="line">import com.itheima.reggie.service.ShoppingCartService;</span><br><span class="line">import lombok.extern.slf4j.Slf4j;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.web.bind.annotation.*;</span><br><span class="line"></span><br><span class="line">import java.time.LocalDateTime;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 购物车</span><br><span class="line"> */</span><br><span class="line">@Slf4j</span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/shoppingCart&quot;)</span><br><span class="line">public class ShoppingCartController &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private ShoppingCartService shoppingCartService;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 添加购物车</span><br><span class="line">     * @param shoppingCart</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @PostMapping(&quot;/add&quot;)</span><br><span class="line">    public R&lt;ShoppingCart&gt; add(@RequestBody ShoppingCart shoppingCart)&#123;</span><br><span class="line">        log.info(&quot;购物车数据:&#123;&#125;&quot;,shoppingCart);</span><br><span class="line"></span><br><span class="line">        //设置用户id，指定当前是哪个用户的购物车数据</span><br><span class="line">        Long currentId = BaseContext.getCurrentId();</span><br><span class="line">        shoppingCart.setUserId(currentId);</span><br><span class="line"></span><br><span class="line">        Long dishId = shoppingCart.getDishId();</span><br><span class="line"></span><br><span class="line">        LambdaQueryWrapper&lt;ShoppingCart&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">        queryWrapper.eq(ShoppingCart::getUserId,currentId);</span><br><span class="line"></span><br><span class="line">        if(dishId != null)&#123;</span><br><span class="line">            //添加到购物车的是菜品</span><br><span class="line">            queryWrapper.eq(ShoppingCart::getDishId,dishId);</span><br><span class="line"></span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            //添加到购物车的是套餐</span><br><span class="line">            queryWrapper.eq(ShoppingCart::getSetmealId,shoppingCart.getSetmealId());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //查询当前菜品或者套餐是否在购物车中</span><br><span class="line">        //SQL:select * from shopping_cart where user_id = ? and dish_id/setmeal_id = ?</span><br><span class="line">        ShoppingCart cartServiceOne = shoppingCartService.getOne(queryWrapper);</span><br><span class="line"></span><br><span class="line">        if(cartServiceOne != null)&#123;</span><br><span class="line">            //如果已经存在，就在原来数量基础上加一</span><br><span class="line">            Integer number = cartServiceOne.getNumber();</span><br><span class="line">            cartServiceOne.setNumber(number + 1);</span><br><span class="line">            shoppingCartService.updateById(cartServiceOne);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            //如果不存在，则添加到购物车，数量默认就是一</span><br><span class="line">            shoppingCart.setNumber(1);</span><br><span class="line">            shoppingCart.setCreateTime(LocalDateTime.now());</span><br><span class="line">            shoppingCartService.save(shoppingCart);</span><br><span class="line">            cartServiceOne = shoppingCart;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return R.success(cartServiceOne);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 查看购物车</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @GetMapping(&quot;/list&quot;)</span><br><span class="line">    public R&lt;List&lt;ShoppingCart&gt;&gt; list()&#123;</span><br><span class="line">        log.info(&quot;查看购物车...&quot;);</span><br><span class="line"></span><br><span class="line">        LambdaQueryWrapper&lt;ShoppingCart&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">        queryWrapper.eq(ShoppingCart::getUserId,BaseContext.getCurrentId());</span><br><span class="line">        queryWrapper.orderByAsc(ShoppingCart::getCreateTime);</span><br><span class="line"></span><br><span class="line">        List&lt;ShoppingCart&gt; list = shoppingCartService.list(queryWrapper);</span><br><span class="line"></span><br><span class="line">        return R.success(list);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 清空购物车</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @DeleteMapping(&quot;/clean&quot;)</span><br><span class="line">    public R&lt;String&gt; clean()&#123;</span><br><span class="line">        //SQL:delete from shopping_cart where user_id = ?</span><br><span class="line"></span><br><span class="line">        LambdaQueryWrapper&lt;ShoppingCart&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">        queryWrapper.eq(ShoppingCart::getUserId,BaseContext.getCurrentId());</span><br><span class="line"></span><br><span class="line">        shoppingCartService.remove(queryWrapper);</span><br><span class="line"></span><br><span class="line">        return R.success(&quot;清空购物车成功&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>springboot - 外卖平台</tag>
-        <tag>项目开发</tag>
-        <tag>mybatis plus</tag>
-        <tag>购物车</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>外卖管理平台菜品信息分页查询</title>
-    <url>/2022/09/11/%E5%A4%96%E5%8D%96%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0%E8%8F%9C%E5%93%81%E4%BF%A1%E6%81%AF%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/</url>
-    <content><![CDATA[<h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><h3 id="一、需求分析"><a href="#一、需求分析" class="headerlink" title="一、需求分析"></a>一、需求分析</h3><p>系统中的菜品数据很多的时候，如果在一个页面中全部展示出来会显得比较乱，不便于查看，所以一般的系统中都会以分页的方式来展示列表数据。</p>
-<span id="more"></span>
-<h3 id="二、代码开发"><a href="#二、代码开发" class="headerlink" title="二、代码开发"></a>二、代码开发</h3><h4 id="梳理交互过程"><a href="#梳理交互过程" class="headerlink" title="梳理交互过程"></a>梳理交互过程</h4><p>在开发代码之前，需要梳理一下菜品分页查询时前端页面和服务端的交互过程:</p>
-<p>1、页面(backend/page/food/list.html)发送ajax请求，将分页查询参数(page、pageSize、name)提交到服务端，获取分页数据</p>
-<p>2、页面发送请求，请求服务端进行图片下载，用于页面图片展示</p>
-<p>开发菜品信息分页查询功能，其实就是在服务端编写代码去处理前端页面发送的这2次请求即可。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.controller;</span><br><span class="line"></span><br><span class="line">import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;</span><br><span class="line">import com.baomidou.mybatisplus.extension.plugins.pagination.Page;</span><br><span class="line">import com.itheima.reggie.common.R;</span><br><span class="line">import com.itheima.reggie.dto.DishDto;</span><br><span class="line">import com.itheima.reggie.entity.Category;</span><br><span class="line">import com.itheima.reggie.entity.Dish;</span><br><span class="line">import com.itheima.reggie.service.CategoryService;</span><br><span class="line">import com.itheima.reggie.service.DishFlavorService;</span><br><span class="line">import com.itheima.reggie.service.DishService;</span><br><span class="line">import lombok.extern.slf4j.Slf4j;</span><br><span class="line">import org.springframework.beans.BeanUtils;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.web.bind.annotation.*;</span><br><span class="line"></span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.stream.Collectors;</span><br><span class="line"></span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/dish&quot;)</span><br><span class="line">@Slf4j</span><br><span class="line">public class DishController &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private DishService dishService;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private DishFlavorService dishFlavorService;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private CategoryService categoryService;</span><br><span class="line"></span><br><span class="line">    @PostMapping</span><br><span class="line">    public R&lt;String&gt; save(@RequestBody DishDto dishDto) &#123;</span><br><span class="line"></span><br><span class="line">        log.info(dishDto.toString());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        dishService.saveWithFlavor(dishDto);</span><br><span class="line">        return R.success(&quot;新增菜品成功&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 菜品信息分页</span><br><span class="line">     * @param page</span><br><span class="line">     * @param pageSize</span><br><span class="line">     * @param name</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @GetMapping(&quot;/page&quot;)</span><br><span class="line">    public R&lt;Page&gt; page(int page, int pageSize, String name) &#123;</span><br><span class="line"></span><br><span class="line">        //构造分页构造器</span><br><span class="line">        Page&lt;Dish&gt; pageInfo = new Page&lt;&gt;(page,pageSize);</span><br><span class="line">        Page&lt;DishDto&gt; dishDtoPage = new Page&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        //条件构造器</span><br><span class="line">        LambdaQueryWrapper&lt;Dish&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        //添加过滤条件</span><br><span class="line">        queryWrapper.like(name != null,Dish::getName, name);</span><br><span class="line"></span><br><span class="line">        //添加排序条件</span><br><span class="line">        queryWrapper.orderByDesc(Dish::getUpdateTime);</span><br><span class="line"></span><br><span class="line">        //执行分页查询</span><br><span class="line">        dishService.page(pageInfo, queryWrapper);</span><br><span class="line"></span><br><span class="line">        //对象拷贝</span><br><span class="line">        BeanUtils.copyProperties(pageInfo,dishDtoPage,&quot;records&quot;);</span><br><span class="line"></span><br><span class="line">        List&lt;Dish&gt; records = pageInfo.getRecords();</span><br><span class="line">        List&lt;DishDto&gt; list = records.stream().map((item) -&gt;  &#123;</span><br><span class="line">            DishDto dishDto = new DishDto();</span><br><span class="line"></span><br><span class="line">            BeanUtils.copyProperties(item, dishDto);</span><br><span class="line"></span><br><span class="line">            Long categoryId = item.getCategoryId();</span><br><span class="line"></span><br><span class="line">            //根据id查询分类对象</span><br><span class="line">            Category category = categoryService.getById(categoryId);</span><br><span class="line"></span><br><span class="line">            if (category != null) &#123;</span><br><span class="line">                String categoryName = category.getName();</span><br><span class="line">                dishDto.setCategoryName(categoryName);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            return dishDto;</span><br><span class="line">        &#125;).collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        dishDtoPage.setRecords(list);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        return R.success(dishDtoPage);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>springboot - 外卖平台</tag>
-        <tag>项目开发</tag>
-        <tag>mybatis plus</tag>
-        <tag>菜品信息分页查询</tag>
       </tags>
   </entry>
   <entry>
@@ -926,28 +948,6 @@
         <tag>项目开发</tag>
         <tag>mybatis plus</tag>
         <tag>新增分类</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MySQL主从同步故障：Slave_SQL_Running:NO</title>
-    <url>/2022/10/03/MySQL%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E6%95%85%E9%9A%9C%EF%BC%9ASlave-SQL-Running-NO/</url>
-    <content><![CDATA[<p><img src="https://i.p04e.com/baid/i/2022/10/03/3jdmr.png"></p>
-<p>Slave_SQL_Running: No</p>
-<p>1.程序可能在slave上进行了写操作</p>
-<p>2.也可能是slave机器重起后，事务回滚造成的.</p>
-<p>一般是事务回滚造成的：</p>
-<p>解决办法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; stop slave ;</span><br><span class="line">mysql&gt; set GLOBAL SQL_SLAVE_SKIP_COUNTER=1;</span><br><span class="line">mysql&gt; start slave ;</span><br></pre></td></tr></table></figure>
-<p>或</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">change master to master_host=&#x27;------&#x27;,master_user=&#x27;xiaoming&#x27;,master_password=&#x27;Root@123456&#x27;,master_log_file=&#x27;mysql-bin.----&#x27;,master_log_pos=---;</span><br></pre></td></tr></table></figure>
-<p>——都是自己的</p>
-<p><img src="https://i.p04e.com/baid/i/2022/10/03/ifdz.png"></p>
-]]></content>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Mysql</tag>
-        <tag>错误</tag>
-        <tag>主从复制</tag>
       </tags>
   </entry>
 </search>
