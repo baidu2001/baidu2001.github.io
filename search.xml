@@ -928,4 +928,26 @@
         <tag>新增分类</tag>
       </tags>
   </entry>
+  <entry>
+    <title>MySQL主从同步故障：Slave_SQL_Running:NO</title>
+    <url>/2022/10/03/MySQL%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E6%95%85%E9%9A%9C%EF%BC%9ASlave-SQL-Running-NO/</url>
+    <content><![CDATA[<p><img src="https://i.p04e.com/baid/i/2022/10/03/3jdmr.png"></p>
+<p>Slave_SQL_Running: No</p>
+<p>1.程序可能在slave上进行了写操作</p>
+<p>2.也可能是slave机器重起后，事务回滚造成的.</p>
+<p>一般是事务回滚造成的：</p>
+<p>解决办法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; stop slave ;</span><br><span class="line">mysql&gt; set GLOBAL SQL_SLAVE_SKIP_COUNTER=1;</span><br><span class="line">mysql&gt; start slave ;</span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">change master to master_host=&#x27;------&#x27;,master_user=&#x27;xiaoming&#x27;,master_password=&#x27;Root@123456&#x27;,master_log_file=&#x27;mysql-bin.----&#x27;,master_log_pos=---;</span><br></pre></td></tr></table></figure>
+<p>——都是自己的</p>
+<p><img src="https://i.p04e.com/baid/i/2022/10/03/ifdz.png"></p>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Mysql</tag>
+        <tag>错误</tag>
+        <tag>主从复制</tag>
+      </tags>
+  </entry>
 </search>
