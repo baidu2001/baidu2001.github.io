@@ -215,7 +215,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-01-06 12:27:44 / 修改时间：12:36:58" itemprop="dateCreated datePublished" datetime="2023-01-06T12:27:44+08:00">2023-01-06</time>
+              <time title="创建时间：2023-01-06 12:27:44 / 修改时间：12:48:46" itemprop="dateCreated datePublished" datetime="2023-01-06T12:27:44+08:00">2023-01-06</time>
             </span>
 
           
@@ -229,127 +229,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="API接口文档利器：-Swagger"><a href="#API接口文档利器：-Swagger" class="headerlink" title="API接口文档利器：**Swagger"></a><strong>API</strong>接口文档利器：<em>**</em>Swagger</h2><h3 id="Swagger介绍"><a href="#Swagger介绍" class="headerlink" title="Swagger介绍"></a><strong>Swagger</strong>介绍</h3><p>Swagger 是一个规范和完整的框架，用于生成、描述、调用和可视化 RESTful 风格的 Web 服务</p>
+          <h2 id="API接口文档利器：Swagger"><a href="#API接口文档利器：Swagger" class="headerlink" title="API接口文档利器：Swagger"></a><strong>API</strong>接口文档利器：Swagger</h2><h3 id="Swagger介绍"><a href="#Swagger介绍" class="headerlink" title="Swagger介绍"></a><strong>Swagger</strong>介绍</h3><p>Swagger 是一个规范和完整的框架，用于生成、描述、调用和可视化 RESTful 风格的 Web 服务</p>
 <p>(<a target="_blank" rel="noopener" href="https://swagger.io/">https://swagger.io/</a>)。 它的主要作用是：</p>
-<p>\1. 使得前后端分离开发更加方便，有利于团队协作</p>
-<p>\2. 接口的文档在线自动生成，降低后端开发人员编写接口文档的负担</p>
-<p>\3. 功能测试</p>
-<p>Spring已经将Swagger纳入自身的标准，建立了Spring-swagger项目，现在叫Springfox。通过在项目中引入Springfox ，即可非常简单快捷的使用Swagger。</p>
-<h3 id="SpringBoot集成Swagger"><a href="#SpringBoot集成Swagger" class="headerlink" title="SpringBoot集成Swagger"></a><strong>SpringBoot</strong>集成Swagger</h3><p>项目中添加依赖</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!‐‐ Swagger依赖 ‐‐&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;springfox‐swagger2&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;springfox‐swagger‐ui&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-<p>工程的conﬁg包中添加一个Swagger配置类</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">package com.shanjupay.merchant.config;</span><br><span class="line"></span><br><span class="line">import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty; import org.springframework.context.annotation.Bean;</span><br><span class="line">import org.springframework.context.annotation.Configuration; import springfox.documentation.builders.ApiInfoBuilder; import springfox.documentation.builders.PathSelectors;</span><br><span class="line">import springfox.documentation.builders.RequestHandlerSelectors; import springfox.documentation.service.ApiInfo;</span><br><span class="line">import springfox.documentation.service.Contact; import springfox.documentation.spi.DocumentationType;</span><br><span class="line">import springfox.documentation.spring.web.plugins.Docket;</span><br><span class="line">import springfox.documentation.swagger2.annotations.EnableSwagger2;</span><br><span class="line"></span><br><span class="line">@Configuration</span><br><span class="line">@ConditionalOnProperty(prefix = &quot;swagger&quot;,value = &#123;&quot;enable&quot;&#125;,havingValue = &quot;true&quot;) @EnableSwagger2</span><br><span class="line">public class SwaggerConfiguration &#123;</span><br><span class="line"></span><br><span class="line">@Bean</span><br><span class="line">public Docket buildDocket() &#123;</span><br><span class="line">return new Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">.apiInfo(buildApiInfo())</span><br><span class="line">.select()</span><br><span class="line">// 要扫描的API(Controller)基础包</span><br><span class="line"></span><br><span class="line">.apis(RequestHandlerSelectors.basePackage(&quot;com.shanjupay.merchant.controller&quot;))</span><br><span class="line">.paths(PathSelectors.any())</span><br><span class="line">.build();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">*@param</span><br><span class="line"></span><br><span class="line">*@return springfox.documentation.service.ApiInfo</span><br><span class="line">*@Title: 构建API基本信息</span><br><span class="line">*@methodName: buildApiInfo</span><br><span class="line">*/</span><br><span class="line">private ApiInfo buildApiInfo() &#123;</span><br><span class="line">Contact contact = new Contact(&quot;开发者&quot;,&quot;&quot;,&quot;&quot;); return new ApiInfoBuilder()</span><br><span class="line">.title(&quot;闪聚支付‐商户应用API文档&quot;)</span><br><span class="line">.description(&quot;&quot;)</span><br><span class="line">.contact(contact)</span><br><span class="line">.version(&quot;1.0.0&quot;).build();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>添加SpringMVC配置类：WebMvcConﬁg，让外部可直接访问Swagger文档</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package com.shanjupay.merchant.config;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line">import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry; import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;</span><br><span class="line"></span><br><span class="line">@Component</span><br><span class="line">public class WebMvcConfig implements WebMvcConfigurer &#123;</span><br><span class="line">/**</span><br><span class="line">*添加静态资源文件，外部可以直接访问地址</span><br><span class="line">*</span><br><span class="line">*@param registry</span><br><span class="line">*/ @Override</span><br><span class="line">public void addResourceHandlers(ResourceHandlerRegistry registry) &#123; registry.addResourceHandler(&quot;/**&quot;).addResourceLocations(&quot;classpath:/static/&quot;);</span><br><span class="line"></span><br><span class="line">registry.addResourceHandler(&quot;swagger‐ui.html&quot;)</span><br><span class="line">.addResourceLocations(&quot;classpath:/META‐INF/resources/&quot;);</span><br><span class="line"></span><br><span class="line">registry.addResourceHandler(&quot;/webjars/**&quot;)</span><br><span class="line">.addResourceLocations(&quot;classpath:/META‐INF/resources/webjars/&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Swagger常用注解"><a href="#Swagger常用注解" class="headerlink" title="Swagger常用注解"></a><strong>Swagger</strong>常用注解</h3><p>在Java类中添加Swagger的注解即可生成Swagger接口文档，常用Swagger注解如下：</p>
-<p>@Api：修饰整个类，描述Controller的作用 @ApiOperation：描述一个类的一个方法，或者说一个接口@ApiParam：单个参数的描述信息</p>
-<p>@ApiModel：用对象来接收参数</p>
-<p>@ApiModelProperty：用对象接收参数时，描述对象的一个字段@ApiResponse：HTTP响应其中1个描述</p>
-<p>在Java类中添加Swagger的注解即可生成Swagger接口文档，常用Swagger注解如下：</p>
-<p>@Api：修饰整个类，描述Controller的作用 @ApiOperation：描述一个类的一个方法，或者说一个接口@ApiParam：单个参数的描述信息</p>
-<p>@ApiModel：用对象来接收参数</p>
-<p>@ApiModelProperty：用对象接收参数时，描述对象的一个字段@ApiResponse：HTTP响应其中1个描述</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th><strong>属性</strong></th>
-<th><strong>取值</strong></th>
-<th><strong>作用</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>paramType</td>
-<td></td>
-<td>查询参数类型</td>
-</tr>
-<tr>
-<td></td>
-<td>path</td>
-<td>以地址的形式提交数据</td>
-</tr>
-<tr>
-<td></td>
-<td>query</td>
-<td>直接跟参数完成自动映射赋值</td>
-</tr>
-<tr>
-<td></td>
-<td>body</td>
-<td>以流的形式提交 仅支持POST</td>
-</tr>
-<tr>
-<td></td>
-<td>header</td>
-<td>参数在request headers 里边提交</td>
-</tr>
-<tr>
-<td></td>
-<td>form</td>
-<td>以form表单的形式提交 仅支持POST</td>
-</tr>
-<tr>
-<td>dataType</td>
-<td></td>
-<td>参数的数据类型 只作为标志说明，并没有实际验证</td>
-</tr>
-<tr>
-<td></td>
-<td>Long</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>String</td>
-<td></td>
-</tr>
-<tr>
-<td>name</td>
-<td></td>
-<td>接收参数名</td>
-</tr>
-<tr>
-<td>value</td>
-<td></td>
-<td>接收参数的意义描述</td>
-</tr>
-<tr>
-<td>required</td>
-<td></td>
-<td>参数是否必填</td>
-</tr>
-<tr>
-<td></td>
-<td>true</td>
-<td>必填</td>
-</tr>
-<tr>
-<td></td>
-<td>false</td>
-<td>非必填</td>
-</tr>
-<tr>
-<td>defaultValue</td>
-<td></td>
-<td>默认值</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>上边的属性后边编写程序时用到哪个我再详细讲解，下边写一个swagger的简单例子，我们在MerchantController   中添加Swagger注解，代码如下所示：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Api(value = &quot;商户平台‐商户相关&quot;, tags = &quot;商户平台‐商户相关&quot;, description = &quot;商户平台‐商户相关&quot;) @RestController</span><br><span class="line">public class MerchantController &#123;</span><br><span class="line"></span><br><span class="line">@Reference</span><br><span class="line">private MerchantService merchantService;</span><br></pre></td></tr></table></figure>
-<p>Swagger生成API文档的工作原理：</p>
-<p>1、shanjupay-merchant-application启动时会扫描到SwaggerConﬁguration类</p>
-<p>2、在此类中指定了扫描包路径com.shanjupay.merchant.controller，会找到在此包下及子包下标记有@RestController注解的controller类</p>
-<p>3、根据controller类中的Swagger注解生成API文档</p>
-<h2 id="接口调试利器Postman"><a href="#接口调试利器Postman" class="headerlink" title="接口调试利器Postman"></a><strong>接口调试利器</strong>Postman</h2><p>Postman是一款功能强大的http接口测试工具，使用Postman可以完成http各种请求的功能测试。作为服务器端   开发人员，当一个业务功能开发完毕后，应该用Postman进行功能测试。</p>
-<p>1、请自行在本机安装Postman</p>
-<p>2、新建集合(建议一个微服务新建一个对应的集合)：商户应用</p>
-<p><img src="https://i.p04e.com/baid/i/2023/01/06/4nrlz.png"><br><img src="https://i.p04e.com/baid/i/2023/01/06/nysy.png"></p>
-<p>填写新建商户接口地址和请求类型后，点击Send发送请求</p>
-<p><img src="https://i.p04e.com/baid/i/2023/01/06/6cromn.png"></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/01/06/API%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%E5%88%A9%E5%99%A8%EF%BC%9ASwagger-Postman/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -434,76 +323,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/06/API%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%E5%88%A9%E5%99%A8%EF%BC%9ASwagge/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="白都">
-      <meta itemprop="description" content="这是我的个人知识技术总结博客，欢迎大家的到来，博客会慢慢更新。 ------------有问题请通过邮箱2653751429@qq.com联系，评论功能是不会开启的。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白都">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/01/06/API%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%E5%88%A9%E5%99%A8%EF%BC%9ASwagge/" class="post-title-link" itemprop="url">API接口文档利器：Swagger</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-01-06 10:23:59 / 修改时间：10:29:49" itemprop="dateCreated datePublished" datetime="2023-01-06T10:23:59+08:00">2023-01-06</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Swagger介绍"><a href="#Swagger介绍" class="headerlink" title="Swagger介绍"></a><strong>Swagger</strong>介绍</h3><p>Swagger 是一个规范和完整的框架，用于生成、描述、调用和可视化 RESTful 风格的 Web 服务</p>
-<p>(<a target="_blank" rel="noopener" href="https://swagger.io/">https://swagger.io/</a>)。 它的主要作用是：</p>
-<p>\1. 使得前后端分离开发更加方便，有利于团队协作</p>
-<p>\2. 接口的文档在线自动生成，降低后端开发人员编写接口文档的负担</p>
-<p>\3. 功能测试</p>
-<p>Spring已经将Swagger纳入自身的标准，建立了Spring-swagger项目，现在叫Springfox。通过在项目中引入Springfox ，即可非常简单快捷的使用Swagger。</p>
-<h3 id="SpringBoot-集成-Swagger"><a href="#SpringBoot-集成-Swagger" class="headerlink" title="SpringBoot**集成**Swagger"></a><strong>SpringBoot**</strong>集成<em>**</em>Swagger</h3><p>项目中添加依赖</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!‐‐ Swagger依赖 ‐‐&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;springfox‐swagger2&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;springfox‐swagger‐ui&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-<p>工程的conﬁg包中添加一个Swagger配置类</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">package com.shanjupay.merchant.config;</span><br><span class="line"></span><br><span class="line">import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty; import org.springframework.context.annotation.Bean;</span><br><span class="line">import org.springframework.context.annotation.Configuration; import springfox.documentation.builders.ApiInfoBuilder; import springfox.documentation.builders.PathSelectors;</span><br><span class="line">import springfox.documentation.builders.RequestHandlerSelectors; import springfox.documentation.service.ApiInfo;</span><br><span class="line">import springfox.documentation.service.Contact; import springfox.documentation.spi.DocumentationType;</span><br><span class="line">import springfox.documentation.spring.web.plugins.Docket;</span><br><span class="line">import springfox.documentation.swagger2.annotations.EnableSwagger2;</span><br><span class="line"></span><br><span class="line">@Configuration</span><br><span class="line">@ConditionalOnProperty(prefix = &quot;swagger&quot;,value = &#123;&quot;enable&quot;&#125;,havingValue = &quot;true&quot;) @EnableSwagger2</span><br><span class="line">public class SwaggerConfiguration &#123;</span><br><span class="line"></span><br><span class="line">@Bean</span><br><span class="line">public Docket buildDocket() &#123;</span><br><span class="line">return new Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">.apiInfo(buildApiInfo())</span><br><span class="line">.select()</span><br><span class="line">// 要扫描的API(Controller)基础包</span><br><span class="line"></span><br><span class="line">.apis(RequestHandlerSelectors.basePackage(&quot;com.shanjupay.merchant.controller&quot;))</span><br><span class="line">.paths(PathSelectors.any())</span><br><span class="line">.build();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">*@param</span><br><span class="line"></span><br><span class="line">*@return springfox.documentation.service.ApiInfo</span><br><span class="line">*@Title: 构建API基本信息</span><br><span class="line">*@methodName: buildApiInfo</span><br><span class="line">*/</span><br><span class="line">private ApiInfo buildApiInfo() &#123;</span><br><span class="line">Contact contact = new Contact(&quot;开发者&quot;,&quot;&quot;,&quot;&quot;); return new ApiInfoBuilder()</span><br><span class="line">.title(&quot;闪聚支付‐商户应用API文档&quot;)</span><br><span class="line">.description(&quot;&quot;)</span><br><span class="line">.contact(contact)</span><br><span class="line">.version(&quot;1.0.0&quot;).build();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>添加SpringMVC配置类：WebMvcConﬁg，让外部可直接访问Swagger文档</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package com.shanjupay.merchant.config;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line">import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry; import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;</span><br><span class="line"></span><br><span class="line">@Component</span><br><span class="line">public class WebMvcConfig implements WebMvcConfigurer &#123;</span><br><span class="line">/**</span><br><span class="line">*添加静态资源文件，外部可以直接访问地址</span><br><span class="line">*</span><br><span class="line">*@param registry</span><br><span class="line">*/ @Override</span><br><span class="line">public void addResourceHandlers(ResourceHandlerRegistry registry) &#123; registry.addResourceHandler(&quot;/**&quot;).addResourceLocations(&quot;classpath:/static/&quot;);</span><br><span class="line"></span><br><span class="line">registry.addResourceHandler(&quot;swagger‐ui.html&quot;)</span><br><span class="line">.addResourceLocations(&quot;classpath:/META‐INF/resources/&quot;);</span><br><span class="line"></span><br><span class="line">registry.addResourceHandler(&quot;/webjars/**&quot;)</span><br><span class="line">.addResourceLocations(&quot;classpath:/META‐INF/resources/webjars/&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/06/Nacos-%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0%E4%B8%8E%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86v1-0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -529,7 +348,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-01-06 09:11:53 / 修改时间：12:41:11" itemprop="dateCreated datePublished" datetime="2023-01-06T09:11:53+08:00">2023-01-06</time>
+              <time title="创建时间：2023-01-06 09:11:53 / 修改时间：12:45:41" itemprop="dateCreated datePublished" datetime="2023-01-06T09:11:53+08:00">2023-01-06</time>
             </span>
 
           
@@ -969,6 +788,72 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/20/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E4%B9%8B%E4%BD%BF%E7%94%A8git%E7%AE%A1%E7%90%86%E4%BB%A3%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="白都">
+      <meta itemprop="description" content="这是我的个人知识技术总结博客，欢迎大家的到来，博客会慢慢更新。 ------------有问题请通过邮箱2653751429@qq.com联系，评论功能是不会开启的。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白都">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/20/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E4%B9%8B%E4%BD%BF%E7%94%A8git%E7%AE%A1%E7%90%86%E4%BB%A3%E7%A0%81/" class="post-title-link" itemprop="url">外卖项目优化之使用git管理代码</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-09-20 09:22:24 / 修改时间：09:43:23" itemprop="dateCreated datePublished" datetime="2022-09-20T09:22:24+08:00">2022-09-20</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="一、配置ssh公钥"><a href="#一、配置ssh公钥" class="headerlink" title="一、配置ssh公钥"></a>一、配置ssh公钥</h3><p>在原来项目的基础上做出优化，先将代码移至gitee好管理代码。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/09/20/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E4%B9%8B%E4%BD%BF%E7%94%A8git%E7%AE%A1%E7%90%86%E4%BB%A3%E7%A0%81/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
@@ -1044,7 +929,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
