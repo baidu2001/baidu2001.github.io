@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <!--pjax：防止跳转页面音乐暂停-->
+  <script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="API接口文档利器：**SwaggerSwagger介绍Swagger 是一个规范和完整的框架，用于生成、描述、调用和可视化 RESTful 风格的 Web 服务 (https:&#x2F;&#x2F;swagger.io&#x2F;)。 它的主要作用是： \1. 使得前后端分离开发更加方便，有利于团队协作 \2. 接口的文档在线自动生成，降低后端开发人员编写接口文档的负担 \3. 功能测试 Spring已经将Swagger纳">
+<meta property="og:type" content="article">
+<meta property="og:title" content="API接口文档利器：Swagger,Postman">
+<meta property="og:url" content="http://example.com/2023/01/06/API%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%E5%88%A9%E5%99%A8%EF%BC%9ASwagger-Postman/index.html">
+<meta property="og:site_name" content="白都">
+<meta property="og:description" content="API接口文档利器：**SwaggerSwagger介绍Swagger 是一个规范和完整的框架，用于生成、描述、调用和可视化 RESTful 风格的 Web 服务 (https:&#x2F;&#x2F;swagger.io&#x2F;)。 它的主要作用是： \1. 使得前后端分离开发更加方便，有利于团队协作 \2. 接口的文档在线自动生成，降低后端开发人员编写接口文档的负担 \3. 功能测试 Spring已经将Swagger纳">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2023/01/06/4nrlz.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2023/01/06/nysy.png">
+<meta property="og:image" content="https://i.p04e.com/baid/i/2023/01/06/6cromn.png">
+<meta property="article:published_time" content="2023-01-06T04:27:44.000Z">
+<meta property="article:modified_time" content="2023-01-06T04:36:58.928Z">
+<meta property="article:author" content="白都">
+<meta property="article:tag" content="Swagger">
+<meta property="article:tag" content="Postman">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.p04e.com/baid/i/2023/01/06/4nrlz.png">
+
+<link rel="canonical" href="http://example.com/2023/01/06/API%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%E5%88%A9%E5%99%A8%EF%BC%9ASwagger-Postman/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>API接口文档利器：Swagger,Postman | 白都</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">白都</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">linBaiDu</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/yourname" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/06/API%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%E5%88%A9%E5%99%A8%EF%BC%9ASwagger-Postman/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="白都">
+      <meta itemprop="description" content="这是我的个人知识技术总结博客，欢迎大家的到来，博客会慢慢更新。 ------------有问题请通过邮箱2653751429@qq.com联系，评论功能是不会开启的。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白都">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          API接口文档利器：Swagger,Postman
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-01-06 12:27:44 / 修改时间：12:36:58" itemprop="dateCreated datePublished" datetime="2023-01-06T12:27:44+08:00">2023-01-06</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="API接口文档利器：-Swagger"><a href="#API接口文档利器：-Swagger" class="headerlink" title="API接口文档利器：**Swagger"></a><strong>API</strong>接口文档利器：<em>**</em>Swagger</h2><h3 id="Swagger介绍"><a href="#Swagger介绍" class="headerlink" title="Swagger介绍"></a><strong>Swagger</strong>介绍</h3><p>Swagger 是一个规范和完整的框架，用于生成、描述、调用和可视化 RESTful 风格的 Web 服务</p>
+<p>(<a target="_blank" rel="noopener" href="https://swagger.io/">https://swagger.io/</a>)。 它的主要作用是：</p>
+<p>\1. 使得前后端分离开发更加方便，有利于团队协作</p>
+<p>\2. 接口的文档在线自动生成，降低后端开发人员编写接口文档的负担</p>
+<p>\3. 功能测试</p>
+<p>Spring已经将Swagger纳入自身的标准，建立了Spring-swagger项目，现在叫Springfox。通过在项目中引入Springfox ，即可非常简单快捷的使用Swagger。</p>
+<h3 id="SpringBoot集成Swagger"><a href="#SpringBoot集成Swagger" class="headerlink" title="SpringBoot集成Swagger"></a><strong>SpringBoot</strong>集成Swagger</h3><p>项目中添加依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!‐‐ Swagger依赖 ‐‐&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;springfox‐swagger2&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;springfox‐swagger‐ui&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>工程的conﬁg包中添加一个Swagger配置类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">package com.shanjupay.merchant.config;</span><br><span class="line"></span><br><span class="line">import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty; import org.springframework.context.annotation.Bean;</span><br><span class="line">import org.springframework.context.annotation.Configuration; import springfox.documentation.builders.ApiInfoBuilder; import springfox.documentation.builders.PathSelectors;</span><br><span class="line">import springfox.documentation.builders.RequestHandlerSelectors; import springfox.documentation.service.ApiInfo;</span><br><span class="line">import springfox.documentation.service.Contact; import springfox.documentation.spi.DocumentationType;</span><br><span class="line">import springfox.documentation.spring.web.plugins.Docket;</span><br><span class="line">import springfox.documentation.swagger2.annotations.EnableSwagger2;</span><br><span class="line"></span><br><span class="line">@Configuration</span><br><span class="line">@ConditionalOnProperty(prefix = &quot;swagger&quot;,value = &#123;&quot;enable&quot;&#125;,havingValue = &quot;true&quot;) @EnableSwagger2</span><br><span class="line">public class SwaggerConfiguration &#123;</span><br><span class="line"></span><br><span class="line">@Bean</span><br><span class="line">public Docket buildDocket() &#123;</span><br><span class="line">return new Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">.apiInfo(buildApiInfo())</span><br><span class="line">.select()</span><br><span class="line">// 要扫描的API(Controller)基础包</span><br><span class="line"></span><br><span class="line">.apis(RequestHandlerSelectors.basePackage(&quot;com.shanjupay.merchant.controller&quot;))</span><br><span class="line">.paths(PathSelectors.any())</span><br><span class="line">.build();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">*@param</span><br><span class="line"></span><br><span class="line">*@return springfox.documentation.service.ApiInfo</span><br><span class="line">*@Title: 构建API基本信息</span><br><span class="line">*@methodName: buildApiInfo</span><br><span class="line">*/</span><br><span class="line">private ApiInfo buildApiInfo() &#123;</span><br><span class="line">Contact contact = new Contact(&quot;开发者&quot;,&quot;&quot;,&quot;&quot;); return new ApiInfoBuilder()</span><br><span class="line">.title(&quot;闪聚支付‐商户应用API文档&quot;)</span><br><span class="line">.description(&quot;&quot;)</span><br><span class="line">.contact(contact)</span><br><span class="line">.version(&quot;1.0.0&quot;).build();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>添加SpringMVC配置类：WebMvcConﬁg，让外部可直接访问Swagger文档</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package com.shanjupay.merchant.config;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line">import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry; import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;</span><br><span class="line"></span><br><span class="line">@Component</span><br><span class="line">public class WebMvcConfig implements WebMvcConfigurer &#123;</span><br><span class="line">/**</span><br><span class="line">*添加静态资源文件，外部可以直接访问地址</span><br><span class="line">*</span><br><span class="line">*@param registry</span><br><span class="line">*/ @Override</span><br><span class="line">public void addResourceHandlers(ResourceHandlerRegistry registry) &#123; registry.addResourceHandler(&quot;/**&quot;).addResourceLocations(&quot;classpath:/static/&quot;);</span><br><span class="line"></span><br><span class="line">registry.addResourceHandler(&quot;swagger‐ui.html&quot;)</span><br><span class="line">.addResourceLocations(&quot;classpath:/META‐INF/resources/&quot;);</span><br><span class="line"></span><br><span class="line">registry.addResourceHandler(&quot;/webjars/**&quot;)</span><br><span class="line">.addResourceLocations(&quot;classpath:/META‐INF/resources/webjars/&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Swagger常用注解"><a href="#Swagger常用注解" class="headerlink" title="Swagger常用注解"></a><strong>Swagger</strong>常用注解</h3><p>在Java类中添加Swagger的注解即可生成Swagger接口文档，常用Swagger注解如下：</p>
+<p>@Api：修饰整个类，描述Controller的作用 @ApiOperation：描述一个类的一个方法，或者说一个接口@ApiParam：单个参数的描述信息</p>
+<p>@ApiModel：用对象来接收参数</p>
+<p>@ApiModelProperty：用对象接收参数时，描述对象的一个字段@ApiResponse：HTTP响应其中1个描述</p>
+<p>在Java类中添加Swagger的注解即可生成Swagger接口文档，常用Swagger注解如下：</p>
+<p>@Api：修饰整个类，描述Controller的作用 @ApiOperation：描述一个类的一个方法，或者说一个接口@ApiParam：单个参数的描述信息</p>
+<p>@ApiModel：用对象来接收参数</p>
+<p>@ApiModelProperty：用对象接收参数时，描述对象的一个字段@ApiResponse：HTTP响应其中1个描述</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>属性</strong></th>
+<th><strong>取值</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>paramType</td>
+<td></td>
+<td>查询参数类型</td>
+</tr>
+<tr>
+<td></td>
+<td>path</td>
+<td>以地址的形式提交数据</td>
+</tr>
+<tr>
+<td></td>
+<td>query</td>
+<td>直接跟参数完成自动映射赋值</td>
+</tr>
+<tr>
+<td></td>
+<td>body</td>
+<td>以流的形式提交 仅支持POST</td>
+</tr>
+<tr>
+<td></td>
+<td>header</td>
+<td>参数在request headers 里边提交</td>
+</tr>
+<tr>
+<td></td>
+<td>form</td>
+<td>以form表单的形式提交 仅支持POST</td>
+</tr>
+<tr>
+<td>dataType</td>
+<td></td>
+<td>参数的数据类型 只作为标志说明，并没有实际验证</td>
+</tr>
+<tr>
+<td></td>
+<td>Long</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td></td>
+<td>接收参数名</td>
+</tr>
+<tr>
+<td>value</td>
+<td></td>
+<td>接收参数的意义描述</td>
+</tr>
+<tr>
+<td>required</td>
+<td></td>
+<td>参数是否必填</td>
+</tr>
+<tr>
+<td></td>
+<td>true</td>
+<td>必填</td>
+</tr>
+<tr>
+<td></td>
+<td>false</td>
+<td>非必填</td>
+</tr>
+<tr>
+<td>defaultValue</td>
+<td></td>
+<td>默认值</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>上边的属性后边编写程序时用到哪个我再详细讲解，下边写一个swagger的简单例子，我们在MerchantController   中添加Swagger注解，代码如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Api(value = &quot;商户平台‐商户相关&quot;, tags = &quot;商户平台‐商户相关&quot;, description = &quot;商户平台‐商户相关&quot;) @RestController</span><br><span class="line">public class MerchantController &#123;</span><br><span class="line"></span><br><span class="line">@Reference</span><br><span class="line">private MerchantService merchantService;</span><br></pre></td></tr></table></figure>
+<p>Swagger生成API文档的工作原理：</p>
+<p>1、shanjupay-merchant-application启动时会扫描到SwaggerConﬁguration类</p>
+<p>2、在此类中指定了扫描包路径com.shanjupay.merchant.controller，会找到在此包下及子包下标记有@RestController注解的controller类</p>
+<p>3、根据controller类中的Swagger注解生成API文档</p>
+<h2 id="接口调试利器Postman"><a href="#接口调试利器Postman" class="headerlink" title="接口调试利器Postman"></a><strong>接口调试利器</strong>Postman</h2><p>Postman是一款功能强大的http接口测试工具，使用Postman可以完成http各种请求的功能测试。作为服务器端   开发人员，当一个业务功能开发完毕后，应该用Postman进行功能测试。</p>
+<p>1、请自行在本机安装Postman</p>
+<p>2、新建集合(建议一个微服务新建一个对应的集合)：商户应用</p>
+<p><img src="https://i.p04e.com/baid/i/2023/01/06/4nrlz.png"><br><img src="https://i.p04e.com/baid/i/2023/01/06/nysy.png"></p>
+<p>填写新建商户接口地址和请求类型后，点击Send发送请求</p>
+<p><img src="https://i.p04e.com/baid/i/2023/01/06/6cromn.png"></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>有帮助的话可以来打赏一些或者经常来看看我哦，我在这里等你！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="白都 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="白都 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Swagger/" rel="tag"># Swagger</a>
+              <a href="/tags/Postman/" rel="tag"># Postman</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/01/06/Mybatis-Plus/" rel="prev" title="Mybatis-Plus">
+      <i class="fa fa-chevron-left"></i> Mybatis-Plus
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+  
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=52 src="//music.163.com/outchain/player?type=0&id=6660459076&auto=1&height=32"></iframe>
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#API%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%E5%88%A9%E5%99%A8%EF%BC%9A-Swagger"><span class="nav-number">1.</span> <span class="nav-text">API接口文档利器：**Swagger</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Swagger%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">Swagger介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringBoot%E9%9B%86%E6%88%90Swagger"><span class="nav-number">1.2.</span> <span class="nav-text">SpringBoot集成Swagger</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Swagger%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3"><span class="nav-number">1.3.</span> <span class="nav-text">Swagger常用注解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E8%B0%83%E8%AF%95%E5%88%A9%E5%99%A8Postman"><span class="nav-number">2.</span> <span class="nav-text">接口调试利器Postman</span></a></li></ol></div>
+      </div>
+      
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="白都"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">白都</p>
+  <div class="site-description" itemprop="description">这是我的个人知识技术总结博客，欢迎大家的到来，博客会慢慢更新。 ------------有问题请通过邮箱2653751429@qq.com联系，评论功能是不会开启的。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+          
+  <div id="sidebar-dimmer"></div>
+  
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">白都</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="true"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+
+    </div>
+</body>
+</html>

@@ -1449,7 +1449,7 @@
 <p>我们的代码可以通过读取配置文件的方式读取服务生产方网络位置，如下：</p>
 <p><img src="https://i.p04e.com/baid/i/2023/01/06/62i4.png"></p>
 <p>我们通过Spring boot技术很容易实现： </p>
-<p><strong>1**</strong>、创建<strong><strong>nacos-discovery</strong></strong>父工程**</p>
+<p><strong>1</strong>、创建nacos-discovery父工程</p>
 <p>pom.xml如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF‐8&quot;?&gt;</span><br><span class="line">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema‐instance&quot; xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0</span><br><span class="line">http://maven.apache.org/xsd/maven‐4.0.0.xsd&quot;&gt;</span><br><span class="line">&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line"></span><br><span class="line">&lt;groupId&gt;com.itheima.nacos&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;nacos‐discovery&lt;/artifactId&gt;</span><br><span class="line">&lt;version&gt;1.0‐SNAPSHOT&lt;/version&gt;</span><br><span class="line">&lt;packaging&gt;pom&lt;/packaging&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependencyManagement&gt;</span><br><span class="line">&lt;dependencies&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;spring‐boot‐dependencies&lt;/artifactId&gt;</span><br><span class="line">&lt;version&gt;2.1.3.RELEASE&lt;/version&gt;</span><br><span class="line">&lt;type&gt;pom&lt;/type&gt;</span><br><span class="line">&lt;scope&gt;import&lt;/scope&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br><span class="line">&lt;/dependencyManagement&gt;</span><br><span class="line"></span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
 <p>2、Service B（服务生产者）</p>
@@ -1463,7 +1463,7 @@
 <p>配置文件：</p>
 <p>创建application.yml，内容如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server：</span><br><span class="line">port：56010</span><br></pre></td></tr></table></figure>
-<p><strong>3**</strong>、<strong>**Service</strong> <strong>A**</strong>（服务消费者）**</p>
+<p><strong>3</strong>、<strong>Service</strong> <strong>A</strong>（服务消费者）</p>
 <p>创建nacos-restful-consumer 服务消费工程。</p>
 <p>pom.xml如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF‐8&quot;?&gt;</span><br><span class="line">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema‐instance&quot; xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0</span><br><span class="line">http://maven.apache.org/xsd/maven‐4.0.0.xsd&quot;&gt;</span><br><span class="line">&lt;parent&gt;</span><br><span class="line">&lt;artifactId&gt;nacos‐discovery&lt;/artifactId&gt;</span><br><span class="line">&lt;groupId&gt;com.itheima.nacos&lt;/groupId&gt;</span><br><span class="line">&lt;version&gt;1.0‐SNAPSHOT&lt;/version&gt;</span><br><span class="line">&lt;/parent&gt;</span><br><span class="line">&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line"></span><br><span class="line">&lt;artifactId&gt;nacos‐restful‐consumer&lt;/artifactId&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependencies&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;spring‐boot‐starter‐web&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br><span class="line"></span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
@@ -1487,7 +1487,7 @@
 <p>（2） <strong>服务发现客户端</strong>会定期从<strong>服务发现中心</strong>同步<strong>服务注册表</strong>   ，并缓存在客户端。</p>
 <p>（3） 当需要对某服务进行请求时，服务实例通过该注册表，定位目标服务网络地址。若目标服务存在多个网络地 址，则使用负载均衡算法从多个服务实例中选择出一个，然后发出请求。</p>
 <p>总结，在微服务环境中，由于服务运行实例的网络地址是不断动态变化的，服务实例数量的动态变化   ，因此无法使用固定的配置文件来记录服务提供方的网络地址，必须使用动态的服务发现机制用于实现微服务间的<strong>相互感知</strong>。 各服务实例会上报自己的网络地址，这样服务中心就形成了一个完整的服务注册表，各服务实例会通过<strong>服务发现中</strong> <strong>心</strong>来获取访问目标服务的网络地址，从而实现<strong>服务发现</strong>的机制。</p>
-<h2 id="2-Nacos-服务发现"><a href="#2-Nacos-服务发现" class="headerlink" title="2 Nacos 服务发现"></a>2 <strong>Nacos</strong> <strong>服务发现</strong></h2><h3 id="2-1-Nacos特性"><a href="#2-1-Nacos特性" class="headerlink" title="2.1. Nacos特性**"></a>2.1. <strong>Nacos</strong>特性**</h3><p>Nacos主要提供以下四大功能：</p>
+<h2 id="2-Nacos-服务发现"><a href="#2-Nacos-服务发现" class="headerlink" title="2 Nacos 服务发现"></a>2 <strong>Nacos</strong> <strong>服务发现</strong></h2><h3 id="2-1-Nacos特性"><a href="#2-1-Nacos特性" class="headerlink" title="2.1. Nacos特性"></a>2.1. <strong>Nacos</strong>特性</h3><p>Nacos主要提供以下四大功能：</p>
 <ol>
 <li><strong>服务发现与服务健康检查</strong></li>
 </ol>
@@ -1505,15 +1505,20 @@
 </ol>
 <p>Nacos 能让您从微服务平台建设的视角管理数据中心的所有服务及元数据，包括管理服务的描述、生命周期、服务的静态依赖分析、服务的健康状态、服务的流量管理、路由及安全策略。</p>
 <h3 id="2-2-启动服务器"><a href="#2-2-启动服务器" class="headerlink" title="2.2 启动服务器"></a>2.2 <strong>启动服务器</strong></h3><p>nacos的默认端口是8848，需要保证8848默认端口没有被其他进程占用。 进入安装程序的bin目录：</p>
-<p><strong>Windows**</strong>启动方式：** 启动命令：</p>
+<p><strong>Windows</strong>启动方式： 启动命令：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cmd startup.cmd</span><br></pre></td></tr></table></figure>
 <p>或者双击startup.cmd运行文件。</p>
 <p>启动成功，可通过浏览器访问   <a href="http://127.0.0.1:8848/nacos">http://127.0.0.1:8848/nacos</a>   ，打开如下nacos控制台登录页面：</p>
 <p>启动成功，可通过浏览器访问   <a href="http://127.0.0.1:8848/nacos">http://127.0.0.1:8848/nacos</a>   ，打开如下nacos控制台登录页面：</p>
-<h3 id="2-3外部-mysql-数据库支持"><a href="#2-3外部-mysql-数据库支持" class="headerlink" title="2.3外部**mysql**数据库支持"></a>2.3<strong>外部**</strong>mysql<strong>**数据库支持</strong></h3><p>单机模式时nacos默认使用嵌入式数据库实现数据的存储，若想使用外部mysql存储nacos数据，需要进行以下步 骤：</p>
-<p>\1. <img src="file:///C:\Users\Lenovo\AppData\Local\Temp\ksohtml91992\wps15.png" alt="img">安装数据库，版本要求：5.6.5+ ，mysql 8 以下</p>
-<p>\2. <img src="file:///C:\Users\Lenovo\AppData\Local\Temp\ksohtml91992\wps16.png" alt="img">初始化mysql数据库，新建数据库nacos_conﬁg，数据库初始化文件：${nacoshome}/conf/nacos- mysql.sql</p>
-<p>\3. <img src="file:///C:\Users\Lenovo\AppData\Local\Temp\ksohtml91992\wps17.png" alt="img">修改${nacoshome}/conf/application.properties文件，增加支持mysql数据源配置（目前只支持mysql），添加mysql数据源的url、用户名和密码。</p>
+<h3 id="2-3外部mysql数据库支持"><a href="#2-3外部mysql数据库支持" class="headerlink" title="2.3外部mysql数据库支持"></a>2.3<strong>外部</strong>mysql<strong>数据库支持</strong></h3><p>单机模式时nacos默认使用嵌入式数据库实现数据的存储，若想使用外部mysql存储nacos数据，需要进行以下步 骤：</p>
+<ol>
+<li><p>安装数据库，版本要求：5.6.5+ ，mysql 8 以下</p>
+</li>
+<li><p>初始化mysql数据库，新建数据库nacos_conﬁg，数据库初始化文件：${nacoshome}/conf/nacos- mysql.sql</p>
+</li>
+<li><p>修改${nacoshome}/conf/application.properties文件，增加支持mysql数据源配置（目前只支持mysql），添加mysql数据源的url、用户名和密码。</p>
+</li>
+</ol>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">spring.datasource.platform=mysql</span><br><span class="line"></span><br><span class="line">db.num=1 db.url.0=jdbc:mysql://11.162.196.16:3306/nacos_config?</span><br><span class="line">characterEncoding=utf8&amp;connectTimeout=1000&amp;socketTimeout=3000&amp;autoReconnect=true db.user=nacos_devtest</span><br><span class="line">db.password=youdontknow</span><br></pre></td></tr></table></figure>
 <h3 id="2-4-服务注册"><a href="#2-4-服务注册" class="headerlink" title="2.4 服务注册"></a>2.4 <strong>服务注册</strong></h3><p>在服务提供工程中配置nacos服务发现相关的配置： </p>
 <p>服务提供：</p>
@@ -1522,9 +1527,9 @@
 <p>启动服务提供</p>
 <p>观察nacos服务列表，nacos-restful-provider注册成功</p>
 <h2 id="3-服务发现数据模型"><a href="#3-服务发现数据模型" class="headerlink" title="3. 服务发现数据模型"></a>3. <strong>服务发现数据模型</strong></h2><h3 id="3-1-Namespace-隔离设计"><a href="#3-1-Namespace-隔离设计" class="headerlink" title="3.1 Namespace 隔离设计"></a>3.1 <strong>Namespace</strong> <strong>隔离设计</strong></h3><p><strong>命名空间**</strong>(Namespace)**用于进行租户粒度的隔离，Namespace    的常用场景之一是不同环境的隔离，例如开发测试环境和生产环境的资源（如配置、服务）隔离等。</p>
-<p><img src="file:///C:\Users\Lenovo\AppData\Local\Temp\ksohtml91992\wps19.png" alt="img">从一个租户(用户)的角度来看，如果有多套不同的环境，那么这个时候可以根据指定的环境来创建不同的namespce，以此来实现多环境的隔离。例如，你可能有开发，测试和生产三个不同的环境，那么使用一套nacos 集群可以分别建以下三个不同的 namespace。如下图所示：</p>
+<p>从一个租户(用户)的角度来看，如果有多套不同的环境，那么这个时候可以根据指定的环境来创建不同的namespce，以此来实现多环境的隔离。例如，你可能有开发，测试和生产三个不同的环境，那么使用一套nacos 集群可以分别建以下三个不同的 namespace。如下图所示：</p>
 <p><img src="https://i.p04e.com/baid/i/2023/01/06/1lu2.png"></p>
-<p><img src="file:///C:\Users\Lenovo\AppData\Local\Temp\ksohtml91992\wps20.png" alt="img">从多个租户(用户)的角度来看，每个租户(用户)可能会有自己的 namespace,每个租户(用户)的配置数据以及注册的服务数据都会归属到自己的 namespace 下，以此来实现多租户间的数据隔离。例如超级管理员分配了三个租户，分别为张三、李四和王五。分配好了之后，各租户用自己的账户名和密码登录后，创建自己的命名   空间。如下图所示：</p>
+<p>从多个租户(用户)的角度来看，每个租户(用户)可能会有自己的 namespace,每个租户(用户)的配置数据以及注册的服务数据都会归属到自己的 namespace 下，以此来实现多租户间的数据隔离。例如超级管理员分配了三个租户，分别为张三、李四和王五。分配好了之后，各租户用自己的账户名和密码登录后，创建自己的命名   空间。如下图所示：</p>
 <p><img src="https://i.p04e.com/baid/i/2023/01/06/1j07.png"></p>
 <h3 id="3-2-命名空间管理"><a href="#3-2-命名空间管理" class="headerlink" title="3.2 命名空间管理"></a>3.2 <strong>命名空间管理</strong></h3><p>前面已经介绍过，命名空间(Namespace)是用于隔离多个环境的（如开发、测试、生产），而每个应用在不同环    境的同一个配置（如数据库数据源）的值是不一样的。因此，我们应针对企业项目实际研发流程、环境进行规划。 如某软件公司拥有开发、测试、生产三套环境，那么我们应该针对这三个环境分别建立三个namespace。</p>
 <p><img src="https://i.p04e.com/baid/i/2023/01/06/cpmx.png"></p>
@@ -1562,32 +1567,13 @@
 <p>Dubbo服务开发流程是什么？ 1、定义api工程。</p>
 <p>方便其它服务原来api工程，远程调用dubbo服务。</p>
 <p>2、定义api实现工程。</p>
-<p>service实现类使用  @org.apache.dubbo.conﬁg.annotation.Service注解标记为dubbo服务。3、服务消费方开发</p>
+<p>service实现类使用  @org.apache.dubbo.conﬁg.annotation.Service注解标记为dubbo服务。</p>
+<p>3、服务消费方开发</p>
 <p>引入api工程依赖</p>
 <p>使用org.apache.dubbo.conﬁg.annotation.Reference注解注入service，发起远程调用</p>
 ]]></content>
       <tags>
         <tag>nacos</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>API接口文档利器：Swagger</title>
-    <url>/2023/01/06/API%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%E5%88%A9%E5%99%A8%EF%BC%9ASwagger,Postman/</url>
-    <content><![CDATA[<h3 id="Swagger介绍"><a href="#Swagger介绍" class="headerlink" title="Swagger介绍"></a><strong>Swagger</strong>介绍</h3><p>Swagger 是一个规范和完整的框架，用于生成、描述、调用和可视化 RESTful 风格的 Web 服务</p>
-<p>(<a href="https://swagger.io/">https://swagger.io/</a>)。 它的主要作用是：</p>
-<p>\1. 使得前后端分离开发更加方便，有利于团队协作</p>
-<p>\2. 接口的文档在线自动生成，降低后端开发人员编写接口文档的负担</p>
-<p>\3. 功能测试</p>
-<p>Spring已经将Swagger纳入自身的标准，建立了Spring-swagger项目，现在叫Springfox。通过在项目中引入Springfox ，即可非常简单快捷的使用Swagger。</p>
-<h3 id="SpringBoot-集成-Swagger"><a href="#SpringBoot-集成-Swagger" class="headerlink" title="SpringBoot**集成**Swagger"></a><strong>SpringBoot**</strong>集成<em>**</em>Swagger</h3><p>项目中添加依赖</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!‐‐ Swagger依赖 ‐‐&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;springfox‐swagger2&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;springfox‐swagger‐ui&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-<p>工程的conﬁg包中添加一个Swagger配置类</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.shanjupay.merchant.config;</span><br><span class="line"></span><br><span class="line">import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty; import org.springframework.context.annotation.Bean;</span><br><span class="line">import org.springframework.context.annotation.Configuration; import springfox.documentation.builders.ApiInfoBuilder; import springfox.documentation.builders.PathSelectors;</span><br><span class="line">import springfox.documentation.builders.RequestHandlerSelectors; import springfox.documentation.service.ApiInfo;</span><br><span class="line">import springfox.documentation.service.Contact; import springfox.documentation.spi.DocumentationType;</span><br><span class="line">import springfox.documentation.spring.web.plugins.Docket;</span><br><span class="line">import springfox.documentation.swagger2.annotations.EnableSwagger2;</span><br><span class="line"></span><br><span class="line">@Configuration</span><br><span class="line">@ConditionalOnProperty(prefix = &quot;swagger&quot;,value = &#123;&quot;enable&quot;&#125;,havingValue = &quot;true&quot;) @EnableSwagger2</span><br><span class="line">public class SwaggerConfiguration &#123;</span><br><span class="line"></span><br><span class="line">@Bean</span><br><span class="line">public Docket buildDocket() &#123;</span><br><span class="line">return new Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">.apiInfo(buildApiInfo())</span><br><span class="line">.select()</span><br><span class="line">// 要扫描的API(Controller)基础包</span><br><span class="line"></span><br><span class="line">.apis(RequestHandlerSelectors.basePackage(&quot;com.shanjupay.merchant.controller&quot;))</span><br><span class="line">.paths(PathSelectors.any())</span><br><span class="line">.build();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">*@param</span><br><span class="line"></span><br><span class="line">*@return springfox.documentation.service.ApiInfo</span><br><span class="line">*@Title: 构建API基本信息</span><br><span class="line">*@methodName: buildApiInfo</span><br><span class="line">*/</span><br><span class="line">private ApiInfo buildApiInfo() &#123;</span><br><span class="line">Contact contact = new Contact(&quot;开发者&quot;,&quot;&quot;,&quot;&quot;); return new ApiInfoBuilder()</span><br><span class="line">.title(&quot;闪聚支付‐商户应用API文档&quot;)</span><br><span class="line">.description(&quot;&quot;)</span><br><span class="line">.contact(contact)</span><br><span class="line">.version(&quot;1.0.0&quot;).build();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>添加SpringMVC配置类：WebMvcConﬁg，让外部可直接访问Swagger文档</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.shanjupay.merchant.config;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line">import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry; import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;</span><br><span class="line"></span><br><span class="line">@Component</span><br><span class="line">public class WebMvcConfig implements WebMvcConfigurer &#123;</span><br><span class="line">/**</span><br><span class="line">*添加静态资源文件，外部可以直接访问地址</span><br><span class="line">*</span><br><span class="line">*@param registry</span><br><span class="line">*/ @Override</span><br><span class="line">public void addResourceHandlers(ResourceHandlerRegistry registry) &#123; registry.addResourceHandler(&quot;/**&quot;).addResourceLocations(&quot;classpath:/static/&quot;);</span><br><span class="line"></span><br><span class="line">registry.addResourceHandler(&quot;swagger‐ui.html&quot;)</span><br><span class="line">.addResourceLocations(&quot;classpath:/META‐INF/resources/&quot;);</span><br><span class="line"></span><br><span class="line">registry.addResourceHandler(&quot;/webjars/**&quot;)</span><br><span class="line">.addResourceLocations(&quot;classpath:/META‐INF/resources/webjars/&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>Swagger</tag>
       </tags>
   </entry>
   <entry>
@@ -1758,6 +1744,155 @@
         <tag>乐观锁</tag>
         <tag>CRUD</tag>
         <tag>代码生成器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>API接口文档利器：Swagger</title>
+    <url>/2023/01/06/API%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%E5%88%A9%E5%99%A8%EF%BC%9ASwagge/</url>
+    <content><![CDATA[<h3 id="Swagger介绍"><a href="#Swagger介绍" class="headerlink" title="Swagger介绍"></a><strong>Swagger</strong>介绍</h3><p>Swagger 是一个规范和完整的框架，用于生成、描述、调用和可视化 RESTful 风格的 Web 服务</p>
+<p>(<a href="https://swagger.io/">https://swagger.io/</a>)。 它的主要作用是：</p>
+<p>\1. 使得前后端分离开发更加方便，有利于团队协作</p>
+<p>\2. 接口的文档在线自动生成，降低后端开发人员编写接口文档的负担</p>
+<p>\3. 功能测试</p>
+<p>Spring已经将Swagger纳入自身的标准，建立了Spring-swagger项目，现在叫Springfox。通过在项目中引入Springfox ，即可非常简单快捷的使用Swagger。</p>
+<h3 id="SpringBoot-集成-Swagger"><a href="#SpringBoot-集成-Swagger" class="headerlink" title="SpringBoot**集成**Swagger"></a><strong>SpringBoot**</strong>集成<em>**</em>Swagger</h3><p>项目中添加依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!‐‐ Swagger依赖 ‐‐&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;springfox‐swagger2&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;springfox‐swagger‐ui&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>工程的conﬁg包中添加一个Swagger配置类</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.shanjupay.merchant.config;</span><br><span class="line"></span><br><span class="line">import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty; import org.springframework.context.annotation.Bean;</span><br><span class="line">import org.springframework.context.annotation.Configuration; import springfox.documentation.builders.ApiInfoBuilder; import springfox.documentation.builders.PathSelectors;</span><br><span class="line">import springfox.documentation.builders.RequestHandlerSelectors; import springfox.documentation.service.ApiInfo;</span><br><span class="line">import springfox.documentation.service.Contact; import springfox.documentation.spi.DocumentationType;</span><br><span class="line">import springfox.documentation.spring.web.plugins.Docket;</span><br><span class="line">import springfox.documentation.swagger2.annotations.EnableSwagger2;</span><br><span class="line"></span><br><span class="line">@Configuration</span><br><span class="line">@ConditionalOnProperty(prefix = &quot;swagger&quot;,value = &#123;&quot;enable&quot;&#125;,havingValue = &quot;true&quot;) @EnableSwagger2</span><br><span class="line">public class SwaggerConfiguration &#123;</span><br><span class="line"></span><br><span class="line">@Bean</span><br><span class="line">public Docket buildDocket() &#123;</span><br><span class="line">return new Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">.apiInfo(buildApiInfo())</span><br><span class="line">.select()</span><br><span class="line">// 要扫描的API(Controller)基础包</span><br><span class="line"></span><br><span class="line">.apis(RequestHandlerSelectors.basePackage(&quot;com.shanjupay.merchant.controller&quot;))</span><br><span class="line">.paths(PathSelectors.any())</span><br><span class="line">.build();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">*@param</span><br><span class="line"></span><br><span class="line">*@return springfox.documentation.service.ApiInfo</span><br><span class="line">*@Title: 构建API基本信息</span><br><span class="line">*@methodName: buildApiInfo</span><br><span class="line">*/</span><br><span class="line">private ApiInfo buildApiInfo() &#123;</span><br><span class="line">Contact contact = new Contact(&quot;开发者&quot;,&quot;&quot;,&quot;&quot;); return new ApiInfoBuilder()</span><br><span class="line">.title(&quot;闪聚支付‐商户应用API文档&quot;)</span><br><span class="line">.description(&quot;&quot;)</span><br><span class="line">.contact(contact)</span><br><span class="line">.version(&quot;1.0.0&quot;).build();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>添加SpringMVC配置类：WebMvcConﬁg，让外部可直接访问Swagger文档</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.shanjupay.merchant.config;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line">import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry; import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;</span><br><span class="line"></span><br><span class="line">@Component</span><br><span class="line">public class WebMvcConfig implements WebMvcConfigurer &#123;</span><br><span class="line">/**</span><br><span class="line">*添加静态资源文件，外部可以直接访问地址</span><br><span class="line">*</span><br><span class="line">*@param registry</span><br><span class="line">*/ @Override</span><br><span class="line">public void addResourceHandlers(ResourceHandlerRegistry registry) &#123; registry.addResourceHandler(&quot;/**&quot;).addResourceLocations(&quot;classpath:/static/&quot;);</span><br><span class="line"></span><br><span class="line">registry.addResourceHandler(&quot;swagger‐ui.html&quot;)</span><br><span class="line">.addResourceLocations(&quot;classpath:/META‐INF/resources/&quot;);</span><br><span class="line"></span><br><span class="line">registry.addResourceHandler(&quot;/webjars/**&quot;)</span><br><span class="line">.addResourceLocations(&quot;classpath:/META‐INF/resources/webjars/&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>Swagger</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>API接口文档利器：Swagger,Postman</title>
+    <url>/2023/01/06/API%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%E5%88%A9%E5%99%A8%EF%BC%9ASwagger-Postman/</url>
+    <content><![CDATA[<h2 id="API接口文档利器：-Swagger"><a href="#API接口文档利器：-Swagger" class="headerlink" title="API接口文档利器：**Swagger"></a><strong>API</strong>接口文档利器：<em>**</em>Swagger</h2><h3 id="Swagger介绍"><a href="#Swagger介绍" class="headerlink" title="Swagger介绍"></a><strong>Swagger</strong>介绍</h3><p>Swagger 是一个规范和完整的框架，用于生成、描述、调用和可视化 RESTful 风格的 Web 服务</p>
+<p>(<a href="https://swagger.io/">https://swagger.io/</a>)。 它的主要作用是：</p>
+<p>\1. 使得前后端分离开发更加方便，有利于团队协作</p>
+<p>\2. 接口的文档在线自动生成，降低后端开发人员编写接口文档的负担</p>
+<p>\3. 功能测试</p>
+<p>Spring已经将Swagger纳入自身的标准，建立了Spring-swagger项目，现在叫Springfox。通过在项目中引入Springfox ，即可非常简单快捷的使用Swagger。</p>
+<h3 id="SpringBoot集成Swagger"><a href="#SpringBoot集成Swagger" class="headerlink" title="SpringBoot集成Swagger"></a><strong>SpringBoot</strong>集成Swagger</h3><p>项目中添加依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!‐‐ Swagger依赖 ‐‐&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;springfox‐swagger2&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;springfox‐swagger‐ui&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>工程的conﬁg包中添加一个Swagger配置类</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.shanjupay.merchant.config;</span><br><span class="line"></span><br><span class="line">import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty; import org.springframework.context.annotation.Bean;</span><br><span class="line">import org.springframework.context.annotation.Configuration; import springfox.documentation.builders.ApiInfoBuilder; import springfox.documentation.builders.PathSelectors;</span><br><span class="line">import springfox.documentation.builders.RequestHandlerSelectors; import springfox.documentation.service.ApiInfo;</span><br><span class="line">import springfox.documentation.service.Contact; import springfox.documentation.spi.DocumentationType;</span><br><span class="line">import springfox.documentation.spring.web.plugins.Docket;</span><br><span class="line">import springfox.documentation.swagger2.annotations.EnableSwagger2;</span><br><span class="line"></span><br><span class="line">@Configuration</span><br><span class="line">@ConditionalOnProperty(prefix = &quot;swagger&quot;,value = &#123;&quot;enable&quot;&#125;,havingValue = &quot;true&quot;) @EnableSwagger2</span><br><span class="line">public class SwaggerConfiguration &#123;</span><br><span class="line"></span><br><span class="line">@Bean</span><br><span class="line">public Docket buildDocket() &#123;</span><br><span class="line">return new Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">.apiInfo(buildApiInfo())</span><br><span class="line">.select()</span><br><span class="line">// 要扫描的API(Controller)基础包</span><br><span class="line"></span><br><span class="line">.apis(RequestHandlerSelectors.basePackage(&quot;com.shanjupay.merchant.controller&quot;))</span><br><span class="line">.paths(PathSelectors.any())</span><br><span class="line">.build();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">*@param</span><br><span class="line"></span><br><span class="line">*@return springfox.documentation.service.ApiInfo</span><br><span class="line">*@Title: 构建API基本信息</span><br><span class="line">*@methodName: buildApiInfo</span><br><span class="line">*/</span><br><span class="line">private ApiInfo buildApiInfo() &#123;</span><br><span class="line">Contact contact = new Contact(&quot;开发者&quot;,&quot;&quot;,&quot;&quot;); return new ApiInfoBuilder()</span><br><span class="line">.title(&quot;闪聚支付‐商户应用API文档&quot;)</span><br><span class="line">.description(&quot;&quot;)</span><br><span class="line">.contact(contact)</span><br><span class="line">.version(&quot;1.0.0&quot;).build();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>添加SpringMVC配置类：WebMvcConﬁg，让外部可直接访问Swagger文档</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.shanjupay.merchant.config;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line">import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry; import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;</span><br><span class="line"></span><br><span class="line">@Component</span><br><span class="line">public class WebMvcConfig implements WebMvcConfigurer &#123;</span><br><span class="line">/**</span><br><span class="line">*添加静态资源文件，外部可以直接访问地址</span><br><span class="line">*</span><br><span class="line">*@param registry</span><br><span class="line">*/ @Override</span><br><span class="line">public void addResourceHandlers(ResourceHandlerRegistry registry) &#123; registry.addResourceHandler(&quot;/**&quot;).addResourceLocations(&quot;classpath:/static/&quot;);</span><br><span class="line"></span><br><span class="line">registry.addResourceHandler(&quot;swagger‐ui.html&quot;)</span><br><span class="line">.addResourceLocations(&quot;classpath:/META‐INF/resources/&quot;);</span><br><span class="line"></span><br><span class="line">registry.addResourceHandler(&quot;/webjars/**&quot;)</span><br><span class="line">.addResourceLocations(&quot;classpath:/META‐INF/resources/webjars/&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Swagger常用注解"><a href="#Swagger常用注解" class="headerlink" title="Swagger常用注解"></a><strong>Swagger</strong>常用注解</h3><p>在Java类中添加Swagger的注解即可生成Swagger接口文档，常用Swagger注解如下：</p>
+<p>@Api：修饰整个类，描述Controller的作用 @ApiOperation：描述一个类的一个方法，或者说一个接口@ApiParam：单个参数的描述信息</p>
+<p>@ApiModel：用对象来接收参数</p>
+<p>@ApiModelProperty：用对象接收参数时，描述对象的一个字段@ApiResponse：HTTP响应其中1个描述</p>
+<p>在Java类中添加Swagger的注解即可生成Swagger接口文档，常用Swagger注解如下：</p>
+<p>@Api：修饰整个类，描述Controller的作用 @ApiOperation：描述一个类的一个方法，或者说一个接口@ApiParam：单个参数的描述信息</p>
+<p>@ApiModel：用对象来接收参数</p>
+<p>@ApiModelProperty：用对象接收参数时，描述对象的一个字段@ApiResponse：HTTP响应其中1个描述</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>属性</strong></th>
+<th><strong>取值</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>paramType</td>
+<td></td>
+<td>查询参数类型</td>
+</tr>
+<tr>
+<td></td>
+<td>path</td>
+<td>以地址的形式提交数据</td>
+</tr>
+<tr>
+<td></td>
+<td>query</td>
+<td>直接跟参数完成自动映射赋值</td>
+</tr>
+<tr>
+<td></td>
+<td>body</td>
+<td>以流的形式提交 仅支持POST</td>
+</tr>
+<tr>
+<td></td>
+<td>header</td>
+<td>参数在request headers 里边提交</td>
+</tr>
+<tr>
+<td></td>
+<td>form</td>
+<td>以form表单的形式提交 仅支持POST</td>
+</tr>
+<tr>
+<td>dataType</td>
+<td></td>
+<td>参数的数据类型 只作为标志说明，并没有实际验证</td>
+</tr>
+<tr>
+<td></td>
+<td>Long</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td></td>
+<td>接收参数名</td>
+</tr>
+<tr>
+<td>value</td>
+<td></td>
+<td>接收参数的意义描述</td>
+</tr>
+<tr>
+<td>required</td>
+<td></td>
+<td>参数是否必填</td>
+</tr>
+<tr>
+<td></td>
+<td>true</td>
+<td>必填</td>
+</tr>
+<tr>
+<td></td>
+<td>false</td>
+<td>非必填</td>
+</tr>
+<tr>
+<td>defaultValue</td>
+<td></td>
+<td>默认值</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>上边的属性后边编写程序时用到哪个我再详细讲解，下边写一个swagger的简单例子，我们在MerchantController   中添加Swagger注解，代码如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@Api(value = &quot;商户平台‐商户相关&quot;, tags = &quot;商户平台‐商户相关&quot;, description = &quot;商户平台‐商户相关&quot;) @RestController</span><br><span class="line">public class MerchantController &#123;</span><br><span class="line"></span><br><span class="line">@Reference</span><br><span class="line">private MerchantService merchantService;</span><br></pre></td></tr></table></figure>
+<p>Swagger生成API文档的工作原理：</p>
+<p>1、shanjupay-merchant-application启动时会扫描到SwaggerConﬁguration类</p>
+<p>2、在此类中指定了扫描包路径com.shanjupay.merchant.controller，会找到在此包下及子包下标记有@RestController注解的controller类</p>
+<p>3、根据controller类中的Swagger注解生成API文档</p>
+<h2 id="接口调试利器Postman"><a href="#接口调试利器Postman" class="headerlink" title="接口调试利器Postman"></a><strong>接口调试利器</strong>Postman</h2><p>Postman是一款功能强大的http接口测试工具，使用Postman可以完成http各种请求的功能测试。作为服务器端   开发人员，当一个业务功能开发完毕后，应该用Postman进行功能测试。</p>
+<p>1、请自行在本机安装Postman</p>
+<p>2、新建集合(建议一个微服务新建一个对应的集合)：商户应用</p>
+<p><img src="https://i.p04e.com/baid/i/2023/01/06/4nrlz.png"><br><img src="https://i.p04e.com/baid/i/2023/01/06/nysy.png"></p>
+<p>填写新建商户接口地址和请求类型后，点击Send发送请求</p>
+<p><img src="https://i.p04e.com/baid/i/2023/01/06/6cromn.png"></p>
+]]></content>
+      <tags>
+        <tag>Swagger</tag>
+        <tag>Postman</tag>
       </tags>
   </entry>
 </search>
