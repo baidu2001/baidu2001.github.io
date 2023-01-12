@@ -25,20 +25,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="已至凌晨却无论如何都睡不着了，心里藏着很多事情。">
+  <meta name="description" content="Springboot中可以用@validated来校验数据，如果数据异常则会统一抛出异常，方便异常中心统一处理。我们这里来写个注解让我们的name只能支持Email格式；">
 <meta property="og:type" content="article">
-<meta property="og:title" content="白都的一封信">
-<meta property="og:url" content="http://example.com/2022/08/26/%E4%BF%A1/index.html">
+<meta property="og:title" content="SpringBoot系列：JSR303数据校验及多环境切换">
+<meta property="og:url" content="http://example.com/2023/01/10/SpringBoot%E7%B3%BB%E5%88%97%EF%BC%9AJSR303%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E5%8F%8A%E5%A4%9A%E7%8E%AF%E5%A2%83%E5%88%87%E6%8D%A2/index.html">
 <meta property="og:site_name" content="白都">
-<meta property="og:description" content="已至凌晨却无论如何都睡不着了，心里藏着很多事情。">
+<meta property="og:description" content="Springboot中可以用@validated来校验数据，如果数据异常则会统一抛出异常，方便异常中心统一处理。我们这里来写个注解让我们的name只能支持Email格式；">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-08-25T18:41:45.000Z">
-<meta property="article:modified_time" content="2022-08-30T12:55:41.884Z">
+<meta property="article:published_time" content="2023-01-10T08:42:22.000Z">
+<meta property="article:modified_time" content="2023-01-10T11:46:09.083Z">
 <meta property="article:author" content="白都">
-<meta property="article:tag" content="念想">
+<meta property="article:tag" content="-SpringBoot -yaml -多环境切换">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/08/26/%E4%BF%A1/">
+<link rel="canonical" href="http://example.com/2023/01/10/SpringBoot%E7%B3%BB%E5%88%97%EF%BC%9AJSR303%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E5%8F%8A%E5%A4%9A%E7%8E%AF%E5%A2%83%E5%88%87%E6%8D%A2/">
 
 
 <script id="page-configurations">
@@ -51,7 +51,7 @@
   };
 </script>
 
-  <title>白都的一封信 | 白都</title>
+  <title>SpringBoot系列：JSR303数据校验及多环境切换 | 白都</title>
   
 
 
@@ -194,7 +194,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/26/%E4%BF%A1/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/10/SpringBoot%E7%B3%BB%E5%88%97%EF%BC%9AJSR303%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E5%8F%8A%E5%A4%9A%E7%8E%AF%E5%A2%83%E5%88%87%E6%8D%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -207,7 +207,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          白都的一封信
+          SpringBoot系列：JSR303数据校验及多环境切换
         </h1>
 
         <div class="post-meta">
@@ -216,16 +216,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-08-26 02:41:45" itemprop="dateCreated datePublished" datetime="2022-08-26T02:41:45+08:00">2022-08-26</time>
+              <time title="创建时间：2023-01-10 16:42:22 / 修改时间：19:46:09" itemprop="dateCreated datePublished" datetime="2023-01-10T16:42:22+08:00">2023-01-10</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-30 20:55:41" itemprop="dateModified" datetime="2022-08-30T20:55:41+08:00">2022-08-30</time>
-              </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -245,21 +239,34 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>已至凌晨却无论如何都睡不着了，心里藏着很多事情。</p>
+        <p>Springboot中可以用@validated来校验数据，如果数据异常则会统一抛出异常，方便异常中心统一处理。我们这里来写个注解让我们的name只能支持Email格式；</p>
 <span id="more"></span>
-<hr>
-<p>​    可对于已经发生过的事情，我们无能为力，能做好的只有接下来的事情。</p>
-<p>​    <code>小时候经常仰望着星空，渴望着自己成为逆转时空的飞人</code></p>
-<p>​    </p>
-<hr>
-<p>​    <code>黑还是白并不重要</code></p>
-<hr>
-<p>​    在痛苦开心的过程中会慢慢的触摸到心中真正的所想所愿。那是一种奇妙的感觉，很像是悟道一样的感觉。</p>
-<p>​    <code>每天每天每月每月，实现那个梦</code></p>
-<hr>
-<p>​    生命的所有，都来自于想象力。</p>
-<p>所有的可能，所有的道都来自于想象力。</p>
-
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Component //注册bean@ConfigurationProperties(prefix = &quot;person&quot;)@Validated  //数据校验public class Person &#123;</span><br><span class="line">    @Email(message=&quot;邮箱格式错误&quot;) //name必须是邮箱格式    private String name;&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果 ：default message [不是一个合法的电子邮件地址];</p>
+<p><strong>使用数据校验，可以保证数据的正确性；</strong> </p>
+<h2 id="常见参数"><a href="#常见参数" class="headerlink" title="常见参数"></a>常见参数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@NotNull(message=&quot;名字不能为空&quot;)</span><br><span class="line">private String userName;</span><br><span class="line">@Max(value=120,message=&quot;年龄最大不能查过120&quot;)</span><br><span class="line">private int age;</span><br><span class="line">@Email(message=&quot;邮箱格式错误&quot;)</span><br><span class="line">private String email;</span><br><span class="line"></span><br><span class="line">空检查</span><br><span class="line">@Null       验证对象是否为null</span><br><span class="line">@NotNull    验证对象是否不为null, 无法查检长度为0的字符串</span><br><span class="line">@NotBlank   检查约束字符串是不是Null还有被Trim的长度是否大于0,只对字符串,且会去掉前后空格.</span><br><span class="line">@NotEmpty   检查约束元素是否为NULL或者是EMPTY.</span><br><span class="line">    </span><br><span class="line">Booelan检查</span><br><span class="line">@AssertTrue     验证 Boolean 对象是否为 true  </span><br><span class="line">@AssertFalse    验证 Boolean 对象是否为 false  </span><br><span class="line">    </span><br><span class="line">长度检查</span><br><span class="line">@Size(min=, max=) 验证对象（Array,Collection,Map,String）长度是否在给定的范围之内  </span><br><span class="line">@Length(min=, max=) string is between min and max included.</span><br><span class="line"></span><br><span class="line">日期检查</span><br><span class="line">@Past       验证 Date 和 Calendar 对象是否在当前时间之前  </span><br><span class="line">@Future     验证 Date 和 Calendar 对象是否在当前时间之后  </span><br><span class="line">@Pattern    验证 String 对象是否符合正则表达式的规则</span><br><span class="line"></span><br><span class="line">.......等等</span><br><span class="line">除此以外，我们还可以自定义一些数据校验规则</span><br></pre></td></tr></table></figure>
+<h2 id="多环境切换"><a href="#多环境切换" class="headerlink" title="多环境切换"></a>多环境切换</h2><p>profile是Spring对不同环境提供不同配置功能的支持，可以通过激活不同的环境版本，实现快速切换环境；</p>
+<h3 id="多配置文件"><a href="#多配置文件" class="headerlink" title="多配置文件"></a>多配置文件</h3><p>我们在主配置文件编写的时候，文件名可以是 application-{profile}.properties/yml , 用来指定多个环境版本；</p>
+<p><strong>例如：</strong></p>
+<p>application-test.properties 代表测试环境配置</p>
+<p>application-dev.properties 代表开发环境配置</p>
+<p>但是Springboot并不会直接启动这些配置文件，它<strong>默认使用application.properties主配置文件</strong>；</p>
+<p>我们需要通过一个配置来选择需要激活的环境：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#比如在配置文件中指定使用dev环境，我们可以通过设置不同的端口号进行测试；</span><br><span class="line">#我们启动SpringBoot，就可以看到已经切换到dev下的配置了；</span><br><span class="line">spring.profiles.active=dev</span><br></pre></td></tr></table></figure>
+<h3 id="yaml的多文档块"><a href="#yaml的多文档块" class="headerlink" title="yaml的多文档块"></a>yaml的多文档块</h3><p>和properties配置文件中一样，但是使用yml去实现不需要创建多个配置文件，更加方便了 !</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 8081</span><br><span class="line">#选择要激活那个环境块</span><br><span class="line">spring:</span><br><span class="line">  profiles:</span><br><span class="line">    active: prod</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">server:</span><br><span class="line">  port: 8083</span><br><span class="line">spring:</span><br><span class="line">  profiles: dev #配置环境的名称</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">server:</span><br><span class="line">  port: 8084</span><br><span class="line">spring:</span><br><span class="line">  profiles: prod  #配置环境的名称</span><br></pre></td></tr></table></figure>
+<p><strong>注意：如果yml和properties同时都配置了端口，并且没有激活其他环境 ， 默认会使用properties配置文件的！</strong></p>
+<h3 id="配置文件加载位置"><a href="#配置文件加载位置" class="headerlink" title="配置文件加载位置"></a>配置文件加载位置</h3><p><strong>外部加载配置文件的方式十分多，我们选择最常用的即可，在开发的资源文件中进行配置！</strong></p>
+<p>springboot 启动会扫描以下位置的application.properties或者application.yml文件作为Spring boot的默认配置文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">优先级1：项目路径下的config文件夹配置文件</span><br><span class="line">优先级2：项目路径下配置文件</span><br><span class="line">优先级3：资源路径下的config文件夹配置文件</span><br><span class="line">优先级4：资源路径下配置文件</span><br></pre></td></tr></table></figure>
+<p>优先级由高到底，高优先级的配置会覆盖低优先级的配置；</p>
+<p><strong>SpringBoot会从这四个位置全部加载主配置文件；互补配置；</strong></p>
+<p>我们在最低级的配置文件中设置一个项目访问路径的配置来测试互补问题；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#配置项目的访问路径</span><br><span class="line">server.servlet.context-path=/baidu</span><br></pre></td></tr></table></figure>
+<h2 id="拓展，运维小技巧"><a href="#拓展，运维小技巧" class="headerlink" title="拓展，运维小技巧"></a>拓展，运维小技巧</h2><p>指定位置加载配置文件</p>
+<p>我们还可以通过spring.config.location来改变默认的配置文件位置</p>
+<p>项目打包好以后，我们可以使用命令行参数的形式，启动项目的时候来指定配置文件的新位置；这种情况，一般是后期运维做的多，相同配置，外部指定的配置文件优先级最高</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar spring-boot-config.jar --spring.config.location=F:/application.properties</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -288,7 +295,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%BF%B5%E6%83%B3/" rel="tag"># 念想</a>
+              <a href="/tags/SpringBoot-yaml-%E5%A4%9A%E7%8E%AF%E5%A2%83%E5%88%87%E6%8D%A2/" rel="tag"># -SpringBoot -yaml -多环境切换</a>
           </div>
 
         
@@ -296,11 +303,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2022/08/26/hexo-github%E5%81%9A%E5%87%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/" rel="next" title="hexo+github做出一个属于自己的博客!">
-      hexo+github做出一个属于自己的博客! <i class="fa fa-chevron-right"></i>
+    <a href="/2023/01/10/SpringBoot%E7%B3%BB%E5%88%97%EF%BC%9Ayaml%E9%85%8D%E7%BD%AE%E6%B3%A8%E5%85%A5/" rel="prev" title="SpringBoot系列：yaml配置注入">
+      <i class="fa fa-chevron-left"></i> SpringBoot系列：yaml配置注入
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -362,6 +369,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%8F%82%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">常见参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E7%8E%AF%E5%A2%83%E5%88%87%E6%8D%A2"><span class="nav-number">2.</span> <span class="nav-text">多环境切换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">多配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yaml%E7%9A%84%E5%A4%9A%E6%96%87%E6%A1%A3%E5%9D%97"><span class="nav-number">2.2.</span> <span class="nav-text">yaml的多文档块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E4%BD%8D%E7%BD%AE"><span class="nav-number">2.3.</span> <span class="nav-text">配置文件加载位置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%93%E5%B1%95%EF%BC%8C%E8%BF%90%E7%BB%B4%E5%B0%8F%E6%8A%80%E5%B7%A7"><span class="nav-number">3.</span> <span class="nav-text">拓展，运维小技巧</span></a></li></ol></div>
       </div>
       
       <!--/noindex-->

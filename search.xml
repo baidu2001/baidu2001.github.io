@@ -1958,4 +1958,160 @@
         <tag>-SpringBoot</tag>
       </tags>
   </entry>
+  <entry>
+    <title>SpringBoot系列：yaml配置注入</title>
+    <url>/2023/01/10/SpringBoot%E7%B3%BB%E5%88%97%EF%BC%9Ayaml%E9%85%8D%E7%BD%AE%E6%B3%A8%E5%85%A5/</url>
+    <content><![CDATA[<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>SpringBoot使用一个全局的配置文件 ， 配置文件名称是固定的</p>
+<span id="more"></span>
+<ul>
+<li><p>application.properties</p>
+</li>
+<li><ul>
+<li>语法结构 ：key=value</li>
+</ul>
+</li>
+<li><p>application.yml</p>
+</li>
+<li><ul>
+<li>语法结构 ：key：空格 value</li>
+</ul>
+</li>
+</ul>
+<p><strong>配置文件的作用 ：</strong>修改SpringBoot自动配置的默认值，因为SpringBoot在底层都给我们自动配置好了；</p>
+<p>比如我们可以在配置文件中修改Tomcat 默认启动的端口号！测试一下！</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server.port=8081</span><br></pre></td></tr></table></figure>
+<h2 id="yaml概述"><a href="#yaml概述" class="headerlink" title="yaml概述"></a>yaml概述</h2><p>YAML是 “YAML Ain’t a Markup Language” （YAML不是一种标记语言）的递归缩写。在开发的这种语言时，YAML 的意思其实是：”Yet Another Markup Language”（仍是一种标记语言）</p>
+<p><strong>这种语言以数据作为中心，而不是以标记语言为重点！</strong></p>
+<p>以前的配置文件，大多数都是使用xml来配置；比如一个简单的端口配置，我们来对比下yaml和xml</p>
+<p>传统xml配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;server&gt;    &lt;port&gt;8081&lt;port&gt;&lt;/server&gt;</span><br></pre></td></tr></table></figure>
+<p>yaml配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server：  prot: 8080</span><br></pre></td></tr></table></figure>
+<h2 id="yaml基础语法"><a href="#yaml基础语法" class="headerlink" title="yaml基础语法"></a>yaml基础语法</h2><p>说明：语法要求严格！</p>
+<p>1、空格不能省略</p>
+<p>2、以缩进来控制层级关系，只要是左边对齐的一列数据都是同一个层级的。</p>
+<p>3、属性和值的大小写都是十分敏感的。</p>
+<p><strong>字面量：普通的值  [ 数字，布尔值，字符串  ]</strong></p>
+<p>字面量直接写在后面就可以 ， 字符串默认不用加上双引号或者单引号；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">k: v</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<ul>
+<li><p>“ ” 双引号，不会转义字符串里面的特殊字符 ， 特殊字符会作为本身想表示的意思；</p>
+<p>比如 ：name: “bai \n du”   输出 ：bai  换行   du</p>
+</li>
+<li><p>‘’ 单引号，会转义特殊字符 ， 特殊字符最终会变成和普通字符一样输出</p>
+<p>比如 ：name: ‘bai \n du’   输出 ：bai   \n   du</p>
+</li>
+</ul>
+<p><strong>对象、Map（键值对）</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#对象、Map格式</span><br><span class="line">k: </span><br><span class="line">    v1:</span><br><span class="line">    v2:</span><br></pre></td></tr></table></figure>
+<p>在下一行来写对象的属性和值得关系，注意缩进；比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">student:</span><br><span class="line">    name: qinjiang</span><br><span class="line">    age: 3</span><br></pre></td></tr></table></figure>
+<p>行内写法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">student: &#123;name: qinjiang,age: 3&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>数组（ List、set ）</strong></p>
+<p>用 - 值表示数组中的一个元素,比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pets:</span><br><span class="line"> - cat</span><br><span class="line"> - dog</span><br><span class="line"> - pig</span><br></pre></td></tr></table></figure>
+<p>行内写法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pets: [cat,dog,pig]</span><br></pre></td></tr></table></figure>
+<p><strong>修改SpringBoot的默认端口号</strong></p>
+<p>配置文件中添加，端口号的参数，就可以切换端口；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">server:</span><br><span class="line">  port: 8082</span><br></pre></td></tr></table></figure>
+<p>注入配置文件</p>
+<p>yaml文件更强大的地方在于，他可以给我们的实体类直接注入匹配值！</p>
+<h2 id="yaml注入配置文件"><a href="#yaml注入配置文件" class="headerlink" title="yaml注入配置文件"></a>yaml注入配置文件</h2><p>1、在springboot项目中的resources目录下新建一个文件 application.yml</p>
+<p>2、编写一个实体类 Dog；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">package com.kuang.springboot.pojo;</span><br><span class="line"></span><br><span class="line">@Component  //注册bean到容器中</span><br><span class="line">public class Dog &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private Integer age;</span><br><span class="line">    </span><br><span class="line">    //有参无参构造、get、set方法、toString()方法  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、思考，我们原来是如何给bean注入属性值的！@Value，给狗狗类测试一下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Component</span> <span class="comment">//注册bean</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Dog</span> &#123;</span><br><span class="line">    <span class="meta">@Value(&quot;大黄&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="meta">@Value(&quot;8&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4、在SpringBoot的测试类下注入狗狗输出一下；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@SpringBootTest</span><br><span class="line">class DemoApplicationTests &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired //将狗狗自动注入进来</span><br><span class="line">    Dog dog;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void contextLoads() &#123;</span><br><span class="line">        System.out.println(dog); //打印看下狗狗对象</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果成功输出，@Value注入成功，这是我们原来的办法对吧。</p>
+<p>5、我们在编写一个复杂一点的实体类：Person 类</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@Component //注册bean到容器中</span><br><span class="line">public class Person &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private Integer age;</span><br><span class="line">    private Boolean happy;</span><br><span class="line">    private Date birth;</span><br><span class="line">    private Map&lt;String,Object&gt; maps;</span><br><span class="line">    private List&lt;Object&gt; lists;</span><br><span class="line">    private Dog dog;</span><br><span class="line">    </span><br><span class="line">    //有参无参构造、get、set方法、toString()方法  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6、我们来使用yaml配置的方式进行注入，大家写的时候注意区别和优势，我们编写一个yaml配置！</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">person:</span><br><span class="line">  name: baidu</span><br><span class="line">  age: 3</span><br><span class="line">  happy: false</span><br><span class="line">  birth: 2000/01/01</span><br><span class="line">  maps: &#123;k1: v1,k2: v2&#125;</span><br><span class="line">  lists:</span><br><span class="line">   - code</span><br><span class="line">   - girl</span><br><span class="line">   - music</span><br><span class="line">  dog:</span><br><span class="line">    name: 旺财</span><br><span class="line">    age: 1</span><br></pre></td></tr></table></figure>
+<p>7、我们刚才已经把person这个对象的所有值都写好了，我们现在来注入到我们的类中！</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/*</span><br><span class="line">@ConfigurationProperties作用：</span><br><span class="line">将配置文件中配置的每一个属性的值，映射到这个组件中；</span><br><span class="line">告诉SpringBoot将本类中的所有属性和配置文件中相关的配置进行绑定</span><br><span class="line">参数 prefix = “person” : 将配置文件中的person下面的所有属性一一对应</span><br><span class="line">*/</span><br><span class="line">@Component //注册bean</span><br><span class="line">@ConfigurationProperties(prefix = &quot;person&quot;)</span><br><span class="line">public class Person &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private Integer age;</span><br><span class="line">    private Boolean happy;</span><br><span class="line">    private Date birth;</span><br><span class="line">    private Map&lt;String,Object&gt; maps;</span><br><span class="line">    private List&lt;Object&gt; lists;</span><br><span class="line">    private Dog dog;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>8、IDEA 提示，springboot配置注解处理器没有找到，让我们看文档，我们可以查看文档，找到一个依赖！</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!-- 导入配置文件处理器，配置文件进行绑定就会有提示，需要重启 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;spring-boot-configuration-processor&lt;/artifactId&gt;</span><br><span class="line">  &lt;optional&gt;true&lt;/optional&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>9、确认以上配置都OK之后，我们去测试类中测试一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">@SpringBootTest</span><br><span class="line">class DemoApplicationTests &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    Person person; //将person自动注入进来</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void contextLoads() &#123;</span><br><span class="line">        System.out.println(person); //打印person信息</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：所有值全部注入成功</p>
+<p><strong>yaml配置注入到实体类完全OK！</strong></p>
+<p>课堂测试：</p>
+<p>1、将配置文件的key 值 和 属性的值设置为不一样，则结果输出为null，注入失败</p>
+<p>2、在配置一个person2，然后将 @ConfigurationProperties(prefix = “person2”) 指向我们的person2；</p>
+<h2 id="加载指定的配置文件"><a href="#加载指定的配置文件" class="headerlink" title="加载指定的配置文件"></a>加载指定的配置文件</h2><p><strong>@PropertySource ：</strong>加载指定的配置文件；</p>
+<p><strong>@configurationProperties</strong>：默认从全局配置文件中获取值；</p>
+<p>1、我们去在resources目录下新建一个<strong>person.properties</strong>文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">name=kuangshen</span><br></pre></td></tr></table></figure>
+<p>2、然后在我们的代码中指定加载person.properties文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">@PropertySource(value = &quot;classpath:person.properties&quot;)</span><br><span class="line">@Component //注册bean</span><br><span class="line">public class Person &#123;</span><br><span class="line"></span><br><span class="line">    @Value(&quot;$&#123;name&#125;&quot;)</span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    ......  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、再次输出测试一下：指定配置文件绑定成功！</p>
+<h2 id="配置文件占位符"><a href="#配置文件占位符" class="headerlink" title="配置文件占位符"></a>配置文件占位符</h2><p>配置文件还可以编写占位符生成随机数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">person:</span><br><span class="line">    name: qinjiang$&#123;random.uuid&#125; # 随机uuid</span><br><span class="line">    age: $&#123;random.int&#125;  # 随机int</span><br><span class="line">    happy: false</span><br><span class="line">    birth: 2000/01/01</span><br><span class="line">    maps: &#123;k1: v1,k2: v2&#125;</span><br><span class="line">    lists:</span><br><span class="line">      - code</span><br><span class="line">      - girl</span><br><span class="line">      - music</span><br><span class="line">    dog:</span><br><span class="line">      name: $&#123;person.hello:other&#125;_旺财</span><br><span class="line">      age: 1</span><br></pre></td></tr></table></figure>
+<h2 id="回顾properties配置"><a href="#回顾properties配置" class="headerlink" title="回顾properties配置"></a>回顾properties配置</h2><p>我们上面采用的yaml方法都是最简单的方式，开发中最常用的；也是springboot所推荐的！那我们来唠唠其他的实现方式，道理都是相同的；写还是那样写；配置文件除了yml还有我们之前常用的properties ， 我们没有讲，我们来唠唠！</p>
+<p>【注意】properties配置文件在写中文的时候，会有乱码 ， 我们需要去IDEA中设置编码格式为UTF-8；</p>
+<p>settings—&gt;FileEncodings 中配置；</p>
+<p><strong>测试步骤：</strong></p>
+<p>1、新建一个实体类User</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@Component //注册bean</span><br><span class="line">public class User &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line">    private String sex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、编辑配置文件 user.properties</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">user1.name=kuangshen</span><br><span class="line">user1.age=18</span><br><span class="line">user1.sex=男</span><br></pre></td></tr></table></figure>
+<p>3、我们在User类上使用@Value来进行注入！</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@Component //注册bean</span><br><span class="line">@PropertySource(value = &quot;classpath:user.properties&quot;)</span><br><span class="line">public class User &#123;</span><br><span class="line">    //直接使用@value</span><br><span class="line">    @Value(&quot;$&#123;user.name&#125;&quot;) //从配置文件中取值</span><br><span class="line">    private String name;</span><br><span class="line">    @Value(&quot;#&#123;9*2&#125;&quot;)  // #&#123;SPEL&#125; Spring表达式</span><br><span class="line">    private int age;</span><br><span class="line">    @Value(&quot;男&quot;)  // 字面量</span><br><span class="line">    private String sex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4、Springboot测试</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@SpringBootTest</span><br><span class="line">class DemoApplicationTests &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    User user;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void contextLoads() &#123;</span><br><span class="line">        System.out.println(user);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果正常输出：</p>
+<h2 id="对比小结"><a href="#对比小结" class="headerlink" title="对比小结"></a>对比小结</h2><p>@Value这个使用起来并不友好！我们需要为每个属性单独注解赋值，比较麻烦；我们来看个功能对比图</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7KtjyIb9NEaYlz0tCWSiboOYjMibiaov73iaTsiaWEPoArDcAB1Ooibx9uR5JxtacIuicHblEtUI9SrySX2A/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<p>1、@ConfigurationProperties只需要写一次即可 ， @Value则需要每个字段都添加</p>
+<p>2、松散绑定：这个什么意思呢? 比如我的yml中写的last-name，这个和lastName是一样的， - 后面跟着的字母默认是大写的。这就是松散绑定。可以测试一下</p>
+<p>3、JSR303数据校验 ， 这个就是我们可以在字段是增加一层过滤器验证 ， 可以保证数据的合法性</p>
+<p>4、复杂类型封装，yml中可以封装对象 ， 使用value就不支持</p>
+<p><strong>结论：</strong></p>
+<p>配置yml和配置properties都可以获取到值 ， 强烈推荐 yml；</p>
+<p>如果我们在某个业务中，只需要获取配置文件中的某个值，可以使用一下 @value；</p>
+<p>如果说，我们专门编写了一个JavaBean来和配置文件进行一一映射，就直接@configurationProperties，不要犹豫！</p>
+]]></content>
+      <tags>
+        <tag>-SpringBoot -yaml -properties</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SpringBoot系列：JSR303数据校验及多环境切换</title>
+    <url>/2023/01/10/SpringBoot%E7%B3%BB%E5%88%97%EF%BC%9AJSR303%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E5%8F%8A%E5%A4%9A%E7%8E%AF%E5%A2%83%E5%88%87%E6%8D%A2/</url>
+    <content><![CDATA[<p>Springboot中可以用@validated来校验数据，如果数据异常则会统一抛出异常，方便异常中心统一处理。我们这里来写个注解让我们的name只能支持Email格式；</p>
+<span id="more"></span>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@Component //注册bean@ConfigurationProperties(prefix = &quot;person&quot;)@Validated  //数据校验public class Person &#123;</span><br><span class="line">    @Email(message=&quot;邮箱格式错误&quot;) //name必须是邮箱格式    private String name;&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果 ：default message [不是一个合法的电子邮件地址];</p>
+<p><strong>使用数据校验，可以保证数据的正确性；</strong> </p>
+<h2 id="常见参数"><a href="#常见参数" class="headerlink" title="常见参数"></a>常见参数</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">@NotNull(message=&quot;名字不能为空&quot;)</span><br><span class="line">private String userName;</span><br><span class="line">@Max(value=120,message=&quot;年龄最大不能查过120&quot;)</span><br><span class="line">private int age;</span><br><span class="line">@Email(message=&quot;邮箱格式错误&quot;)</span><br><span class="line">private String email;</span><br><span class="line"></span><br><span class="line">空检查</span><br><span class="line">@Null       验证对象是否为null</span><br><span class="line">@NotNull    验证对象是否不为null, 无法查检长度为0的字符串</span><br><span class="line">@NotBlank   检查约束字符串是不是Null还有被Trim的长度是否大于0,只对字符串,且会去掉前后空格.</span><br><span class="line">@NotEmpty   检查约束元素是否为NULL或者是EMPTY.</span><br><span class="line">    </span><br><span class="line">Booelan检查</span><br><span class="line">@AssertTrue     验证 Boolean 对象是否为 true  </span><br><span class="line">@AssertFalse    验证 Boolean 对象是否为 false  </span><br><span class="line">    </span><br><span class="line">长度检查</span><br><span class="line">@Size(min=, max=) 验证对象（Array,Collection,Map,String）长度是否在给定的范围之内  </span><br><span class="line">@Length(min=, max=) string is between min and max included.</span><br><span class="line"></span><br><span class="line">日期检查</span><br><span class="line">@Past       验证 Date 和 Calendar 对象是否在当前时间之前  </span><br><span class="line">@Future     验证 Date 和 Calendar 对象是否在当前时间之后  </span><br><span class="line">@Pattern    验证 String 对象是否符合正则表达式的规则</span><br><span class="line"></span><br><span class="line">.......等等</span><br><span class="line">除此以外，我们还可以自定义一些数据校验规则</span><br></pre></td></tr></table></figure>
+<h2 id="多环境切换"><a href="#多环境切换" class="headerlink" title="多环境切换"></a>多环境切换</h2><p>profile是Spring对不同环境提供不同配置功能的支持，可以通过激活不同的环境版本，实现快速切换环境；</p>
+<h3 id="多配置文件"><a href="#多配置文件" class="headerlink" title="多配置文件"></a>多配置文件</h3><p>我们在主配置文件编写的时候，文件名可以是 application-{profile}.properties/yml , 用来指定多个环境版本；</p>
+<p><strong>例如：</strong></p>
+<p>application-test.properties 代表测试环境配置</p>
+<p>application-dev.properties 代表开发环境配置</p>
+<p>但是Springboot并不会直接启动这些配置文件，它<strong>默认使用application.properties主配置文件</strong>；</p>
+<p>我们需要通过一个配置来选择需要激活的环境：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#比如在配置文件中指定使用dev环境，我们可以通过设置不同的端口号进行测试；</span><br><span class="line">#我们启动SpringBoot，就可以看到已经切换到dev下的配置了；</span><br><span class="line">spring.profiles.active=dev</span><br></pre></td></tr></table></figure>
+<h3 id="yaml的多文档块"><a href="#yaml的多文档块" class="headerlink" title="yaml的多文档块"></a>yaml的多文档块</h3><p>和properties配置文件中一样，但是使用yml去实现不需要创建多个配置文件，更加方便了 !</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 8081</span><br><span class="line">#选择要激活那个环境块</span><br><span class="line">spring:</span><br><span class="line">  profiles:</span><br><span class="line">    active: prod</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">server:</span><br><span class="line">  port: 8083</span><br><span class="line">spring:</span><br><span class="line">  profiles: dev #配置环境的名称</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">server:</span><br><span class="line">  port: 8084</span><br><span class="line">spring:</span><br><span class="line">  profiles: prod  #配置环境的名称</span><br></pre></td></tr></table></figure>
+<p><strong>注意：如果yml和properties同时都配置了端口，并且没有激活其他环境 ， 默认会使用properties配置文件的！</strong></p>
+<h3 id="配置文件加载位置"><a href="#配置文件加载位置" class="headerlink" title="配置文件加载位置"></a>配置文件加载位置</h3><p><strong>外部加载配置文件的方式十分多，我们选择最常用的即可，在开发的资源文件中进行配置！</strong></p>
+<p>springboot 启动会扫描以下位置的application.properties或者application.yml文件作为Spring boot的默认配置文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">优先级1：项目路径下的config文件夹配置文件</span><br><span class="line">优先级2：项目路径下配置文件</span><br><span class="line">优先级3：资源路径下的config文件夹配置文件</span><br><span class="line">优先级4：资源路径下配置文件</span><br></pre></td></tr></table></figure>
+<p>优先级由高到底，高优先级的配置会覆盖低优先级的配置；</p>
+<p><strong>SpringBoot会从这四个位置全部加载主配置文件；互补配置；</strong></p>
+<p>我们在最低级的配置文件中设置一个项目访问路径的配置来测试互补问题；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#配置项目的访问路径</span><br><span class="line">server.servlet.context-path=/baidu</span><br></pre></td></tr></table></figure>
+<h2 id="拓展，运维小技巧"><a href="#拓展，运维小技巧" class="headerlink" title="拓展，运维小技巧"></a>拓展，运维小技巧</h2><p>指定位置加载配置文件</p>
+<p>我们还可以通过spring.config.location来改变默认的配置文件位置</p>
+<p>项目打包好以后，我们可以使用命令行参数的形式，启动项目的时候来指定配置文件的新位置；这种情况，一般是后期运维做的多，相同配置，外部指定的配置文件优先级最高</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">java -jar spring-boot-config.jar --spring.config.location=F:/application.properties</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>-SpringBoot -yaml -多环境切换</tag>
+      </tags>
+  </entry>
 </search>
