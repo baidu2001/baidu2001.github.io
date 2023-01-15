@@ -1955,7 +1955,7 @@
 <p>查看构造器：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">public SpringApplication(ResourceLoader resourceLoader, Class... primarySources) &#123;</span><br><span class="line">    // ......</span><br><span class="line">    this.webApplicationType = WebApplicationType.deduceFromClasspath();</span><br><span class="line">    this.setInitializers(this.getSpringFactoriesInstances();</span><br><span class="line">    this.setListeners(this.getSpringFactoriesInstances(ApplicationListener.class));</span><br><span class="line">    this.mainApplicationClass = this.deduceMainApplicationClass();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
-        <tag>-SpringBoot</tag>
+        <tag>SpringBoot</tag>
       </tags>
   </entry>
   <entry>
@@ -2076,7 +2076,9 @@
 <p>如果说，我们专门编写了一个JavaBean来和配置文件进行一一映射，就直接@configurationProperties，不要犹豫！</p>
 ]]></content>
       <tags>
-        <tag>-SpringBoot -yaml -properties</tag>
+        <tag>SpringBoot</tag>
+        <tag>yaml</tag>
+        <tag>properties</tag>
       </tags>
   </entry>
   <entry>
@@ -2111,7 +2113,9 @@
 <p>项目打包好以后，我们可以使用命令行参数的形式，启动项目的时候来指定配置文件的新位置；这种情况，一般是后期运维做的多，相同配置，外部指定的配置文件优先级最高</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">java -jar spring-boot-config.jar --spring.config.location=F:/application.properties</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
-        <tag>-SpringBoot -yaml -多环境切换</tag>
+        <tag>SpringBoot</tag>
+        <tag>yaml</tag>
+        <tag>多环境切换</tag>
       </tags>
   </entry>
   <entry>
@@ -2178,6 +2182,10 @@
 <p>2、自己放一个图标在静态资源目录下，我放在 public 目录下</p>
 <p>3、清除浏览器缓存！刷新网页，发现图标已经变成自己的了！</p>
 ]]></content>
+      <tags>
+        <tag>SpringBoot</tag>
+        <tag>Web</tag>
+      </tags>
   </entry>
   <entry>
     <title>SpringBoot系列：整合Druid</title>
@@ -2215,7 +2223,8 @@
 <p>平时在工作中，按需求进行配置即可，主要用作监控！</p>
 ]]></content>
       <tags>
-        <tag>-SpringBoot -Druid</tag>
+        <tag>SpringBoot</tag>
+        <tag>Druid</tag>
       </tags>
   </entry>
   <entry>
@@ -2256,7 +2265,7 @@
 <p>到此，CURD的基本操作，使用 JDBC 就搞定了。</p>
 ]]></content>
       <tags>
-        <tag>-SpringBoot</tag>
+        <tag>SpringBoot</tag>
       </tags>
   </entry>
   <entry>
@@ -2295,7 +2304,7 @@
 <p><strong>Unconditional classes: （没有条件的类）</strong></p>
 ]]></content>
       <tags>
-        <tag>-SpringBoot</tag>
+        <tag>SpringBoot</tag>
       </tags>
   </entry>
   <entry>
@@ -2349,12 +2358,8 @@ import java.util.List;
 
 @SpringBootTest
 class Springboot05ApplicationTests &#123;
-
-
-    @Autowired
-    UserMapper userMapper;
-
-    //查询所有用户
+</code></pre><p>​<br>        @Autowired<br>        UserMapper userMapper;</p>
+<pre><code>    //查询所有用户
     @Test
     void contextLoads() &#123;
         List&lt;User&gt; users = userMapper.selectList(null);
@@ -2410,7 +2415,8 @@ class Springboot05ApplicationTests &#123;
 <h3 id="Maps"><a href="#Maps" class="headerlink" title="Maps()"></a>Maps()</h3><p>根据指定条件查询数据并分页，返回数据类型为Map类型。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 使用内置方法pageMaps(查询)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;pageMaps&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Page&lt;Map&lt;String, Object&gt;&gt; <span class="title function_">pageMaps</span><span class="params">()</span> &#123;</span><br><span class="line">    Page&lt;Map&lt;String, Object&gt;&gt; page = <span class="keyword">new</span> <span class="title class_">Page</span>&lt;&gt;(<span class="number">1</span>, <span class="number">10</span>);</span><br><span class="line">    QueryWrapper&lt;UserEntity&gt; queryWrapper = <span class="keyword">new</span> <span class="title class_">QueryWrapper</span>();</span><br><span class="line">    queryWrapper.lambda().eq(UserEntity::getUsername, <span class="string">&quot;123&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> userService.pageMaps(page, queryWrapper);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
-        <tag>-Springboot -Mybatis-plus</tag>
+        <tag>Springboot</tag>
+        <tag>Mybatis-plus</tag>
       </tags>
   </entry>
   <entry>
@@ -2470,7 +2476,8 @@ class Springboot05ApplicationTests &#123;
 <p><strong>我们看完语法，很多样式，我们即使现在学习了，也会忘记，所以我们在学习过程中，需要使用什么，根据官方文档来查询，才是最重要的，要熟练使用官方文档！</strong></p>
 ]]></content>
       <tags>
-        <tag>-Thymeleaf -SpringBoot</tag>
+        <tag>SpringBoot</tag>
+        <tag>Thymeleaf</tag>
       </tags>
   </entry>
   <entry>
@@ -2561,7 +2568,8 @@ class Springboot05ApplicationTests &#123;
 <p><strong>在SpringBoot中会有非常多的扩展配置，只要看见了这个，我们就应该多留心注意~</strong></p>
 ]]></content>
       <tags>
-        <tag>-SpringMVC -SpringBoot</tag>
+        <tag>SpringBoot</tag>
+        <tag>SpringMVC</tag>
       </tags>
   </entry>
   <entry>
@@ -2695,7 +2703,8 @@ class Springboot05ApplicationTests &#123;
 <p>4、mg-ui   <strong>访问 <a href="http://localhost:8080/document.html">http://localhost:8080/document.html</a></strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!-- 引入swagger-ui-layer包 /document.html--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">   &lt;groupId&gt;com.zyplayer&lt;/groupId&gt;</span><br><span class="line">   &lt;artifactId&gt;swagger-mg-ui&lt;/artifactId&gt;</span><br><span class="line">   &lt;version&gt;1.0.6&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
-        <tag>-SpringBoot -Swagger</tag>
+        <tag>Swagger</tag>
+        <tag>SpringBoot</tag>
       </tags>
   </entry>
   <entry>
@@ -2756,7 +2765,7 @@ class Springboot05ApplicationTests &#123;
 <p>为了让我们的区域化信息能够生效，我们需要再配置一下这个组件！在我们自己的MvcConofig下添加bean；</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">@Bean</span><br><span class="line">public LocaleResolver localeResolver()&#123;</span><br><span class="line">    return new MyLocaleResolver();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
-        <tag>-SpringBoot</tag>
+        <tag>SpringBoot</tag>
       </tags>
   </entry>
 </search>
