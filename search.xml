@@ -3167,4 +3167,38 @@ class Springboot05ApplicationTests &#123;
         <tag>java基础复习</tag>
       </tags>
   </entry>
+  <entry>
+    <title>sendredirect与getrequestdispatcher的区别</title>
+    <url>/2023/02/13/sendredirect%E4%B8%8Egetrequestdispatcher%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<p>(1)request.getRequestDispatcher()是请求转发，前后页面共享一个request ; 这个是在服务端运行的，对浏览器来说是透明的。<br>(2)response.sendRedirect()是重新定向，前后页面不是一个request。而这个是在浏览器端运行的。<br>redirect()方式:</p>
+<span id="more"></span>
+<p>response.sendRedirect(“/a.jsp”);<br>　　 页面的路径是相对路径。sendRedirect可以将页面跳转到任何页面，不一定局限于本web应用中，如：<br>　　 response.sendRedirect(“URL”);<br>　　 跳转后浏览器地址栏变化。<br>　　 这种方式要传值出去的话，只能在url中带parameter或者放在session中，无法使用request.setAttribute来 传递。所以该方式只适用于无传值跳转<br>　　<br>　　2) forward方式<br>　　 request.getRequestDispatcher(“/路径（可以是jsp路径也可以是servlet）”) .forward(request, response);</p>
+<p>如：<br>“request.getRequestDispatcher(”/2.jsp）”) .forward(request, response);”</p>
+<p>“request.getRequestDispatcher(”/servlet/HomeServlet）”) .forward(request, response);”<br>　　Servlet页面跳转的路径是相对路径。forward方式只能跳转到本web应用中的页面上。<br>　　跳转后浏览器地址栏不会变化。<br>　　使用这种方式跳转，传值可以使用三种方法：url中带parameter，session，request.setAttribute</p>
+<p>实例：</p>
+<p>用户登录模块</p>
+<p>login.jsp</p>
+<p>loginServlet.java</p>
+<p>loginOK.jsp</p>
+<p>用户访问login.jsp，输入用户名和密码进行登录，请求到达loginServlet，loginServet中，在session中加入user属性，值为输入的用户名。接着loginServlet把请求转发给loginOK.jsp，loginOK.jsp显示用户名。</p>
+<p>代码简单描述</p>
+<p><code>login.jsp中：</code><br><code>username=aaa，password=123；</code></p>
+<p><code>loginServlet.java中：</code><br><code>String username=request.getParameter(&quot;username&quot;);</code><br><code>session.setAttribute(&quot;username&quot;,username);</code></p>
+<p><code>loginOK.jsp中:</code></p>
+<p><code>显示request中的用户名 $&#123;username&#125;，</code></p>
+<p><code>显示session中的用户名 $&#123;username&#125;，</code></p>
+<p>第一种情况：</p>
+<p>由loginServlet调用forward方法进行转发，首先观察浏览器的地址栏，发现了地址是形如<a href="http://.../login.do?username=..&amp;..的样子的。页面中的request里的用户名和session的用户名都显示了出来。">http://.../login.do?username=..&amp;..的样子的。页面中的request里的用户名和session的用户名都显示了出来。</a></p>
+<p>第二种情况：</p>
+<p>由loginServlet调用sendRedirect方法进行转发，还是观察地址栏，发现地址已经变成<a href="http://.../loginOK.jsp了，">http://.../loginOK.jsp了，</a></p>
+<p>页面中request里面的用户名没有显示出来，但是session里的用户名却显示了出来。</p>
+<p>这是为什么呢？</p>
+<p>原来，forward 是服务器端的跳转，也就是客户端根本不知道这个动作，从一个java程序转到了另一个java程序，所以此时request会被作为参数传递过去。<br>但是，sendRedirect 这个是客户端的跳转，服务器端会发送一个跳转的代码和url给浏览器，浏览器会重新请求指定的URL,所以此时，request已经无效了。当然，此时session还是生效的。</p>
+]]></content>
+      <tags>
+        <tag>转发</tag>
+        <tag>重定向</tag>
+        <tag>javaweb</tag>
+      </tags>
+  </entry>
 </search>
