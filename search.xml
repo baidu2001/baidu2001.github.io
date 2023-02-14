@@ -3201,4 +3201,153 @@ class Springboot05ApplicationTests &#123;
         <tag>javaweb</tag>
       </tags>
   </entry>
+  <entry>
+    <title>过滤器、拦截器、监听器</title>
+    <url>/2023/02/14/%E8%BF%87%E6%BB%A4%E5%99%A8%E5%92%8C%E6%8B%A6%E6%88%AA%E5%99%A8/</url>
+    <content><![CDATA[<h3 id="Springboot实现拦截器功能"><a href="#Springboot实现拦截器功能" class="headerlink" title="Springboot实现拦截器功能"></a>Springboot实现拦截器功能</h3><p><img src="https://i.p04e.com/baid/i/2023/02/14/ixq.png"></p>
+<span id="more"></span>
+<blockquote>
+<p>preHandle: 预先处理,在目标的controller方法执行之前,进行处理</p>
+<p>postHandle: 在目标的controller方法执行之后,到达指定页面之前进行处理</p>
+<p>afterCompletion: 在页面渲染之后进行处理</p>
+</blockquote>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><blockquote>
+<p>1.Springboot通过实现<a href="https://so.csdn.net/so/search?q=HandlerInterceptor&amp;spm=1001.2101.3001.7020">HandlerInterceptor</a>接口实现拦截器</p>
+<p>2.通过WebMvcConfigurer实现一个配置类,再通过@Configuration 注解注入到容器</p>
+<p>3.指定拦截规则</p>
+</blockquote>
+<p> 以用户登录为案例,若用户没有登录session里面就没有用户的数据,就会转到首页登录页面</p>
+<p>在正确登录之后，就将reglister保存到session中，再次访问页面的时候，登录<a href="https://so.csdn.net/so/search?q=%E6%8B%A6%E6%88%AA%E5%99%A8&amp;spm=1001.2101.3001.7020">拦截器</a>就可以找到这个reglister对象，就不需要再次拦截到登录界面了.</p>
+<p><img src="https://i.p04e.com/baid/i/2023/02/14/q3ho.png"><br><img src="https://i.p04e.com/baid/i/2023/02/14/52nh1.png"></p>
+<blockquote>
+<p>注意:拦截器  \ 会拦截一切资源,包括静态资源,需要将静态资源放行</p>
+</blockquote>
+<p><img src="https://i.p04e.com/baid/i/2023/02/14/qbbp.jpg"><br><img src="https://i.p04e.com/baid/i/2023/02/14/3rc4.jpg"></p>
+<h3 id="SpringBoot使用过滤器Filter"><a href="#SpringBoot使用过滤器Filter" class="headerlink" title="SpringBoot使用过滤器Filter"></a>SpringBoot使用过滤器Filter</h3><blockquote>
+<p>SpringBoot中使用过滤器Filter有两种方式</p>
+<p>方式一： 通过注解方式实现</p>
+<p>方式二：通过 Spring Boot 的配置类实现</p>
+</blockquote>
+<h4 id="方式一：-通过注解方式实现"><a href="#方式一：-通过注解方式实现" class="headerlink" title="方式一： 通过注解方式实现"></a>方式一： 通过注解方式实现</h4><p>首先先写一个过滤器Filter，在类的上方使用 @WebFilter 注解来创建Filter即可</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//过滤器</span></span><br><span class="line"><span class="meta">@WebFilter(urlPatterns = &quot;/myfilter&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyFilter</span> <span class="keyword">implements</span> <span class="title class_">Filter</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doFilter</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)</span> <span class="keyword">throws</span> IOException, ServletException &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;---------您已进入过滤器----------&quot;</span>);</span><br><span class="line">        filterChain.doFilter(servletRequest,servletResponse);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在SpringBoot项目的入口类上方使用注解 @ServletComponentScan 扫描filter包中的注解</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.web.servlet.ServletComponentScan;</span><br><span class="line"> </span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@ServletComponentScan(basePackages = &quot;com.springboot.filter&quot;)</span>  <span class="comment">//第一种方式</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringbootTest14Application</span> &#123;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(SpringbootTest14Application.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.p04e.com/baid/i/2023/02/14/qihe.png"></p>
+<h4 id="方式二：通过-Spring-Boot-的配置类实现"><a href="#方式二：通过-Spring-Boot-的配置类实现" class="headerlink" title="方式二：通过 Spring Boot 的配置类实现"></a>方式二：通过 Spring Boot 的配置类实现</h4><p>首先先写一个过滤器Filter,不使用注解</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//过滤器</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyFilter</span> <span class="keyword">implements</span> <span class="title class_">Filter</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doFilter</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)</span> <span class="keyword">throws</span> IOException, ServletException &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;---------您已进入过滤器222----------&quot;</span>);</span><br><span class="line">        filterChain.doFilter(servletRequest,servletResponse);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再写一个配置类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>  <span class="comment">//定义此类为配置类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FilterConfig</span> &#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> FilterRegistrationBean <span class="title function_">myFilterRegistrationBean</span><span class="params">()</span>&#123;</span><br><span class="line">        FilterRegistrationBean filterRegistrationBean=<span class="keyword">new</span> <span class="title class_">FilterRegistrationBean</span>(<span class="keyword">new</span> <span class="title class_">MyFilter</span>());</span><br><span class="line"> </span><br><span class="line">        <span class="comment">//添加过滤路径</span></span><br><span class="line">        filterRegistrationBean.addUrlPatterns(<span class="string">&quot;/user/*&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> filterRegistrationBean;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后写一个controller类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyController</span> &#123;</span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/user/detail&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@ResponseBody</span> String <span class="title function_">userDetail</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;/user/detail&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/center&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@ResponseBody</span> String <span class="title function_">center</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;/center&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.p04e.com/baid/i/2023/02/14/2sn.png"><br><img src="https://i.p04e.com/baid/i/2023/02/14/qmzo.png"></p>
+<h3 id="过滤器和拦截器的区别"><a href="#过滤器和拦截器的区别" class="headerlink" title="过滤器和拦截器的区别"></a>过滤器和拦截器的区别</h3><ol>
+<li>过滤器和拦截器触发时机不一样，过滤器是在请求进入容器后，但请求进入servlet之前进行预处理的。请求结束返回也是，是在servlet处理完后，返回给前端之前。</li>
+<li>拦截器可以获取IOC容器中的各个bean，而过滤器就不行，因为拦截器是spring提供并管理的，spring的功能可以被拦截器使用，在拦截器里注入一个service，可以调用业务逻辑。而过滤器是JavaEE标准，只需依赖servlet<br>api ，不需要依赖spring。</li>
+<li>过滤器的实现基于回调函数。而拦截器（代理模式）的实现基于反射</li>
+<li>Filter是依赖于Servlet容器，属于Servlet规范的一部分，而拦截器则是独立存在的，可以在任何情况下使用。</li>
+<li>Filter的执行由Servlet容器回调完成，而拦截器通常通过动态代理（反射）的方式来执行。</li>
+<li>Filter的生命周期由Servlet容器管理，而拦截器则可以通过IoC容器来管理，因此可以通过注入等方式来获取其他Bean的实例，因此使用会更方便。</li>
+</ol>
+<p>过滤器和拦截器非常相似，但是它们有很大的区别，最简单明了的区别就是<strong>过滤器可以修改request，而拦截器不能过滤器需要在servlet容器中实现，拦截器可以适用于javaEE，javaSE等各种环境拦截器可以调用IOC容器中的各种依赖，而过滤器不能过滤器只能在请求的前后使用，而拦截器可以详细到每个方法</strong></p>
+<h3 id="JavaWeb之过滤器-filter"><a href="#JavaWeb之过滤器-filter" class="headerlink" title="JavaWeb之过滤器(filter)"></a>JavaWeb之过滤器(filter)</h3><p>filter的使用（xml配置）<br>1，声明一个过滤器类要实现Filter接口(CusFilter类)</p>
+<pre><code>public class CusFilter implements Filter &#123;
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException &#123;
+        System.out.println(&quot;filter 初始化了&quot;);
+    &#125;
+
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException &#123;
+        /*过滤方法 主要是对request和response进行一些处理，然后交给下一个过滤器或Servlet处理*/
+        System.out.println(&quot;过滤请求了！！！&quot;);
+        //给请求放行 请求真正的资源/或者到下一个过滤器
+        filterChain.doFilter(servletRequest, servletResponse);
+    &#125;
+
+    @Override
+    public void destroy() &#123;
+        System.out.println(&quot;filter 销毁了&quot;);
+    &#125;
+&#125;
+</code></pre><p>2、配置 web.xml 文件</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;filter&gt;</span><br><span class="line">  &lt;filter-name&gt;filter&lt;/filter-name&gt;</span><br><span class="line">  &lt;filter-class&gt;com.codeyancy.filter.CusFilter&lt;/filter-class&gt;</span><br><span class="line">&lt;/filter&gt;</span><br><span class="line">&lt;filter-mapping&gt;</span><br><span class="line">  &lt;filter-name&gt;filter&lt;/filter-name&gt;</span><br><span class="line">  &lt;url-pattern&gt;<span class="comment">/*&lt;/url-pattern&gt;</span></span><br><span class="line"><span class="comment">&lt;/filter-mapping&gt;</span></span><br><span class="line"><span class="comment"></span></span><br></pre></td></tr></table></figure>
+<p>过滤器(Filter)的生命周期<br>构造 —&gt; 初始化 —&gt; 过滤 —&gt; 销毁</p>
+<p>构造和初始化是在应用部署好后就执行的而不是第一次访问，而且是只执行一次<br>过滤方法是每次指定的请求发送过来的时候执行<br>销毁方法是应用卸载或者TOMCAT关闭的时候执行<br>过滤器(Filter)的拦截路径写法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;filter-mapping&gt;</span><br><span class="line">    &lt;filter-name&gt;filter&lt;/filter-name&gt;</span><br><span class="line">    &lt;!--       <span class="comment">/* 表示过滤所有请求  --&gt;</span></span><br><span class="line"><span class="comment">    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;</span></span><br><span class="line"><span class="comment">    &lt;!--精确路径过滤--&gt;</span></span><br><span class="line"><span class="comment">    &lt;url-pattern&gt;/ajaSearch.html&lt;/url-pattern&gt;</span></span><br><span class="line"><span class="comment">    &lt;!--后缀名匹配过滤--&gt;</span></span><br><span class="line"><span class="comment">    &lt;url-pattern&gt;*.html&lt;/url-pattern&gt;</span></span><br><span class="line"><span class="comment">    &lt;!--目录匹配过滤--&gt;</span></span><br><span class="line"><span class="comment">    &lt;url-pattern&gt;/html/*&lt;/url-pattern&gt;</span></span><br><span class="line"><span class="comment">&lt;/filter-mapping&gt;</span></span><br><span class="line"><span class="comment"></span></span><br></pre></td></tr></table></figure>
+<p>filter的使用（注解形式）<br>使用注解形式，就不需要再配置web.xml了</p>
+<p>只需要在实现Filter接口的类上添加注解@WebFilter(“/*”)即可</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@WebFilter(&quot;/*&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CusFilter</span> <span class="keyword">implements</span> <span class="title class_">Filter</span> &#123;</span><br></pre></td></tr></table></figure>
+<p>多个过滤器(Filter)的执行顺序<br>在请求到达Servle之间是可以经过多个过滤器(Filter)的，一般情况下，建议过滤器(Filter)之间不要有关联，各自处理各自的逻辑即可。这样，我们也不需要关心执行顺序问题。</p>
+<p>如果一定要确保执行顺序，就要对配置进行修改了，多个过滤器(Filter)的执行顺序如下</p>
+<p>使用web.xml 配置，filter执行顺序跟的顺序有关，先声明的就会先执行<br>使用注解配置，filter的执行顺序跟filter名称的字母顺序有关，例如AFilter会比BFilter先执行<br>如果既有在web.xml中声明的Filter，也有通过注解配置的Filter，那么会优先执行web.xml中配置的Filter<br>FilterConfig配置类<br>每个filter都有一个配置类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">(FilterConfig filterConfig)</span> <span class="keyword">throws</span> ServletException &#123;</span><br><span class="line">    <span class="comment">//获取filter的初始化参数</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">jdbcUrl</span> <span class="operator">=</span> filterConfig.getInitParameter(<span class="string">&quot;jdbcUrl&quot;</span>);</span><br><span class="line">    System.out.println(jdbcUrl);</span><br><span class="line">    <span class="comment">// 获取上下文对象</span></span><br><span class="line">    <span class="type">ServletContext</span> <span class="variable">servletContext</span> <span class="operator">=</span> filterConfig.getServletContext();</span><br><span class="line">    System.out.println(<span class="string">&quot;filter 初始化了&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>web.xml文件配置初始化参数</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>使用过滤器处理请求响应乱码案例<br>主要代码演示：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doFilter</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)</span> <span class="keyword">throws</span> IOException, ServletException &#123;</span><br><span class="line">        <span class="type">HttpServletRequest</span> <span class="variable">request</span> <span class="operator">=</span> (HttpServletRequest) servletRequest;</span><br><span class="line">        <span class="type">HttpServletResponse</span> <span class="variable">response</span> <span class="operator">=</span> (HttpServletResponse) servletResponse;</span><br><span class="line">        <span class="comment">//处理乱码</span></span><br><span class="line">        request.setCharacterEncoding(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">        response.setContentType(<span class="string">&quot;text/json;charset=UTF-8&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">String</span> <span class="variable">requestURI</span> <span class="operator">=</span> request.getRequestURI();</span><br><span class="line">        <span class="comment">//System.out.println(&quot;filter1 拦截了请求...&quot; + requestURI);</span></span><br><span class="line">        filterChain.doFilter(servletRequest, servletResponse);</span><br><span class="line">        <span class="comment">//System.out.println(&quot;filter1 响应了请求...&quot;);</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>使用过滤器进行校验登陆权限案例</p>
+<p>1.前端login.html</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;form action=<span class="string">&quot;/auth&quot;</span> method = <span class="string">&quot;post&quot;</span>&gt;</span><br><span class="line">    user &lt;input type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;username&quot;</span>&gt; &lt;br&gt;</span><br><span class="line">    pass &lt;input type=<span class="string">&quot;password&quot;</span> name=<span class="string">&quot;password&quot;</span>&gt; &lt;br&gt;</span><br><span class="line">    &lt;input type=<span class="string">&quot;submit&quot;</span> value=<span class="string">&quot;登录&quot;</span>&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>2.后端权限校验servlet(AuthController 类)</p>
+<p>@WebServlet(“/auth”)<br>public class AuthController extends HttpServlet {</p>
+<pre><code>@Override
+protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException &#123;
+    String username = req.getParameter(&quot;username&quot;);
+    String password = req.getParameter(&quot;password&quot;);
+    if(&quot;tom&quot;.equals(username)&amp;&amp;&quot;666&quot;.equals(password))&#123;
+        //验证成功后往session域中存放登录信息
+        HttpSession session = req.getSession();
+        session.setAttribute(&quot;user&quot;,new User(username,password));
+
+        resp.sendRedirect(&quot;/index.html&quot;);
+    &#125;else &#123;
+        resp.sendRedirect(&quot;/login.html&quot;);
+    &#125;
+&#125;
+@Override
+protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException &#123;
+    doGet(req, resp);
+&#125;
+</code></pre><p>3.后端过滤器(CusFilter2类)</p>
+<pre><code>@WebFilter(&quot;/*&quot;)
+public class CusFilter2 implements Filter &#123;
+    public CusFilter2() &#123;
+        System.out.println(&quot;filter2 过滤器构造了&quot;);
+    &#125;
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException &#123;
+        System.out.println(&quot;filter2 初始化&quot;);
+    &#125;
+
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException &#123;
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
+
+            HttpSession session = request.getSession();
+            Object user = session.getAttribute(&quot;user&quot;);
+            if(user==null)&#123;
+                response.sendRedirect(&quot;/login.html&quot;);
+            &#125;else &#123;
+                //放行，请求真正的资源/到下一个过滤器
+                filterChain.doFilter(servletRequest, servletResponse);
+            &#125;
+        &#125;
+    &#125;
+
+    @Override
+    public void destroy() &#123;
+    &#125;
+&#125;
+</code></pre><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>filter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>com.xufengnian.servlet<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>filter<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>SpringBoot</tag>
+        <tag>javaweb</tag>
+        <tag>过滤器</tag>
+        <tag>拦截器</tag>
+        <tag>监听器</tag>
+      </tags>
+  </entry>
 </search>
