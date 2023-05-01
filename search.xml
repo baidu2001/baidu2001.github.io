@@ -4242,4 +4242,51 @@ public class CusFilter2 implements Filter &#123;
         <tag>System.arraycopy</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Java方法传参机制</title>
+    <url>/2023/05/01/Java%E6%96%B9%E6%B3%95%E4%BC%A0%E5%8F%82%E6%9C%BA%E5%88%B6/</url>
+    <content><![CDATA[<p>大家对java方法的传参机制了解有多少，现在我给大家用代码和画图来讲解一下吧，请耐心看下去，会有不少的收获</p>
+<blockquote>
+<h3 id="基本数据类型的传参机制"><a href="#基本数据类型的传参机制" class="headerlink" title="基本数据类型的传参机制"></a>基本数据类型的传参机制</h3></blockquote>
+<span id="more"></span>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Method &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        int a = 10;</span><br><span class="line">        int b = 20;</span><br><span class="line"></span><br><span class="line">        A obj = new A();</span><br><span class="line">        obj.swap(a, b);</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;\nmain方法\na=&quot; + a + &quot;\nb=&quot; + b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    class A &#123;</span><br><span class="line">        public void swap(int a, int b)&#123;</span><br><span class="line">            System.out.println(&quot;\na和b交换前的值\na=&quot; + a + &quot;\nb=&quot; + b);</span><br><span class="line"></span><br><span class="line">            int tmp = a;</span><br><span class="line">            a = b;</span><br><span class="line">            b = tmp;</span><br><span class="line">            System.out.println(&quot;\na和b交换后的值\na=&quot; + a + &quot;\nb=&quot; + b);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><u>运行结果</u></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">a和b交换前的值</span><br><span class="line">a=10</span><br><span class="line">b=20</span><br><span class="line"></span><br><span class="line">a和b交换后的值</span><br><span class="line">a=20</span><br><span class="line">b=10</span><br><span class="line"></span><br><span class="line">main方法</span><br><span class="line">a=10</span><br><span class="line">b=20</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>同学们想一想为什么a与b在进行交换以后在main方法中依旧是原来的顺序。</p>
+<p>这里给大家画个图</p>
+<p><img src="https://i.p04e.com/baid/i/2023/05/01/7csqu.png"></p>
+<p>在调用swap时就会开启swap栈，在swap使用结束后swap栈也会被销毁，而此时main方法中的a 和 b还是原先的ab，也就是说swap方法并没有影响到主方法的值。这也是很重要的一个知识点。</p>
+<p><strong><em>基本数据类型，传递的时值拷贝，形参的任何改变不影响实参！！！</em></strong></p>
+<blockquote>
+<h3 id="引用数据类型的传参机制"><a href="#引用数据类型的传参机制" class="headerlink" title="引用数据类型的传参机制"></a>引用数据类型的传参机制</h3></blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Method2 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">   B b = new B();</span><br><span class="line">   int[] arr = &#123;1, 2, 3&#125;;</span><br><span class="line">   b.test(arr);</span><br><span class="line">   System.out.println(&quot;main的 arr数组&quot;);</span><br><span class="line">   for(int i = 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">       System.out.print(arr[i] + &quot;\t&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    class B &#123;</span><br><span class="line">        public void test(int[] arr)&#123;</span><br><span class="line">            arr[0] = 200;</span><br><span class="line"></span><br><span class="line">            System.out.println(&quot;test的arr数组&quot;);</span><br><span class="line"></span><br><span class="line">            for(int i = 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">                System.out.print(arr[i] + &quot;\t&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><u>运行结果</u></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">test的arr数组</span><br><span class="line">200	2	3	</span><br><span class="line">main的 arr数组</span><br><span class="line">200	2	3	</span><br></pre></td></tr></table></figure>
+<p>此时为什么在B方法中修改了数组，而main方法中也被修改呢</p>
+<p><img src="https://i.p04e.com/baid/i/2023/05/01/5lkf.png"></p>
+<p>因为此时使用的是数组引用类型传递，main方法和test方法中的arr都指向了同一个地址，也就是同一个值，所以test的修改也会影响导main方法中的arr数组值。</p>
+<p><strong><em>引用类型传递的是地址（传递也是值，值是地址），可以通过形参影响到实参！</em></strong></p>
+<blockquote>
+<h3 id="继续思考"><a href="#继续思考" class="headerlink" title="继续思考"></a>继续思考</h3></blockquote>
+<p>想来大家现在已经理解了基础数据类型和引用类型的区别，那么再出一道题大家是否能答出来，或者知道为什么吗？代码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Method3 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        C c = new C();</span><br><span class="line"></span><br><span class="line">        Person p = new Person();</span><br><span class="line">        p.age = 10;</span><br><span class="line">        p.name = &quot;白都&quot;;</span><br><span class="line"></span><br><span class="line">        c.test(p);</span><br><span class="line">        System.out.println(&quot;main 的 p.age= &quot; + p.age);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">    class Person &#123;</span><br><span class="line">        String name;</span><br><span class="line">        int age;</span><br><span class="line">    &#125;</span><br><span class="line">    class C &#123;</span><br><span class="line">        public void test(Person p) &#123;</span><br><span class="line">            p = null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>大家想想此时main输出的age应为多少？</p>
+<p><u>运行结果</u></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">main 的 p.age= 10</span><br></pre></td></tr></table></figure>
+<p>大家有的人写错了这道题，很好奇为什么不是为null， C中不是执行了 p = null 吗，这里我给大家简单的画一下这张图。</p>
+<p><img src="https://i.p04e.com/baid/i/2023/05/01/14oua.png"></p>
+<p>和大家想象的不一样，p = null 不是将对象的值改为null，而是将连向对象的线给断掉，所以此时不会改变main方法中的值。</p>
+<p>在出一道类似的题，加强以下大家的对引用的认知，代码如下。</p>
+<p>大家先思考在看答案。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Method3 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        C c = new C();</span><br><span class="line"></span><br><span class="line">        Person p = new Person();</span><br><span class="line">        p.age = 10;</span><br><span class="line">        p.name = &quot;白都&quot;;</span><br><span class="line"></span><br><span class="line">        c.test(p);</span><br><span class="line">        System.out.println(&quot;main 的 p.age= &quot; + p.age);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">    class Person &#123;</span><br><span class="line">        String name;</span><br><span class="line">        int age;</span><br><span class="line">    &#125;</span><br><span class="line">    class C &#123;</span><br><span class="line">        public void test(Person p) &#123;</span><br><span class="line">            p = new Person();</span><br><span class="line">            p.name = &quot;tom&quot;;</span><br><span class="line">            p.age = 99;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><u>运行结果</u></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">main 的 p.age= 10</span><br></pre></td></tr></table></figure>
+<p>为何值还是没有改变，并没有指向null，而是改变了值啊。其实此时是因为 在C中创建了一个新的p对象，C修改的p的值也指向了堆中新的对象，而原来main的对象没有受到改变，所以输出的值自然不会改变。</p>
+<p>到现在想来大家对基础和引用类型区别已经分清，如果还有问题，可以关注并私信我的公众号，我会一一解答。</p>
+<h3 id="如果有帮助到你的话，请关注我的公众号叭"><a href="#如果有帮助到你的话，请关注我的公众号叭" class="headerlink" title="如果有帮助到你的话，请关注我的公众号叭"></a>如果有帮助到你的话，请关注我的公众号叭</h3><p><img src="https://i.p04e.com/baid/i/2023/04/25/5gyx.jpg"></p>
+<h4 id="个人博客-白都-baidu2001-top"><a href="#个人博客-白都-baidu2001-top" class="headerlink" title="个人博客 白都 (baidu2001.top)"></a>个人博客 <a href="https://www.baidu2001.top/">白都 (baidu2001.top)</a></h4><h4 id="CSDN-白-都"><a href="#CSDN-白-都" class="headerlink" title="CSDN 白.都"></a>CSDN 白.都</h4>]]></content>
+      <tags>
+        <tag>数据类型传参机制</tag>
+      </tags>
+  </entry>
 </search>
